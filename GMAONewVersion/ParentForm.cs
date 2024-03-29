@@ -25,80 +25,56 @@ namespace GMAONewVersion
             name = usernameFromLoginForm;
             accesLvl = grade;
 
+            // Affiche la page Home dès le début de l'appli
+            panelContenu.Controls.Clear();
+            HomeForm homeForm = new HomeForm(name);
+            homeForm.TopLevel = false;
+            homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            homeForm.Size = panelContenu.Size;
+            homeForm.BringToFront();
+            homeForm.Visible = true;
+            panelContenu.Controls.Add(homeForm);
+
             // Cacher le btn Gestion des User si pas admin
             if (accesLvl != 3)
             {
             }
 
-            /*
-            // Ajout des boutons au menu latéral
-            Button btn1 = new Button();
-            btn1.Text = "Page 1";
-            btn1.Location = new Point(10, 10);
-            btn1.Click += new EventHandler(Btn1_Click);
-            panelMenu.Controls.Add(btn1);
-
-            Button btn2 = new Button();
-            btn2.Text = "Page 2";
-            btn2.Location = new Point(10, 40);
-            btn2.Click += new EventHandler(Btn2_Click);
-            panelMenu.Controls.Add(btn2);
-
-            // Contenu par défaut
-            ChargerPage("Page1");
-            */
         }
 
-        private void Btn1_Click(object sender, EventArgs e)
+
+        //////////////// Gère les clics sur les bouttons latéreaux ////////////////
+
+
+        private void pictureBoxHome_Click(object sender, EventArgs e)
         {
-            ChargerPage("Page1");
+            HomeFormShow(sender, e);
         }
 
-        private void Btn2_Click(object sender, EventArgs e)
+        private void pictureBoxEquip_Click(object sender, EventArgs e)
         {
-            ChargerPage("Page2");
+            EquipFormShow(sender, e);
         }
 
-        private void ChargerPage(string nomPage)
+        private void pictureBoxPR_Click(object sender, EventArgs e)
         {
-            // Chargement du contenu en fonction du nom de la page
-            switch (nomPage)
-            {
-                case "Page1":
-                    // Code pour afficher le contenu de la page 1
-                    panelContenu.Controls.Clear();
-                    Label page1Label = new Label();
-                    page1Label.Text = "Ceci est la page 1";
-                    page1Label.AutoSize = true;
-                    panelContenu.Controls.Add(page1Label);
-                    break;
-                case "Page2":
-                    // Code pour afficher le contenu de la page 2
-                    panelContenu.Controls.Clear();
-                    Label page2Label = new Label();
-                    page2Label.Text = "Ceci est la page 2";
-                    page2Label.AutoSize = true;
-                    panelContenu.Controls.Add(page2Label);
-                    break;
-            }
+            PRFormShow(sender, e);
         }
+
 
         private void pictureBoxBT_Click(object sender, EventArgs e)
         {
             BTFormShow(sender, e);
         }
 
-        private void BTFormShow(object sender, EventArgs e)
+
+        private void pictureBoxGestionUser_Click(object sender, EventArgs e)
         {
-            panelContenu.Controls.Clear();
-            BTForm btForm = new BTForm();
-            btForm.TopLevel = false;
-            btForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            btForm.Size = panelContenu.Size;
-            btForm.BringToFront();
-            btForm.Visible = true;
-            panelContenu.Controls.Add(btForm);
+            UserFormShow(sender, e);
         }
+
+        //////////////// Gère l'affichage des fenetres sur le controle ////////////////
+
 
         private void HomeFormShow(object sender, EventArgs e)
         {
@@ -112,9 +88,54 @@ namespace GMAONewVersion
             panelContenu.Controls.Add(homeForm);
         }
 
-        private void pictureBoxHome_Click(object sender, EventArgs e)
+        private void EquipFormShow(object sender, EventArgs e)
         {
-            HomeFormShow(sender, e);
+            panelContenu.Controls.Clear();
+            EquipForm equipForm = new EquipForm();
+            equipForm.TopLevel = false;
+            equipForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            equipForm.Size = panelContenu.Size;
+            equipForm.BringToFront();
+            equipForm.Visible = true;
+            panelContenu.Controls.Add(equipForm);
         }
+
+        private void PRFormShow(object sender, EventArgs e)
+        {
+            panelContenu.Controls.Clear();
+            PRForm prForm = new PRForm();
+            prForm.TopLevel = false;
+            prForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            prForm.Size = panelContenu.Size;
+            prForm.BringToFront();
+            prForm.Visible = true;
+            panelContenu.Controls.Add(prForm);
+        }
+
+
+        private void BTFormShow(object sender, EventArgs e)
+        {
+            panelContenu.Controls.Clear();
+            BTForm btForm = new BTForm();
+            btForm.TopLevel = false;
+            btForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            btForm.Size = panelContenu.Size;
+            btForm.BringToFront();
+            btForm.Visible = true;
+            panelContenu.Controls.Add(btForm);
+        }
+
+        private void UserFormShow(object sender, EventArgs e)
+        {
+            panelContenu.Controls.Clear();
+            UserForm userForm = new UserForm();
+            userForm.TopLevel = false;
+            userForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            userForm.Size = panelContenu.Size;
+            userForm.BringToFront();
+            userForm.Visible = true;
+            panelContenu.Controls.Add(userForm);
+        }
+
     }
 }

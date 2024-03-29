@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEquip = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPR = new System.Windows.Forms.PictureBox();
             this.pictureBoxBT = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGestionUser = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxHome = new System.Windows.Forms.PictureBox();
             this.panelContenu = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEquip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHome)).BeginInit();
             this.SuspendLayout();
@@ -49,10 +49,10 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panelMenu.Controls.Add(this.pictureBox6);
-            this.panelMenu.Controls.Add(this.pictureBox5);
+            this.panelMenu.Controls.Add(this.pictureBoxEquip);
+            this.panelMenu.Controls.Add(this.pictureBoxPR);
             this.panelMenu.Controls.Add(this.pictureBoxBT);
-            this.panelMenu.Controls.Add(this.pictureBox3);
+            this.panelMenu.Controls.Add(this.pictureBoxGestionUser);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Controls.Add(this.pictureBoxHome);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -61,25 +61,27 @@
             this.panelMenu.Size = new System.Drawing.Size(80, 616);
             this.panelMenu.TabIndex = 0;
             // 
-            // pictureBox6
+            // pictureBoxEquip
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(12, 122);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
+            this.pictureBoxEquip.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEquip.Image")));
+            this.pictureBoxEquip.Location = new System.Drawing.Point(12, 122);
+            this.pictureBoxEquip.Name = "pictureBoxEquip";
+            this.pictureBoxEquip.Size = new System.Drawing.Size(45, 45);
+            this.pictureBoxEquip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEquip.TabIndex = 5;
+            this.pictureBoxEquip.TabStop = false;
+            this.pictureBoxEquip.Click += new System.EventHandler(this.pictureBoxEquip_Click);
             // 
-            // pictureBox5
+            // pictureBoxPR
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(12, 187);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
+            this.pictureBoxPR.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPR.Image")));
+            this.pictureBoxPR.Location = new System.Drawing.Point(12, 187);
+            this.pictureBoxPR.Name = "pictureBoxPR";
+            this.pictureBoxPR.Size = new System.Drawing.Size(45, 45);
+            this.pictureBoxPR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPR.TabIndex = 4;
+            this.pictureBoxPR.TabStop = false;
+            this.pictureBoxPR.Click += new System.EventHandler(this.pictureBoxPR_Click);
             // 
             // pictureBoxBT
             // 
@@ -92,15 +94,16 @@
             this.pictureBoxBT.TabStop = false;
             this.pictureBoxBT.Click += new System.EventHandler(this.pictureBoxBT_Click);
             // 
-            // pictureBox3
+            // pictureBoxGestionUser
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(12, 320);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.pictureBoxGestionUser.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxGestionUser.Image")));
+            this.pictureBoxGestionUser.Location = new System.Drawing.Point(12, 320);
+            this.pictureBoxGestionUser.Name = "pictureBoxGestionUser";
+            this.pictureBoxGestionUser.Size = new System.Drawing.Size(45, 45);
+            this.pictureBoxGestionUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGestionUser.TabIndex = 2;
+            this.pictureBoxGestionUser.TabStop = false;
+            this.pictureBoxGestionUser.Click += new System.EventHandler(this.pictureBoxGestionUser_Click);
             // 
             // pictureBox2
             // 
@@ -141,10 +144,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEquip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHome)).EndInit();
             this.ResumeLayout(false);
@@ -155,12 +158,12 @@
 
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelContenu;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBoxPR;
         private System.Windows.Forms.PictureBox pictureBoxBT;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBoxGestionUser;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxHome;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBoxEquip;
     }
 }
 

@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace GMAONewVersion
 {
-    public partial class HomeForm : Form
+    public partial class PRForm : Form
     {
-        string name;
-        public HomeForm(string name)
+        public PRForm()
         {
             InitializeComponent();
-            this.name = name;
-
-            labelName.Text = labelName.Text + " " + name;
-
-
         }
     }
 }
