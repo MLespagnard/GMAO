@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GMAOProject2024Info
+namespace GMAONewVersion
 {
     class Error
     {

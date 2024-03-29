@@ -37,20 +37,20 @@
             this.groupBoxIntituleBT = new System.Windows.Forms.GroupBox();
             this.textBoxIntituleBT = new System.Windows.Forms.TextBox();
             this.groupBoxPieceRechangeBT = new System.Windows.Forms.GroupBox();
+            this.ListBoxPieceRechangeBT = new System.Windows.Forms.ListBox();
             this.groupBoxNbHeuresBT = new System.Windows.Forms.GroupBox();
             this.textBoxEquipementConcerneBT = new System.Windows.Forms.TextBox();
             this.groupBoxEquipementConcerneBT = new System.Windows.Forms.GroupBox();
             this.groupBoxTravailRealiserBT = new System.Windows.Forms.GroupBox();
+            this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.groupBoxNomInterBT = new System.Windows.Forms.GroupBox();
             this.textBoxCreateurBT = new System.Windows.Forms.TextBox();
             this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
             this.groupBoxDatePrestaBT = new System.Windows.Forms.GroupBox();
             this.groupBoxCreateurBT = new System.Windows.Forms.GroupBox();
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
-            this.groupBoxMotifBT = new System.Windows.Forms.GroupBox();
-            this.ListBoxPieceRechangeBT = new System.Windows.Forms.ListBox();
-            this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
+            this.groupBoxMotifBT = new System.Windows.Forms.GroupBox();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxPieceRechangeBT.SuspendLayout();
             this.groupBoxNbHeuresBT.SuspendLayout();
@@ -74,6 +74,7 @@
             this.button1.TabIndex = 68;
             this.button1.Text = "Fermer";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxNomInterBT
             // 
@@ -153,6 +154,15 @@
             this.groupBoxPieceRechangeBT.TabStop = false;
             this.groupBoxPieceRechangeBT.Text = " Pièces de rechange concerné";
             // 
+            // ListBoxPieceRechangeBT
+            // 
+            this.ListBoxPieceRechangeBT.Enabled = false;
+            this.ListBoxPieceRechangeBT.FormattingEnabled = true;
+            this.ListBoxPieceRechangeBT.Location = new System.Drawing.Point(6, 19);
+            this.ListBoxPieceRechangeBT.Name = "ListBoxPieceRechangeBT";
+            this.ListBoxPieceRechangeBT.Size = new System.Drawing.Size(160, 160);
+            this.ListBoxPieceRechangeBT.TabIndex = 0;
+            // 
             // groupBoxNbHeuresBT
             // 
             this.groupBoxNbHeuresBT.BackColor = System.Drawing.Color.Transparent;
@@ -194,6 +204,15 @@
             this.groupBoxTravailRealiserBT.TabIndex = 60;
             this.groupBoxTravailRealiserBT.TabStop = false;
             this.groupBoxTravailRealiserBT.Text = "Travail à réaliser";
+            // 
+            // RichTextBoxTravailRealiserBT
+            // 
+            this.RichTextBoxTravailRealiserBT.Enabled = false;
+            this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(7, 26);
+            this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
+            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 73);
+            this.RichTextBoxTravailRealiserBT.TabIndex = 0;
+            this.RichTextBoxTravailRealiserBT.Text = "";
             // 
             // groupBoxNomInterBT
             // 
@@ -258,6 +277,15 @@
             this.groupBoxCommentaireInterBT.TabStop = false;
             this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
             // 
+            // RichTextBoxCommentaireInterBT
+            // 
+            this.RichTextBoxCommentaireInterBT.Enabled = false;
+            this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(7, 26);
+            this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
+            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 73);
+            this.RichTextBoxCommentaireInterBT.TabIndex = 1;
+            this.RichTextBoxCommentaireInterBT.Text = "";
+            // 
             // groupBoxMotifBT
             // 
             this.groupBoxMotifBT.BackColor = System.Drawing.Color.Transparent;
@@ -268,33 +296,6 @@
             this.groupBoxMotifBT.TabIndex = 66;
             this.groupBoxMotifBT.TabStop = false;
             this.groupBoxMotifBT.Text = "Motif du BT";
-            // 
-            // ListBoxPieceRechangeBT
-            // 
-            this.ListBoxPieceRechangeBT.Enabled = false;
-            this.ListBoxPieceRechangeBT.FormattingEnabled = true;
-            this.ListBoxPieceRechangeBT.Location = new System.Drawing.Point(6, 19);
-            this.ListBoxPieceRechangeBT.Name = "ListBoxPieceRechangeBT";
-            this.ListBoxPieceRechangeBT.Size = new System.Drawing.Size(160, 160);
-            this.ListBoxPieceRechangeBT.TabIndex = 0;
-            // 
-            // RichTextBoxTravailRealiserBT
-            // 
-            this.RichTextBoxTravailRealiserBT.Enabled = false;
-            this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(7, 26);
-            this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
-            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 73);
-            this.RichTextBoxTravailRealiserBT.TabIndex = 0;
-            this.RichTextBoxTravailRealiserBT.Text = "";
-            // 
-            // RichTextBoxCommentaireInterBT
-            // 
-            this.RichTextBoxCommentaireInterBT.Enabled = false;
-            this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(7, 26);
-            this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
-            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 73);
-            this.RichTextBoxCommentaireInterBT.TabIndex = 1;
-            this.RichTextBoxCommentaireInterBT.Text = "";
             // 
             // BTVisualiserForm
             // 

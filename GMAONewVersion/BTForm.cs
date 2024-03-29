@@ -133,11 +133,33 @@ namespace GMAONewVersion
                 // Ouvre visualisetBT
                 BTVisualiserForm formVisualiserBT = new BTVisualiserForm(connection, numeroBT);
                 formVisualiserBT.ShowDialog();
+            }// Si index 6 choisi
+            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
+            {
+                // Récupère le numéro du BT
+                string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
+
+                // Ouvre la page modofier BT avec les infos nécéssaires
+                BTTModifierForm formModifierBT = new BTTModifierForm(connection, numeroBT);
+
+                formModifierBT.FormClosed += BTTModifierForm_FormClosed;
+
+                formModifierBT.ShowDialog();
+            }
+            // Si index 8 choisi Archivage
+            else if (e.ColumnIndex == 8 && e.RowIndex >= 0)
+            {
+                // Récupère le numéro du BT
+                string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
+
+                Archive.archiveToSql(connection, numeroBT, "bt", "BT_NUMERO");
+
+                InsertDataInDataGridViewBTFunction(0);
             }
         }
 
         //////////// Lors d'un clic sur le bouton créé du BT, ouvre le formulaire de création
-        private void kryptonButtonOpenFormCreerBT_Click(object sender, EventArgs e)
+        private void ButtonOpenFormCreerBT_Click(object sender, EventArgs e)
         {
             BTCreationForm fomCreerBT = new BTCreationForm(connection, name);
 
@@ -146,6 +168,29 @@ namespace GMAONewVersion
 
             // Affichez fomCreerBT
             fomCreerBT.ShowDialog();
+        }
+
+        ///////////  Gère le click pour gérer la visualisation de l'Archivage BT
+        private void checkBoxShowArchivageBT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowArchivageBT.Checked == false)
+            {
+                InsertDataInDataGridViewBTFunction(0);
+            }
+            else if (checkBoxShowArchivageBT.Checked == true)
+            {
+                InsertDataInDataGridViewBTFunction(1);
+            }
+        }
+
+        private void FomCreerBT_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InsertDataInDataGridViewBTFunction(0);
+        }
+
+        private void BTTModifierForm_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            InsertDataInDataGridViewBTFunction(0);
         }
 
     }

@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archive.cs" />
     <Compile Include="BTCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,12 @@
     </Compile>
     <Compile Include="BTForm.Designer.cs">
       <DependentUpon>BTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BTTModifierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BTTModifierForm.Designer.cs">
+      <DependentUpon>BTTModifierForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BTVisualiserForm.cs">
       <SubType>Form</SubType>
@@ -122,7 +129,9 @@
     <Compile Include="EquipForm.Designer.cs">
       <DependentUpon>EquipForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Error.cs" />
+    <Compile Include="Error.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BTForm.resx">
       <DependentUpon>BTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BTTModifierForm.resx">
+      <DependentUpon>BTTModifierForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BTVisualiserForm.resx">
       <DependentUpon>BTVisualiserForm.cs</DependentUpon>

@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -157,7 +156,6 @@ namespace GMAONewVersion
                 ("Nom intervenant", comboBoxNomInterBT.SelectedItem.ToString()),
                 ("Temps presté", textBoxTempsPresteBT.Text)
             };
-
 
             // Envoie la liste des champs a la classe error pour vérifier la nullitée des champs
             if (Error.testvaleur(lst_champs) == false)
