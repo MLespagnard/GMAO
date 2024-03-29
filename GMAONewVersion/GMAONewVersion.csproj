@@ -98,11 +98,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BTCreationForm.Designer.cs">
+      <DependentUpon>BTCreationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BTForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BTForm.Designer.cs">
       <DependentUpon>BTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BTVisualiserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BTVisualiserForm.Designer.cs">
+      <DependentUpon>BTVisualiserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EquipForm.cs">
       <SubType>Form</SubType>
@@ -110,6 +122,7 @@
     <Compile Include="EquipForm.Designer.cs">
       <DependentUpon>EquipForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Error.cs" />
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,8 +155,14 @@
     <Compile Include="UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BTCreationForm.resx">
+      <DependentUpon>BTCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BTForm.resx">
       <DependentUpon>BTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BTVisualiserForm.resx">
+      <DependentUpon>BTVisualiserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
@@ -179,6 +198,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="img\bouton-archiver.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bouton-imprimer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bouton-modifier.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bouton-visualiser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="img\image-accueil.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

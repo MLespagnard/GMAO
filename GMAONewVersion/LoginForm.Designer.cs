@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.pictureBoxLoginForm = new System.Windows.Forms.PictureBox();
             this.panelLoginForm = new System.Windows.Forms.Panel();
             this.labelLoginForm = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -37,21 +36,15 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelConnectionId = new System.Windows.Forms.Label();
             this.buttonConnectionLoginForm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).BeginInit();
+            this.pictureBoxLoginForm = new System.Windows.Forms.PictureBox();
             this.panelLoginForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxLoginForm
-            // 
-            this.pictureBoxLoginForm.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoginForm.Image")));
-            this.pictureBoxLoginForm.Location = new System.Drawing.Point(-9, -3);
-            this.pictureBoxLoginForm.Name = "pictureBoxLoginForm";
-            this.pictureBoxLoginForm.Size = new System.Drawing.Size(503, 371);
-            this.pictureBoxLoginForm.TabIndex = 0;
-            this.pictureBoxLoginForm.TabStop = false;
             // 
             // panelLoginForm
             // 
+            this.panelLoginForm.BackColor = System.Drawing.Color.White;
+            this.panelLoginForm.Controls.Add(this.buttonConnectionLoginForm);
             this.panelLoginForm.Controls.Add(this.labelLoginForm);
             this.panelLoginForm.Controls.Add(this.textBoxPassword);
             this.panelLoginForm.Controls.Add(this.textBoxConnectionId);
@@ -59,7 +52,7 @@
             this.panelLoginForm.Controls.Add(this.labelConnectionId);
             this.panelLoginForm.Location = new System.Drawing.Point(107, 60);
             this.panelLoginForm.Name = "panelLoginForm";
-            this.panelLoginForm.Size = new System.Drawing.Size(269, 230);
+            this.panelLoginForm.Size = new System.Drawing.Size(262, 250);
             this.panelLoginForm.TabIndex = 1;
             // 
             // labelLoginForm
@@ -109,7 +102,7 @@
             // buttonConnectionLoginForm
             // 
             this.buttonConnectionLoginForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnectionLoginForm.Location = new System.Drawing.Point(187, 311);
+            this.buttonConnectionLoginForm.Location = new System.Drawing.Point(80, 212);
             this.buttonConnectionLoginForm.Name = "buttonConnectionLoginForm";
             this.buttonConnectionLoginForm.Size = new System.Drawing.Size(102, 23);
             this.buttonConnectionLoginForm.TabIndex = 2;
@@ -117,28 +110,34 @@
             this.buttonConnectionLoginForm.UseVisualStyleBackColor = true;
             this.buttonConnectionLoginForm.Click += new System.EventHandler(this.buttonConnectionLoginForm_Click);
             // 
+            // pictureBoxLoginForm
+            // 
+            this.pictureBoxLoginForm.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoginForm.Image")));
+            this.pictureBoxLoginForm.Location = new System.Drawing.Point(-9, -3);
+            this.pictureBoxLoginForm.Name = "pictureBoxLoginForm";
+            this.pictureBoxLoginForm.Size = new System.Drawing.Size(503, 371);
+            this.pictureBoxLoginForm.TabIndex = 0;
+            this.pictureBoxLoginForm.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 361);
-            this.Controls.Add(this.buttonConnectionLoginForm);
             this.Controls.Add(this.panelLoginForm);
             this.Controls.Add(this.pictureBoxLoginForm);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
+            this.Text = "Connection";
             this.Load += new System.EventHandler(this.LoginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).EndInit();
             this.panelLoginForm.ResumeLayout(false);
             this.panelLoginForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBoxLoginForm;
         private System.Windows.Forms.Panel panelLoginForm;
         private System.Windows.Forms.Label labelLoginForm;
         private System.Windows.Forms.TextBox textBoxPassword;
@@ -146,5 +145,6 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelConnectionId;
         private System.Windows.Forms.Button buttonConnectionLoginForm;
+        private System.Windows.Forms.PictureBox pictureBoxLoginForm;
     }
 }

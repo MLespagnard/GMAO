@@ -128,6 +128,7 @@
             // 
             // panelContenu
             // 
+            this.panelContenu.BackColor = System.Drawing.Color.Transparent;
             this.panelContenu.Location = new System.Drawing.Point(80, 0);
             this.panelContenu.Name = "panelContenu";
             this.panelContenu.Size = new System.Drawing.Size(759, 619);
@@ -142,7 +143,7 @@
             this.Controls.Add(this.panelMenu);
             this.Name = "ParentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "GMAO - Gestion de maintenance assistée par ordinateur";
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEquip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPR)).EndInit();

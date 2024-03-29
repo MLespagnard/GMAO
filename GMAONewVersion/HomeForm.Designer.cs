@@ -100,7 +100,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelName);
             this.Name = "HomeForm";
-            this.Text = "HomeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
