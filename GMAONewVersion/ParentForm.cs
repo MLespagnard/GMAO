@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,25 @@ using System.Windows.Forms;
 
 namespace GMAONewVersion
 {
-    public partial class Form1 : Form
+    public partial class ParentForm : Form
     {
-        public Form1()
+        private MySqlConnection connection;
+        private String name;
+        private int accesLvl;
+
+        public ParentForm(MySqlConnection conn, String usernameFromLoginForm, int grade)
         {
             InitializeComponent();
+
+            connection = conn;
+            name = usernameFromLoginForm;
+            accesLvl = grade;
+
+            // Cacher le btn Gestion des User si pas admin
+            if (accesLvl != 3)
+            {
+            }
+
             /*
             // Ajout des boutons au menu latéral
             Button btn1 = new Button();
@@ -66,6 +81,40 @@ namespace GMAONewVersion
                     panelContenu.Controls.Add(page2Label);
                     break;
             }
+        }
+
+        private void pictureBoxBT_Click(object sender, EventArgs e)
+        {
+            BTFormShow(sender, e);
+        }
+
+        private void BTFormShow(object sender, EventArgs e)
+        {
+            panelContenu.Controls.Clear();
+            BTForm btForm = new BTForm();
+            btForm.TopLevel = false;
+            btForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            btForm.Size = panelContenu.Size;
+            btForm.BringToFront();
+            btForm.Visible = true;
+            panelContenu.Controls.Add(btForm);
+        }
+
+        private void HomeFormShow(object sender, EventArgs e)
+        {
+            panelContenu.Controls.Clear();
+            HomeForm homeForm = new HomeForm(name);
+            homeForm.TopLevel = false;
+            homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            homeForm.Size = panelContenu.Size;
+            homeForm.BringToFront();
+            homeForm.Visible = true;
+            panelContenu.Controls.Add(homeForm);
+        }
+
+        private void pictureBoxHome_Click(object sender, EventArgs e)
+        {
+            HomeFormShow(sender, e);
         }
     }
 }
