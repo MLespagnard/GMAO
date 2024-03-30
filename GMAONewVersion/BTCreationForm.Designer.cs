@@ -241,7 +241,7 @@
             this.groupBoxCommentaireInterBT.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(43, 298);
             this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
-            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(283, 105);
+            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(283, 85);
             this.groupBoxCommentaireInterBT.TabIndex = 49;
             this.groupBoxCommentaireInterBT.TabStop = false;
             this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
@@ -250,8 +250,9 @@
             // 
             this.RichTextBoxCommentaireInterBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(8, 19);
+            this.RichTextBoxCommentaireInterBT.MaxLength = 80;
             this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
-            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 73);
+            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 51);
             this.RichTextBoxCommentaireInterBT.TabIndex = 4;
             this.RichTextBoxCommentaireInterBT.Text = "";
             // 
@@ -261,7 +262,7 @@
             this.groupBoxTravailRealiserBT.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBoxTravailRealiserBT.Location = new System.Drawing.Point(43, 171);
             this.groupBoxTravailRealiserBT.Name = "groupBoxTravailRealiserBT";
-            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(283, 105);
+            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(283, 76);
             this.groupBoxTravailRealiserBT.TabIndex = 48;
             this.groupBoxTravailRealiserBT.TabStop = false;
             this.groupBoxTravailRealiserBT.Text = "Travail à réaliser";
@@ -270,8 +271,9 @@
             // 
             this.RichTextBoxTravailRealiserBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(6, 19);
+            this.RichTextBoxTravailRealiserBT.MaxLength = 80;
             this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
-            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 73);
+            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 45);
             this.RichTextBoxTravailRealiserBT.TabIndex = 3;
             this.RichTextBoxTravailRealiserBT.Text = "";
             // 

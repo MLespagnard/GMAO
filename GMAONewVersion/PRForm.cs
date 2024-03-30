@@ -162,7 +162,7 @@ namespace GMAONewVersion
 
                 InsertDataInDataGridViewPRFunction(0);
             }
-            else
+            else if (checkBoxShowArchivagePR.Checked == true)
                 MessageBox.Show("Il est impossible de modifer une pièce de rechange archivée.");
         }
 

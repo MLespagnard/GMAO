@@ -60,6 +60,7 @@
             this.textBoxUsureEquip.Name = "textBoxUsureEquip";
             this.textBoxUsureEquip.Size = new System.Drawing.Size(173, 20);
             this.textBoxUsureEquip.TabIndex = 0;
+            this.textBoxUsureEquip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUsureEquip_KeyPress);
             // 
             // groupBoxModelEquip
             // 

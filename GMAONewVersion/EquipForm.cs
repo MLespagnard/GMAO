@@ -129,7 +129,7 @@ namespace GMAONewVersion
 
                 InsertDataInDataGridViewEquipFunction(0);
             }
-            else
+            else if (checkBoxShowArchivageEquip.Checked == true)
                 MessageBox.Show("Il est impossible de modifer un équipement archivé.");
         }
 

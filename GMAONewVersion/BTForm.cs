@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace GMAONewVersion
@@ -16,6 +18,7 @@ namespace GMAONewVersion
     {
         private readonly MySqlConnection connection;
         private readonly string name;
+        private string btNumeroForPrint;
 
         public BTForm(MySqlConnection connection, string name)
         {
@@ -145,6 +148,21 @@ namespace GMAONewVersion
                 formModifierBT.FormClosed += BTTModifierForm_FormClosed;
 
                 formModifierBT.ShowDialog();
+            }// Si index 7 choisi Archivage
+            else if (e.ColumnIndex == 7 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
+            {
+                PrintDocument document = new PrintDocument();
+                document.PrintPage += Document_PrintPage;
+
+                btNumeroForPrint = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
+
+                PrintDialog dialog = new PrintDialog();
+                dialog.Document = document;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    document.Print();
+                }
             }
             // Si index 8 choisi Archivage
             else if (e.ColumnIndex == 8 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
@@ -156,7 +174,7 @@ namespace GMAONewVersion
 
                 InsertDataInDataGridViewBTFunction(0);
             }
-            else
+            else if (checkBoxShowArchivageBT.Checked == true)
                 MessageBox.Show("Il est impossible de modifer un bon de travail archivé.");
         }
 
@@ -195,5 +213,82 @@ namespace GMAONewVersion
             InsertDataInDataGridViewBTFunction(0);
         }
 
+        private void Document_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string query = "SELECT * FROM bt WHERE BT_NUMERO = @btNumero";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection)) {
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@btNumero", btNumeroForPrint);
+                using (MySqlDataReader reader = command.ExecuteReader()) { 
+                
+                    reader.Read();
+                    Graphics g = e.Graphics; // déclaration de l'objet graphic
+                    Font font = new Font("Arial", 12); // Objet définissant la police
+                    Font fontPetit = new Font("Arial", 11); // Objet définissant la police
+
+                    // En-tête
+                    g.DrawString("Bon de Travail", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top);
+
+                    // Informations générales
+                    int x = e.MarginBounds.Left; // Début sur la gauche
+                    int y = e.MarginBounds.Top + 50; // début 50px du haut
+
+                    g.DrawString("Nom de l’école: ", font, Brushes.Black, x, y);
+                    g.DrawString("Cardijn Lorraine Arlon", font, Brushes.Black, x + 400, y);
+                    y += 30; // Descends de 20
+
+                    g.DrawString("N° du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_NUMERO"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Motif du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_MOTIF"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Équipement concerné du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_EQUIPEMENT_CONCERNE"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Pièces de rechange concerné du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_PIECE_RECHANGE"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Nombre d’heures de l’équipement du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_HEURE_EQUIPEMENT"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Travail à réaliser du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_TRAVAIL_REALISER"].ToString(), fontPetit, Brushes.Black, x, y += 25);
+                    y += 30;
+
+                    g.DrawString("Commentaire de l’intervenant du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_COMMENTAIRE_INTERVENANT"].ToString(), fontPetit, Brushes.Black, x, y += 25);
+                    y += 30;
+
+                    g.DrawString("Nom de l'intervenant du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_NOM_INTERVENANT"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Temps de prestation du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_TEMPS_TRAVAIL"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+                    g.DrawString("Date de prestation du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["BT_DATE_REALISATION"].ToString(), font, Brushes.Black, x + 400, y);
+                    y += 30;
+
+
+                    // Pied de page
+                    string date = DateTime.Now.ToString("dd/MM/yyyy"); // Récupère la date
+
+                    g.DrawString(date, font, Brushes.Black, e.MarginBounds.Right - 100, e.MarginBounds.Bottom); // écrit la date
+
+                    // Libérer les ressources // Pas important
+                    font.Dispose();
+                    g.Dispose();
+                }
+            }
+        }
     }
 }
