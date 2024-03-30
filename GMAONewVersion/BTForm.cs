@@ -134,7 +134,7 @@ namespace GMAONewVersion
                 BTVisualiserForm formVisualiserBT = new BTVisualiserForm(connection, numeroBT);
                 formVisualiserBT.ShowDialog();
             }// Si index 6 choisi
-            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
+            else if (e.ColumnIndex == 6 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
             {
                 // Récupère le numéro du BT
                 string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
@@ -147,7 +147,7 @@ namespace GMAONewVersion
                 formModifierBT.ShowDialog();
             }
             // Si index 8 choisi Archivage
-            else if (e.ColumnIndex == 8 && e.RowIndex >= 0)
+            else if (e.ColumnIndex == 8 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
             {
                 // Récupère le numéro du BT
                 string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
@@ -156,6 +156,8 @@ namespace GMAONewVersion
 
                 InsertDataInDataGridViewBTFunction(0);
             }
+            else
+                MessageBox.Show("Il est impossible de modifer un bon de travail archiver.");
         }
 
         //////////// Lors d'un clic sur le bouton créé du BT, ouvre le formulaire de création

@@ -146,16 +146,16 @@ namespace GMAONewVersion
             // Crée une liste avec la valeur des champs
             List<(string, string)> lst_champs = new List<(string, string)>
             {
-                ("Motif", comboBoxMotifBT.SelectedItem as string),
+                ("Motif", comboBoxMotifBT.SelectedItem as string ?? ""),
                 ("Intitulé", textBoxIntituleBT.Text),
                 ("Créateur", textBoxCreateurBT.Text),
-                ("Équipement concerné", comboBoxEquipementConcerneBT.SelectedItem as string),
+                ("Équipement concerné", comboBoxEquipementConcerneBT.SelectedItem as string ?? ""),
                 ("Nombre d'heures", textBoxNbHeuresBT.Text),
                 ("Travail réalisé", RichTextBoxTravailRealiserBT.Text),
                 ("Commentaire interne", RichTextBoxCommentaireInterBT.Text),
-                ("Nom intervenant", comboBoxNomInterBT.SelectedItem.ToString()),
+                ("Nom intervenant", comboBoxNomInterBT.SelectedItem?.ToString() ?? ""),
                 ("Temps presté", textBoxTempsPresteBT.Text)
-            };
+};
 
             // Envoie la liste des champs a la classe error pour vérifier la nullitée des champs
             if (Error.testvaleur(lst_champs) == false)

@@ -91,7 +91,7 @@ namespace GMAONewVersion
         private void EquipFormShow(object sender, EventArgs e)
         {
             panelContenu.Controls.Clear();
-            EquipForm equipForm = new EquipForm();
+            EquipForm equipForm = new EquipForm(connection);
             equipForm.TopLevel = false;
             equipForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             equipForm.Size = panelContenu.Size;
@@ -128,7 +128,7 @@ namespace GMAONewVersion
         private void UserFormShow(object sender, EventArgs e)
         {
             panelContenu.Controls.Clear();
-            UserForm userForm = new UserForm();
+            UserForm userForm = new UserForm(connection);
             userForm.TopLevel = false;
             userForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             userForm.Size = panelContenu.Size;

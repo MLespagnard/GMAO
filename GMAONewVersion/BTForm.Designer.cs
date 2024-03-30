@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataGridBT = new System.Windows.Forms.DataGridView();
-            this.checkBoxShowArchivageBT = new System.Windows.Forms.CheckBox();
-            this.ButtonOpenFormCreerBT = new System.Windows.Forms.Button();
-            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBoxShowArchivageBT = new System.Windows.Forms.CheckBox();
+            this.ButtonOpenFormCreerBT = new System.Windows.Forms.Button();
+            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            this.labelUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,23 +51,20 @@
             this.DataGridBT.AllowUserToOrderColumns = true;
             this.DataGridBT.AllowUserToResizeColumns = false;
             this.DataGridBT.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Empty;
-            this.DataGridBT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DataGridBT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.DataGridBT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridBT.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DataGridBT.BackgroundColor = System.Drawing.Color.White;
             this.DataGridBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridBT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridBT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DataGridBT.ColumnHeadersHeight = 35;
             this.DataGridBT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -82,35 +80,6 @@
             this.DataGridBT.Size = new System.Drawing.Size(753, 503);
             this.DataGridBT.TabIndex = 0;
             this.DataGridBT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBT_CellContentClick);
-            // 
-            // checkBoxShowArchivageBT
-            // 
-            this.checkBoxShowArchivageBT.AutoSize = true;
-            this.checkBoxShowArchivageBT.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxShowArchivageBT.Location = new System.Drawing.Point(595, 56);
-            this.checkBoxShowArchivageBT.Name = "checkBoxShowArchivageBT";
-            this.checkBoxShowArchivageBT.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxShowArchivageBT.TabIndex = 7;
-            this.checkBoxShowArchivageBT.Text = "Visualiser les archives";
-            this.checkBoxShowArchivageBT.UseVisualStyleBackColor = true;
-            this.checkBoxShowArchivageBT.CheckedChanged += new System.EventHandler(this.checkBoxShowArchivageBT_CheckedChanged);
-            // 
-            // ButtonOpenFormCreerBT
-            // 
-            this.ButtonOpenFormCreerBT.Location = new System.Drawing.Point(32, 39);
-            this.ButtonOpenFormCreerBT.Name = "ButtonOpenFormCreerBT";
-            this.ButtonOpenFormCreerBT.Size = new System.Drawing.Size(125, 34);
-            this.ButtonOpenFormCreerBT.TabIndex = 8;
-            this.ButtonOpenFormCreerBT.Text = "Créer un bon de travail";
-            this.ButtonOpenFormCreerBT.UseVisualStyleBackColor = true;
-            this.ButtonOpenFormCreerBT.Click += new System.EventHandler(this.ButtonOpenFormCreerBT_Click);
-            // 
-            // mySqlCommand1
-            // 
-            this.mySqlCommand1.CacheAge = 0;
-            this.mySqlCommand1.Connection = null;
-            this.mySqlCommand1.EnableCaching = false;
-            this.mySqlCommand1.Transaction = null;
             // 
             // Column1
             // 
@@ -142,11 +111,53 @@
             this.Column6.HeaderText = "Column6";
             this.Column6.Name = "Column6";
             // 
+            // checkBoxShowArchivageBT
+            // 
+            this.checkBoxShowArchivageBT.AutoSize = true;
+            this.checkBoxShowArchivageBT.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.checkBoxShowArchivageBT.Location = new System.Drawing.Point(595, 66);
+            this.checkBoxShowArchivageBT.Name = "checkBoxShowArchivageBT";
+            this.checkBoxShowArchivageBT.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxShowArchivageBT.TabIndex = 7;
+            this.checkBoxShowArchivageBT.Text = "Visualiser les archives";
+            this.checkBoxShowArchivageBT.UseVisualStyleBackColor = true;
+            this.checkBoxShowArchivageBT.CheckedChanged += new System.EventHandler(this.checkBoxShowArchivageBT_CheckedChanged);
+            // 
+            // ButtonOpenFormCreerBT
+            // 
+            this.ButtonOpenFormCreerBT.Location = new System.Drawing.Point(17, 56);
+            this.ButtonOpenFormCreerBT.Name = "ButtonOpenFormCreerBT";
+            this.ButtonOpenFormCreerBT.Size = new System.Drawing.Size(125, 34);
+            this.ButtonOpenFormCreerBT.TabIndex = 8;
+            this.ButtonOpenFormCreerBT.Text = "Créer un bon de travail";
+            this.ButtonOpenFormCreerBT.UseVisualStyleBackColor = true;
+            this.ButtonOpenFormCreerBT.Click += new System.EventHandler(this.ButtonOpenFormCreerBT_Click);
+            // 
+            // mySqlCommand1
+            // 
+            this.mySqlCommand1.CacheAge = 0;
+            this.mySqlCommand1.Connection = null;
+            this.mySqlCommand1.EnableCaching = false;
+            this.mySqlCommand1.Transaction = null;
+            // 
+            // labelUser
+            // 
+            this.labelUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelUser.Location = new System.Drawing.Point(301, 9);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(135, 25);
+            this.labelUser.TabIndex = 30;
+            this.labelUser.Text = "Bons de travail";
+            // 
             // BTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 611);
+            this.Controls.Add(this.labelUser);
             this.Controls.Add(this.ButtonOpenFormCreerBT);
             this.Controls.Add(this.checkBoxShowArchivageBT);
             this.Controls.Add(this.DataGridBT);
@@ -170,5 +181,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Label labelUser;
     }
 }
