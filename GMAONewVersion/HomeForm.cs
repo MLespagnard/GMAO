@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +14,38 @@ namespace GMAONewVersion
     public partial class HomeForm : Form
     {
         string name;
-        public HomeForm(string name)
+        private readonly MySqlConnection connection;
+        private ParentForm parentForm;
+
+        public HomeForm(string name, MySqlConnection connection, ParentForm parentForm)
         {
             InitializeComponent();
             this.name = name;
+            this.connection = connection;
+            this.parentForm = parentForm;
+
 
             labelName.Text = labelName.Text + " " + name;
+        }
 
+        private void buttonEquip_Click(object sender, EventArgs e)
+        {
+            parentForm.EventOnbuttonClickHomeForm(1);
+        }
 
+        private void buttonPR_Click(object sender, EventArgs e)
+        {
+            parentForm.EventOnbuttonClickHomeForm(2);
+        }
+
+        private void buttonBT_Click(object sender, EventArgs e)
+        {
+            parentForm.EventOnbuttonClickHomeForm(3);
+        }
+
+        private void buttonUser_Click(object sender, EventArgs e)
+        {
+            parentForm.EventOnbuttonClickHomeForm(4);
         }
     }
 }

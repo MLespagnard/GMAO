@@ -850,7 +850,7 @@
   <data name="pictureBoxBT.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADMXSURBVHhe7d0H
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADMXSURBVHhe7d0H
         1GVVmeZxEUSiBEVAkSQoCCMmWrANgC06dqOobQAMLZhGEYyFWcSMARUVcRAEHZVgaAcxgGICMQA6I0YQ
         BFRQsEkiCNLzvGu8q09//VJ137P3OXfvs/+/tf5r9cJbp75bXd+tp27dc85tJmoltac6Xl2sblT/TkTN
         9nv1DfUStbYCMEGbq7OU9yJARGRj4HEKwIRso+yb2/umJyKadYt6qQIwAaurXyjvm52IyGuZAlC5g5T3
@@ -1458,10 +1458,10 @@
         /wHuhIJMjAydXAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxLogOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACpKSURBVHhe7d0J
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACpKSURBVHhe7d0J
         lCR3fdjxkcBCyEgcxmBxmMQcDgRwMA8jEnPEBs3ZM9M90zPTPcd29yyj7eodkGIisEPCJBGQYD8pgB8J
         dpyE04BjwPbDj1uQYC475hQQQBEYEJeklXan/jW70k6lave/1qrmN7vd/76qfvX9vPd98J52Z7qquv7/
         X/fMzoxgZOSu9fWHbTc2f8WveQVT9w5H/ceg3npz9L/vNI3We/y69+Ho/3/cNLy/CereV6L/f3OG+350

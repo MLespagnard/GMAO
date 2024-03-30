@@ -30,7 +30,7 @@ namespace GMAONewVersion
 
         private void fillGroupBoxEquipementConcerneBT()
         {
-            string query = "SELECT EQUIP_NOM FROM equipements";
+            string query = "SELECT EQUIP_NOM FROM equipements WHERE archiver = 0";
 
             try
             {
@@ -57,7 +57,7 @@ namespace GMAONewVersion
 
         public void fillcheckedListBoxPieceRechangeBT()
         {
-            string query = "SELECT PR_NOM FROM piece_de_rechange";
+            string query = "SELECT PR_NOM FROM piece_de_rechange WHERE archiver = 0";
 
             try
             {

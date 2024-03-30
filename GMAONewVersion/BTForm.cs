@@ -157,7 +157,7 @@ namespace GMAONewVersion
                 InsertDataInDataGridViewBTFunction(0);
             }
             else
-                MessageBox.Show("Il est impossible de modifer un bon de travail archiver.");
+                MessageBox.Show("Il est impossible de modifer un bon de travail archivé.");
         }
 
         //////////// Lors d'un clic sur le bouton créé du BT, ouvre le formulaire de création

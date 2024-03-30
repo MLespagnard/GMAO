@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.labelName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonBT = new System.Windows.Forms.Button();
+            this.buttonPR = new System.Windows.Forms.Button();
+            this.buttonEquip = new System.Windows.Forms.Button();
+            this.buttonUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelName
@@ -45,59 +45,63 @@
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Bienvenue";
             // 
-            // button1
+            // buttonBT
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button1.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(113, 400);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 107);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Bons de travail";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonBT.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonBT.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBT.Location = new System.Drawing.Point(113, 400);
+            this.buttonBT.Name = "buttonBT";
+            this.buttonBT.Size = new System.Drawing.Size(189, 107);
+            this.buttonBT.TabIndex = 1;
+            this.buttonBT.Text = "Bons de travail";
+            this.buttonBT.UseVisualStyleBackColor = false;
+            this.buttonBT.Click += new System.EventHandler(this.buttonBT_Click);
             // 
-            // button2
+            // buttonPR
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button2.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(461, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 107);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Pièces de rechange";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonPR.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonPR.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPR.Location = new System.Drawing.Point(461, 179);
+            this.buttonPR.Name = "buttonPR";
+            this.buttonPR.Size = new System.Drawing.Size(189, 107);
+            this.buttonPR.TabIndex = 2;
+            this.buttonPR.Text = "Pièces de rechange";
+            this.buttonPR.UseVisualStyleBackColor = false;
+            this.buttonPR.Click += new System.EventHandler(this.buttonPR_Click);
             // 
-            // button3
+            // buttonEquip
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button3.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(113, 179);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 107);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Equipements";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonEquip.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonEquip.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEquip.Location = new System.Drawing.Point(113, 179);
+            this.buttonEquip.Name = "buttonEquip";
+            this.buttonEquip.Size = new System.Drawing.Size(189, 107);
+            this.buttonEquip.TabIndex = 3;
+            this.buttonEquip.Text = "Equipements";
+            this.buttonEquip.UseVisualStyleBackColor = false;
+            this.buttonEquip.Click += new System.EventHandler(this.buttonEquip_Click);
             // 
-            // button4
+            // buttonUser
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button4.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(461, 400);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(189, 107);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Gestion des utilisateurs";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonUser.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonUser.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUser.Location = new System.Drawing.Point(461, 400);
+            this.buttonUser.Name = "buttonUser";
+            this.buttonUser.Size = new System.Drawing.Size(189, 107);
+            this.buttonUser.TabIndex = 4;
+            this.buttonUser.Text = "Gestion des utilisateurs";
+            this.buttonUser.UseVisualStyleBackColor = false;
+            this.buttonUser.Click += new System.EventHandler(this.buttonUser_Click);
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 611);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonUser);
+            this.Controls.Add(this.buttonEquip);
+            this.Controls.Add(this.buttonPR);
+            this.Controls.Add(this.buttonBT);
             this.Controls.Add(this.labelName);
             this.Name = "HomeForm";
             this.ResumeLayout(false);
@@ -108,9 +112,9 @@
         #endregion
 
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonBT;
+        private System.Windows.Forms.Button buttonPR;
+        private System.Windows.Forms.Button buttonEquip;
+        private System.Windows.Forms.Button buttonUser;
     }
 }

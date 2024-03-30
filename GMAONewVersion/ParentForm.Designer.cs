@@ -34,7 +34,7 @@
             this.pictureBoxPR = new System.Windows.Forms.PictureBox();
             this.pictureBoxBT = new System.Windows.Forms.PictureBox();
             this.pictureBoxGestionUser = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogOut = new System.Windows.Forms.PictureBox();
             this.pictureBoxHome = new System.Windows.Forms.PictureBox();
             this.panelContenu = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
@@ -42,7 +42,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHome)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.panelMenu.Controls.Add(this.pictureBoxPR);
             this.panelMenu.Controls.Add(this.pictureBoxBT);
             this.panelMenu.Controls.Add(this.pictureBoxGestionUser);
-            this.panelMenu.Controls.Add(this.pictureBox2);
+            this.panelMenu.Controls.Add(this.pictureBoxLogOut);
             this.panelMenu.Controls.Add(this.pictureBoxHome);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -64,7 +64,7 @@
             // pictureBoxEquip
             // 
             this.pictureBoxEquip.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEquip.Image")));
-            this.pictureBoxEquip.Location = new System.Drawing.Point(12, 122);
+            this.pictureBoxEquip.Location = new System.Drawing.Point(17, 121);
             this.pictureBoxEquip.Name = "pictureBoxEquip";
             this.pictureBoxEquip.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxEquip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -75,7 +75,7 @@
             // pictureBoxPR
             // 
             this.pictureBoxPR.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPR.Image")));
-            this.pictureBoxPR.Location = new System.Drawing.Point(12, 187);
+            this.pictureBoxPR.Location = new System.Drawing.Point(17, 185);
             this.pictureBoxPR.Name = "pictureBoxPR";
             this.pictureBoxPR.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxPR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -86,7 +86,7 @@
             // pictureBoxBT
             // 
             this.pictureBoxBT.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBT.Image")));
-            this.pictureBoxBT.Location = new System.Drawing.Point(12, 255);
+            this.pictureBoxBT.Location = new System.Drawing.Point(17, 254);
             this.pictureBoxBT.Name = "pictureBoxBT";
             this.pictureBoxBT.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxBT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -97,7 +97,7 @@
             // pictureBoxGestionUser
             // 
             this.pictureBoxGestionUser.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxGestionUser.Image")));
-            this.pictureBoxGestionUser.Location = new System.Drawing.Point(12, 320);
+            this.pictureBoxGestionUser.Location = new System.Drawing.Point(17, 323);
             this.pictureBoxGestionUser.Name = "pictureBoxGestionUser";
             this.pictureBoxGestionUser.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxGestionUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -105,15 +105,16 @@
             this.pictureBoxGestionUser.TabStop = false;
             this.pictureBoxGestionUser.Click += new System.EventHandler(this.pictureBoxGestionUser_Click);
             // 
-            // pictureBox2
+            // pictureBoxLogOut
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 559);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxLogOut.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogOut.Image")));
+            this.pictureBoxLogOut.Location = new System.Drawing.Point(12, 559);
+            this.pictureBoxLogOut.Name = "pictureBoxLogOut";
+            this.pictureBoxLogOut.Size = new System.Drawing.Size(45, 45);
+            this.pictureBoxLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogOut.TabIndex = 1;
+            this.pictureBoxLogOut.TabStop = false;
+            this.pictureBoxLogOut.Click += new System.EventHandler(this.pictureBoxLogOut_Click);
             // 
             // pictureBoxHome
             // 
@@ -149,7 +150,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHome)).EndInit();
             this.ResumeLayout(false);
 
@@ -162,7 +163,7 @@
         private System.Windows.Forms.PictureBox pictureBoxPR;
         private System.Windows.Forms.PictureBox pictureBoxBT;
         private System.Windows.Forms.PictureBox pictureBoxGestionUser;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxLogOut;
         private System.Windows.Forms.PictureBox pictureBoxHome;
         private System.Windows.Forms.PictureBox pictureBoxEquip;
     }

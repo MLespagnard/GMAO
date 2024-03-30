@@ -87,7 +87,6 @@ namespace GMAONewVersion
                                 string model = reader["EQUIP_MODEL"].ToString();
                                 string usure = reader["EQUIP_TEMPS_USURE"].ToString();
 
-
                                 // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
                                 DataGridEquip.Rows.Add(nom, constructeur, model, usure);
                             }
@@ -108,7 +107,7 @@ namespace GMAONewVersion
         private void DataGridEquip_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Si index 5 choisi
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && checkBoxShowArchivageEquip.Checked == false)
             {
                 string modelEquip = DataGridEquip.Rows[e.RowIndex].Cells["ModelEquipDataGridView"].Value.ToString();
                 EquipModifierForm formModifierEquip = new EquipModifierForm(connection, modelEquip);
@@ -119,15 +118,19 @@ namespace GMAONewVersion
                 formModifierEquip.ShowDialog();
 
             }
-            else if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && checkBoxShowArchivageEquip.Checked == false)
             {
                 // Récupère le numéro du BT
-                string equipModel = DataGridEquip.Rows[e.RowIndex].Cells["NomEquipDataGridView"].Value.ToString();
+                string equipModel = DataGridEquip.Rows[e.RowIndex].Cells["ModelEquipDataGridView"].Value.ToString();
+
+                MessageBox.Show(equipModel);
 
                 Archive.archiveToSql(connection, equipModel, "equipements", "EQUIP_MODEL");
 
                 InsertDataInDataGridViewEquipFunction(0);
             }
+            else
+                MessageBox.Show("Il est impossible de modifer un équipement archivé.");
         }
 
         private void FormCreerEquip_FormClosed(object sender, FormClosedEventArgs e)

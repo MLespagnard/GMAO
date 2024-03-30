@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace GMAONewVersion
 {
+
     public partial class ParentForm : Form
     {
         private MySqlConnection connection;
@@ -27,7 +28,7 @@ namespace GMAONewVersion
 
             // Affiche la page Home dès le début de l'appli
             panelContenu.Controls.Clear();
-            HomeForm homeForm = new HomeForm(name);
+            HomeForm homeForm = new HomeForm(name, connection, this);
             homeForm.TopLevel = false;
             homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             homeForm.Size = panelContenu.Size;
@@ -53,24 +54,24 @@ namespace GMAONewVersion
 
         private void pictureBoxEquip_Click(object sender, EventArgs e)
         {
-            EquipFormShow(sender, e);
+            EquipFormShow();
         }
 
         private void pictureBoxPR_Click(object sender, EventArgs e)
         {
-            PRFormShow(sender, e);
+            PRFormShow();
         }
 
 
         private void pictureBoxBT_Click(object sender, EventArgs e)
         {
-            BTFormShow(sender, e);
+            BTFormShow();
         }
 
 
         private void pictureBoxGestionUser_Click(object sender, EventArgs e)
         {
-            UserFormShow(sender, e);
+            UserFormShow();
         }
 
         //////////////// Gère l'affichage des fenetres sur le controle ////////////////
@@ -79,7 +80,7 @@ namespace GMAONewVersion
         private void HomeFormShow(object sender, EventArgs e)
         {
             panelContenu.Controls.Clear();
-            HomeForm homeForm = new HomeForm(name);
+            HomeForm homeForm = new HomeForm(name, connection, this);
             homeForm.TopLevel = false;
             homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             homeForm.Size = panelContenu.Size;
@@ -88,7 +89,7 @@ namespace GMAONewVersion
             panelContenu.Controls.Add(homeForm);
         }
 
-        private void EquipFormShow(object sender, EventArgs e)
+        private void EquipFormShow()
         {
             panelContenu.Controls.Clear();
             EquipForm equipForm = new EquipForm(connection);
@@ -100,10 +101,10 @@ namespace GMAONewVersion
             panelContenu.Controls.Add(equipForm);
         }
 
-        private void PRFormShow(object sender, EventArgs e)
+        private void PRFormShow()
         {
             panelContenu.Controls.Clear();
-            PRForm prForm = new PRForm();
+            PRForm prForm = new PRForm(connection);
             prForm.TopLevel = false;
             prForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             prForm.Size = panelContenu.Size;
@@ -113,7 +114,7 @@ namespace GMAONewVersion
         }
 
 
-        private void BTFormShow(object sender, EventArgs e)
+        private void BTFormShow()
         {
             panelContenu.Controls.Clear();
             BTForm btForm = new BTForm(connection, name);
@@ -125,7 +126,7 @@ namespace GMAONewVersion
             panelContenu.Controls.Add(btForm);
         }
 
-        private void UserFormShow(object sender, EventArgs e)
+        private void UserFormShow()
         {
             panelContenu.Controls.Clear();
             UserForm userForm = new UserForm(connection);
@@ -137,5 +138,23 @@ namespace GMAONewVersion
             panelContenu.Controls.Add(userForm);
         }
 
+        private void pictureBoxLogOut_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            Close();
+        }
+
+        public void EventOnbuttonClickHomeForm(int WichForm)
+        {
+            if (WichForm == 1)
+                EquipFormShow();
+            else if (WichForm == 2)
+                PRFormShow();
+            else if(WichForm == 3)
+                BTFormShow();
+            else if (WichForm == 4) 
+                UserFormShow();
+        }
     }
 }
