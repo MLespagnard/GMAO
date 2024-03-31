@@ -228,7 +228,7 @@ namespace GMAONewVersion
                     Font fontPetit = new Font("Arial", 11); // Objet définissant la police
 
                     // En-tête
-                    g.DrawString("Bon de Travail", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top);
+                    g.DrawString("Bon de Travail n°:   " + reader["BT_NUMERO"].ToString(), new Font("Arial", 14, FontStyle.Bold), Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top);
 
                     // Informations générales
                     int x = e.MarginBounds.Left; // Début sur la gauche
@@ -237,10 +237,6 @@ namespace GMAONewVersion
                     g.DrawString("Nom de l’école: ", font, Brushes.Black, x, y);
                     g.DrawString("Cardijn Lorraine Arlon", font, Brushes.Black, x + 400, y);
                     y += 30; // Descends de 20
-
-                    g.DrawString("N° du BT: ", font, Brushes.Black, x, y);
-                    g.DrawString(reader["BT_NUMERO"].ToString(), font, Brushes.Black, x + 400, y);
-                    y += 30;
 
                     g.DrawString("Motif du BT: ", font, Brushes.Black, x, y);
                     g.DrawString(reader["BT_MOTIF"].ToString(), font, Brushes.Black, x + 400, y);
