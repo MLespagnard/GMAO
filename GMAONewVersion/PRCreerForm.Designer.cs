@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.groupBoxReferenceConstructeurPR = new System.Windows.Forms.GroupBox();
+            this.textBoxRefConstructeurPR = new System.Windows.Forms.TextBox();
             this.groupBoxFournisseurPR = new System.Windows.Forms.GroupBox();
+            this.textBoxFournisseurPR = new System.Windows.Forms.TextBox();
             this.labelHeaderPR = new System.Windows.Forms.Label();
             this.groupBoxNomPR = new System.Windows.Forms.GroupBox();
+            this.textBoxNomPR = new System.Windows.Forms.TextBox();
             this.groupBoxStockMax = new System.Windows.Forms.GroupBox();
             this.textBoxStockMaxPR = new System.Windows.Forms.TextBox();
             this.groupBoxConstructeurPR = new System.Windows.Forms.GroupBox();
+            this.textBoxConstructeurPR = new System.Windows.Forms.TextBox();
             this.groupBoxStockMini = new System.Windows.Forms.GroupBox();
             this.textBoxStockMiniPR = new System.Windows.Forms.TextBox();
             this.textBoxStockActuelPR = new System.Windows.Forms.TextBox();
             this.groupBoxStockActuel = new System.Windows.Forms.GroupBox();
-            this.textBoxFournisseurPR = new System.Windows.Forms.TextBox();
-            this.textBoxRefConstructeurPR = new System.Windows.Forms.TextBox();
-            this.textBoxConstructeurPR = new System.Windows.Forms.TextBox();
-            this.textBoxNomPR = new System.Windows.Forms.TextBox();
             this.textBoxRefFournisseurPR = new System.Windows.Forms.TextBox();
             this.ReferenceFournisseurPR = new System.Windows.Forms.GroupBox();
             this.buttonCreerPR = new System.Windows.Forms.Button();
@@ -66,6 +66,13 @@
             this.groupBoxReferenceConstructeurPR.TabStop = false;
             this.groupBoxReferenceConstructeurPR.Text = "Référence du Constructeur";
             // 
+            // textBoxRefConstructeurPR
+            // 
+            this.textBoxRefConstructeurPR.Location = new System.Drawing.Point(6, 33);
+            this.textBoxRefConstructeurPR.Name = "textBoxRefConstructeurPR";
+            this.textBoxRefConstructeurPR.Size = new System.Drawing.Size(129, 20);
+            this.textBoxRefConstructeurPR.TabIndex = 0;
+            // 
             // groupBoxFournisseurPR
             // 
             this.groupBoxFournisseurPR.Controls.Add(this.textBoxFournisseurPR);
@@ -75,6 +82,13 @@
             this.groupBoxFournisseurPR.TabIndex = 59;
             this.groupBoxFournisseurPR.TabStop = false;
             this.groupBoxFournisseurPR.Text = "Fournisseur ";
+            // 
+            // textBoxFournisseurPR
+            // 
+            this.textBoxFournisseurPR.Location = new System.Drawing.Point(6, 33);
+            this.textBoxFournisseurPR.Name = "textBoxFournisseurPR";
+            this.textBoxFournisseurPR.Size = new System.Drawing.Size(131, 20);
+            this.textBoxFournisseurPR.TabIndex = 0;
             // 
             // labelHeaderPR
             // 
@@ -96,6 +110,13 @@
             this.groupBoxNomPR.TabStop = false;
             this.groupBoxNomPR.Text = "Nom de la pièce de rechange";
             // 
+            // textBoxNomPR
+            // 
+            this.textBoxNomPR.Location = new System.Drawing.Point(6, 33);
+            this.textBoxNomPR.Name = "textBoxNomPR";
+            this.textBoxNomPR.Size = new System.Drawing.Size(150, 20);
+            this.textBoxNomPR.TabIndex = 0;
+            // 
             // groupBoxStockMax
             // 
             this.groupBoxStockMax.Controls.Add(this.textBoxStockMaxPR);
@@ -112,6 +133,7 @@
             this.textBoxStockMaxPR.Name = "textBoxStockMaxPR";
             this.textBoxStockMaxPR.Size = new System.Drawing.Size(129, 20);
             this.textBoxStockMaxPR.TabIndex = 0;
+            this.textBoxStockMaxPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockMaxPR_KeyPress);
             // 
             // groupBoxConstructeurPR
             // 
@@ -122,6 +144,13 @@
             this.groupBoxConstructeurPR.TabIndex = 58;
             this.groupBoxConstructeurPR.TabStop = false;
             this.groupBoxConstructeurPR.Text = "Nom du Constructeur";
+            // 
+            // textBoxConstructeurPR
+            // 
+            this.textBoxConstructeurPR.Location = new System.Drawing.Point(6, 33);
+            this.textBoxConstructeurPR.Name = "textBoxConstructeurPR";
+            this.textBoxConstructeurPR.Size = new System.Drawing.Size(132, 20);
+            this.textBoxConstructeurPR.TabIndex = 0;
             // 
             // groupBoxStockMini
             // 
@@ -139,6 +168,7 @@
             this.textBoxStockMiniPR.Name = "textBoxStockMiniPR";
             this.textBoxStockMiniPR.Size = new System.Drawing.Size(138, 20);
             this.textBoxStockMiniPR.TabIndex = 0;
+            this.textBoxStockMiniPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockMiniPR_KeyPress);
             // 
             // textBoxStockActuelPR
             // 
@@ -146,6 +176,7 @@
             this.textBoxStockActuelPR.Name = "textBoxStockActuelPR";
             this.textBoxStockActuelPR.Size = new System.Drawing.Size(138, 20);
             this.textBoxStockActuelPR.TabIndex = 0;
+            this.textBoxStockActuelPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockActuelPR_KeyPress);
             // 
             // groupBoxStockActuel
             // 
@@ -157,40 +188,13 @@
             this.groupBoxStockActuel.TabStop = false;
             this.groupBoxStockActuel.Text = "Stock Actuel";
             // 
-            // textBoxFournisseurPR
-            // 
-            this.textBoxFournisseurPR.Location = new System.Drawing.Point(6, 33);
-            this.textBoxFournisseurPR.Name = "textBoxFournisseurPR";
-            this.textBoxFournisseurPR.Size = new System.Drawing.Size(131, 20);
-            this.textBoxFournisseurPR.TabIndex = 0;
-            // 
-            // textBoxRefConstructeurPR
-            // 
-            this.textBoxRefConstructeurPR.Location = new System.Drawing.Point(6, 33);
-            this.textBoxRefConstructeurPR.Name = "textBoxRefConstructeurPR";
-            this.textBoxRefConstructeurPR.Size = new System.Drawing.Size(129, 20);
-            this.textBoxRefConstructeurPR.TabIndex = 0;
-            // 
-            // textBoxConstructeurPR
-            // 
-            this.textBoxConstructeurPR.Location = new System.Drawing.Point(6, 33);
-            this.textBoxConstructeurPR.Name = "textBoxConstructeurPR";
-            this.textBoxConstructeurPR.Size = new System.Drawing.Size(132, 20);
-            this.textBoxConstructeurPR.TabIndex = 0;
-            // 
-            // textBoxNomPR
-            // 
-            this.textBoxNomPR.Location = new System.Drawing.Point(6, 33);
-            this.textBoxNomPR.Name = "textBoxNomPR";
-            this.textBoxNomPR.Size = new System.Drawing.Size(150, 20);
-            this.textBoxNomPR.TabIndex = 0;
-            // 
             // textBoxRefFournisseurPR
             // 
             this.textBoxRefFournisseurPR.Location = new System.Drawing.Point(6, 33);
             this.textBoxRefFournisseurPR.Name = "textBoxRefFournisseurPR";
             this.textBoxRefFournisseurPR.Size = new System.Drawing.Size(150, 20);
             this.textBoxRefFournisseurPR.TabIndex = 0;
+            this.textBoxRefFournisseurPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRefFournisseurPR_KeyPress);
             // 
             // ReferenceFournisseurPR
             // 
@@ -229,7 +233,7 @@
             this.Controls.Add(this.labelHeaderPR);
             this.Name = "PRCreerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PRCreerForm";
+            this.Text = "Création d\'une pièce de rechange";
             this.groupBoxReferenceConstructeurPR.ResumeLayout(false);
             this.groupBoxReferenceConstructeurPR.PerformLayout();
             this.groupBoxFournisseurPR.ResumeLayout(false);

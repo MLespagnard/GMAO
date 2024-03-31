@@ -75,7 +75,7 @@
             // pictureBoxPR
             // 
             this.pictureBoxPR.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPR.Image")));
-            this.pictureBoxPR.Location = new System.Drawing.Point(17, 185);
+            this.pictureBoxPR.Location = new System.Drawing.Point(12, 189);
             this.pictureBoxPR.Name = "pictureBoxPR";
             this.pictureBoxPR.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxPR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

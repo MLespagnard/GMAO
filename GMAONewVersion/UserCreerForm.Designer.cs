@@ -154,7 +154,7 @@
             this.Controls.Add(this.groupBoxLastNameUser);
             this.Name = "UserCreerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UserCreerForm";
+            this.Text = "Création d\'un utilisateur";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxRankForUser.ResumeLayout(false);

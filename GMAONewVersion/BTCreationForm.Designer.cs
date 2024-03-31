@@ -128,6 +128,7 @@
             this.textBoxNbHeuresBT.Name = "textBoxNbHeuresBT";
             this.textBoxNbHeuresBT.Size = new System.Drawing.Size(114, 20);
             this.textBoxNbHeuresBT.TabIndex = 1;
+            this.textBoxNbHeuresBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNbHeuresBT_KeyPress);
             // 
             // comboBoxNomInterBT
             // 
@@ -155,6 +156,7 @@
             this.textBoxTempsPresteBT.Name = "textBoxTempsPresteBT";
             this.textBoxTempsPresteBT.Size = new System.Drawing.Size(95, 20);
             this.textBoxTempsPresteBT.TabIndex = 2;
+            this.textBoxTempsPresteBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTempsPresteBT_KeyPress);
             // 
             // groupBoxTempsPresteBT
             // 

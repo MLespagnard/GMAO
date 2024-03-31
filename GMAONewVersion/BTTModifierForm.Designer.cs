@@ -40,6 +40,7 @@
             this.textBoxNbHeuresBT = new System.Windows.Forms.TextBox();
             this.groupBoxMotifBT = new System.Windows.Forms.GroupBox();
             this.groupBoxTravailRealiserBT = new System.Windows.Forms.GroupBox();
+            this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.groupBoxNomInterBT = new System.Windows.Forms.GroupBox();
             this.comboBoxNomInterBT = new System.Windows.Forms.ComboBox();
             this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
@@ -49,7 +50,6 @@
             this.textBoxCreateurBT = new System.Windows.Forms.TextBox();
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
-            this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxEquipementConcerneBT.SuspendLayout();
@@ -158,6 +158,7 @@
             this.textBoxNbHeuresBT.Name = "textBoxNbHeuresBT";
             this.textBoxNbHeuresBT.Size = new System.Drawing.Size(114, 20);
             this.textBoxNbHeuresBT.TabIndex = 1;
+            this.textBoxNbHeuresBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNbHeuresBT_KeyPress);
             // 
             // groupBoxMotifBT
             // 
@@ -180,6 +181,15 @@
             this.groupBoxTravailRealiserBT.TabIndex = 47;
             this.groupBoxTravailRealiserBT.TabStop = false;
             this.groupBoxTravailRealiserBT.Text = "Travail à réaliser";
+            // 
+            // RichTextBoxTravailRealiserBT
+            // 
+            this.RichTextBoxTravailRealiserBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(7, 26);
+            this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
+            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 73);
+            this.RichTextBoxTravailRealiserBT.TabIndex = 70;
+            this.RichTextBoxTravailRealiserBT.Text = "";
             // 
             // groupBoxNomInterBT
             // 
@@ -218,6 +228,7 @@
             this.textBoxTempsPresteBT.Name = "textBoxTempsPresteBT";
             this.textBoxTempsPresteBT.Size = new System.Drawing.Size(95, 20);
             this.textBoxTempsPresteBT.TabIndex = 2;
+            this.textBoxTempsPresteBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTempsPresteBT_KeyPress);
             // 
             // groupBoxDatePrestaBT
             // 
@@ -266,15 +277,6 @@
             this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 73);
             this.RichTextBoxCommentaireInterBT.TabIndex = 71;
             this.RichTextBoxCommentaireInterBT.Text = "";
-            // 
-            // RichTextBoxTravailRealiserBT
-            // 
-            this.RichTextBoxTravailRealiserBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(7, 26);
-            this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
-            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 73);
-            this.RichTextBoxTravailRealiserBT.TabIndex = 70;
-            this.RichTextBoxTravailRealiserBT.Text = "";
             // 
             // kryptonButtonBTCreerValider
             // 

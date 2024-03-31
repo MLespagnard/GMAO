@@ -146,7 +146,7 @@
             this.Controls.Add(this.labelHeaderEquip);
             this.Name = "EquipCreerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EquipCreerForm";
+            this.Text = "Création d\'un équipement";
             this.groupBoxUsureEquip.ResumeLayout(false);
             this.groupBoxUsureEquip.PerformLayout();
             this.groupBoxModelEquip.ResumeLayout(false);

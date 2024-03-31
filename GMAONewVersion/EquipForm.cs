@@ -136,6 +136,7 @@ namespace GMAONewVersion
         private void FormCreerEquip_FormClosed(object sender, FormClosedEventArgs e)
         {
             InsertDataInDataGridViewEquipFunction(0);
+            checkBoxShowArchivageEquip.Checked = false;
         }
 
         private void kryptonCreerEquip_Click(object sender, EventArgs e)
@@ -152,6 +153,7 @@ namespace GMAONewVersion
         {
             // Remplir le DataGridView
             InsertDataInDataGridViewEquipFunction(0);
+            checkBoxShowArchivageEquip.Checked = false;
         }
 
         private void checkBoxShowArchivageEquip_CheckedChanged(object sender, EventArgs e)

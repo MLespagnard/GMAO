@@ -146,5 +146,44 @@ namespace GMAONewVersion
             UpdatePRInBDD();
         }
 
+        private void textBoxRefFournisseurPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxStockMiniPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxStockMaxPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxStockActuelPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
     }
 }

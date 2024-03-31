@@ -178,7 +178,8 @@
             this.Controls.Add(this.groupBoxLevelAccesUser);
             this.Controls.Add(this.labelHeaderCreateUser);
             this.Name = "UserModifierForm";
-            this.Text = "UserModifierForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modifier un utilisateur";
             this.groupBoxFirstNameUser.ResumeLayout(false);
             this.groupBoxFirstNameUser.PerformLayout();
             this.groupBoxLastNameUser.ResumeLayout(false);

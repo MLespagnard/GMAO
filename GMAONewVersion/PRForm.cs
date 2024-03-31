@@ -169,6 +169,8 @@ namespace GMAONewVersion
         private void FormPR_FormClosed(object sender, FormClosedEventArgs e)
         {
             InsertDataInDataGridViewPRFunction(0);
+            checkBoxShowArchivagePR.Checked = false;
+
         }
 
 

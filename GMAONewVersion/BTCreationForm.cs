@@ -257,5 +257,25 @@ namespace GMAONewVersion
                 MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textBoxNbHeuresBT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxTempsPresteBT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
     }
 }

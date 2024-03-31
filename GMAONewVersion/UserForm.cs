@@ -162,6 +162,8 @@ namespace GMAONewVersion
         {
             // Remplir le DataGridView
             InsertDataInDataGridViewUserFunction(0);
+            checkBoxShowArchivageUser.Checked = false;
+
         }
 
 

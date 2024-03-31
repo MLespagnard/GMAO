@@ -203,16 +203,22 @@ namespace GMAONewVersion
             }
         }
 
+        // Après form créer fermer créer, actualiser
         private void FomCreerBT_FormClosed(object sender, FormClosedEventArgs e)
         {
             InsertDataInDataGridViewBTFunction(0);
+            checkBoxShowArchivageBT.Checked = false;
         }
 
+        // Après form modifier fermer créer, actualiser
         private void BTTModifierForm_FormClosed(Object sender, FormClosedEventArgs e)
         {
             InsertDataInDataGridViewBTFunction(0);
+            checkBoxShowArchivageBT.Checked = false;
         }
 
+
+        // Impression
         private void Document_PrintPage(object sender, PrintPageEventArgs e)
         {
             string query = "SELECT * FROM bt WHERE BT_NUMERO = @btNumero";

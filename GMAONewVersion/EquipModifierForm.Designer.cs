@@ -121,6 +121,7 @@
             this.textBoxUsureEquip.Name = "textBoxUsureEquip";
             this.textBoxUsureEquip.Size = new System.Drawing.Size(174, 20);
             this.textBoxUsureEquip.TabIndex = 0;
+            this.textBoxUsureEquip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUsureEquip_KeyPress);
             // 
             // ButtonEquipModifier
             // 
@@ -145,7 +146,7 @@
             this.Controls.Add(this.groupBoxUsureEquip);
             this.Name = "EquipModifierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EquipModifierForm";
+            this.Text = "Modifier un équipement";
             this.groupBoxNomEquip.ResumeLayout(false);
             this.groupBoxNomEquip.PerformLayout();
             this.groupBoxConstructeurEquip.ResumeLayout(false);

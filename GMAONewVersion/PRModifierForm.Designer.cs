@@ -72,6 +72,7 @@
             this.textBoxRefFournisseurPR.Name = "textBoxRefFournisseurPR";
             this.textBoxRefFournisseurPR.Size = new System.Drawing.Size(150, 20);
             this.textBoxRefFournisseurPR.TabIndex = 0;
+            this.textBoxRefFournisseurPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRefFournisseurPR_KeyPress);
             // 
             // groupBoxStockActuel
             // 
@@ -89,6 +90,7 @@
             this.textBoxStockActuelPR.Name = "textBoxStockActuelPR";
             this.textBoxStockActuelPR.Size = new System.Drawing.Size(138, 20);
             this.textBoxStockActuelPR.TabIndex = 0;
+            this.textBoxStockActuelPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockActuelPR_KeyPress);
             // 
             // groupBoxStockMax
             // 
@@ -106,6 +108,7 @@
             this.textBoxStockMaxPR.Name = "textBoxStockMaxPR";
             this.textBoxStockMaxPR.Size = new System.Drawing.Size(129, 20);
             this.textBoxStockMaxPR.TabIndex = 0;
+            this.textBoxStockMaxPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockMaxPR_KeyPress);
             // 
             // groupBoxStockMini
             // 
@@ -123,6 +126,7 @@
             this.textBoxStockMiniPR.Name = "textBoxStockMiniPR";
             this.textBoxStockMiniPR.Size = new System.Drawing.Size(138, 20);
             this.textBoxStockMiniPR.TabIndex = 0;
+            this.textBoxStockMiniPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockMiniPR_KeyPress);
             // 
             // groupBoxFournisseurPR
             // 
@@ -229,7 +233,7 @@
             this.Controls.Add(this.groupBoxConstructeurPR);
             this.Name = "PRModifierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PRModifierForm";
+            this.Text = "Modifier une pièce de rechange";
             this.ReferenceFournisseurPR.ResumeLayout(false);
             this.ReferenceFournisseurPR.PerformLayout();
             this.groupBoxStockActuel.ResumeLayout(false);
