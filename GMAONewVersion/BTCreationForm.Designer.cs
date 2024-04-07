@@ -51,6 +51,9 @@
             this.groupBoxTravailRealiserBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanelNumeros = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxPieceRechangeBT.SuspendLayout();
             this.groupBoxNomInterBT.SuspendLayout();
             this.groupBoxTempsPresteBT.SuspendLayout();
@@ -61,6 +64,7 @@
             this.groupBoxCreateurBT.SuspendLayout();
             this.groupBoxCommentaireInterBT.SuspendLayout();
             this.groupBoxTravailRealiserBT.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelHeaderBT
@@ -76,9 +80,9 @@
             // groupBoxPieceRechangeBT
             // 
             this.groupBoxPieceRechangeBT.Controls.Add(this.checkedListBoxPieceRechangeBT);
-            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(526, 76);
+            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(449, 76);
             this.groupBoxPieceRechangeBT.Name = "groupBoxPieceRechangeBT";
-            this.groupBoxPieceRechangeBT.Size = new System.Drawing.Size(172, 200);
+            this.groupBoxPieceRechangeBT.Size = new System.Drawing.Size(143, 216);
             this.groupBoxPieceRechangeBT.TabIndex = 54;
             this.groupBoxPieceRechangeBT.TabStop = false;
             this.groupBoxPieceRechangeBT.Text = " Pièces de rechange concerné";
@@ -86,10 +90,13 @@
             // checkedListBoxPieceRechangeBT
             // 
             this.checkedListBoxPieceRechangeBT.FormattingEnabled = true;
+            this.checkedListBoxPieceRechangeBT.IntegralHeight = false;
             this.checkedListBoxPieceRechangeBT.Location = new System.Drawing.Point(6, 30);
+            this.checkedListBoxPieceRechangeBT.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBoxPieceRechangeBT.Name = "checkedListBoxPieceRechangeBT";
-            this.checkedListBoxPieceRechangeBT.Size = new System.Drawing.Size(160, 154);
+            this.checkedListBoxPieceRechangeBT.Size = new System.Drawing.Size(131, 179);
             this.checkedListBoxPieceRechangeBT.TabIndex = 0;
+            this.checkedListBoxPieceRechangeBT.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxPieceRechangeBT_ItemCheck);
             // 
             // comboBoxMotifBT
             // 
@@ -142,7 +149,7 @@
             // groupBoxNomInterBT
             // 
             this.groupBoxNomInterBT.Controls.Add(this.comboBoxNomInterBT);
-            this.groupBoxNomInterBT.Location = new System.Drawing.Point(357, 298);
+            this.groupBoxNomInterBT.Location = new System.Drawing.Point(250, 298);
             this.groupBoxNomInterBT.Name = "groupBoxNomInterBT";
             this.groupBoxNomInterBT.Size = new System.Drawing.Size(233, 85);
             this.groupBoxNomInterBT.TabIndex = 50;
@@ -161,7 +168,7 @@
             // groupBoxTempsPresteBT
             // 
             this.groupBoxTempsPresteBT.Controls.Add(this.textBoxTempsPresteBT);
-            this.groupBoxTempsPresteBT.Location = new System.Drawing.Point(43, 409);
+            this.groupBoxTempsPresteBT.Location = new System.Drawing.Point(21, 409);
             this.groupBoxTempsPresteBT.Name = "groupBoxTempsPresteBT";
             this.groupBoxTempsPresteBT.Size = new System.Drawing.Size(113, 79);
             this.groupBoxTempsPresteBT.TabIndex = 51;
@@ -171,7 +178,7 @@
             // groupBoxNbHeuresBT
             // 
             this.groupBoxNbHeuresBT.Controls.Add(this.textBoxNbHeuresBT);
-            this.groupBoxNbHeuresBT.Location = new System.Drawing.Point(357, 171);
+            this.groupBoxNbHeuresBT.Location = new System.Drawing.Point(250, 171);
             this.groupBoxNbHeuresBT.Name = "groupBoxNbHeuresBT";
             this.groupBoxNbHeuresBT.Size = new System.Drawing.Size(132, 76);
             this.groupBoxNbHeuresBT.TabIndex = 47;
@@ -181,7 +188,7 @@
             // groupBoxEquipementConcerneBT
             // 
             this.groupBoxEquipementConcerneBT.Controls.Add(this.comboBoxEquipementConcerneBT);
-            this.groupBoxEquipementConcerneBT.Location = new System.Drawing.Point(357, 76);
+            this.groupBoxEquipementConcerneBT.Location = new System.Drawing.Point(311, 76);
             this.groupBoxEquipementConcerneBT.Name = "groupBoxEquipementConcerneBT";
             this.groupBoxEquipementConcerneBT.Size = new System.Drawing.Size(132, 78);
             this.groupBoxEquipementConcerneBT.TabIndex = 46;
@@ -200,7 +207,7 @@
             // groupBoxIntituleBT
             // 
             this.groupBoxIntituleBT.Controls.Add(this.textBoxIntituleBT);
-            this.groupBoxIntituleBT.Location = new System.Drawing.Point(189, 76);
+            this.groupBoxIntituleBT.Location = new System.Drawing.Point(153, 76);
             this.groupBoxIntituleBT.Name = "groupBoxIntituleBT";
             this.groupBoxIntituleBT.Size = new System.Drawing.Size(137, 78);
             this.groupBoxIntituleBT.TabIndex = 45;
@@ -211,7 +218,7 @@
             // 
             this.groupBoxMotifBT.Controls.Add(this.comboBoxMotifBT);
             this.groupBoxMotifBT.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBoxMotifBT.Location = new System.Drawing.Point(43, 76);
+            this.groupBoxMotifBT.Location = new System.Drawing.Point(21, 76);
             this.groupBoxMotifBT.Name = "groupBoxMotifBT";
             this.groupBoxMotifBT.Size = new System.Drawing.Size(113, 78);
             this.groupBoxMotifBT.TabIndex = 44;
@@ -230,7 +237,7 @@
             // groupBoxCreateurBT
             // 
             this.groupBoxCreateurBT.Controls.Add(this.textBoxCreateurBT);
-            this.groupBoxCreateurBT.Location = new System.Drawing.Point(43, 545);
+            this.groupBoxCreateurBT.Location = new System.Drawing.Point(21, 545);
             this.groupBoxCreateurBT.Name = "groupBoxCreateurBT";
             this.groupBoxCreateurBT.Size = new System.Drawing.Size(134, 55);
             this.groupBoxCreateurBT.TabIndex = 53;
@@ -241,9 +248,9 @@
             // 
             this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
             this.groupBoxCommentaireInterBT.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(43, 298);
+            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(21, 298);
             this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
-            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(283, 85);
+            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(213, 85);
             this.groupBoxCommentaireInterBT.TabIndex = 49;
             this.groupBoxCommentaireInterBT.TabStop = false;
             this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
@@ -254,7 +261,7 @@
             this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(8, 19);
             this.RichTextBoxCommentaireInterBT.MaxLength = 80;
             this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
-            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(267, 51);
+            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(194, 51);
             this.RichTextBoxCommentaireInterBT.TabIndex = 4;
             this.RichTextBoxCommentaireInterBT.Text = "";
             // 
@@ -262,9 +269,9 @@
             // 
             this.groupBoxTravailRealiserBT.Controls.Add(this.RichTextBoxTravailRealiserBT);
             this.groupBoxTravailRealiserBT.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBoxTravailRealiserBT.Location = new System.Drawing.Point(43, 171);
+            this.groupBoxTravailRealiserBT.Location = new System.Drawing.Point(21, 171);
             this.groupBoxTravailRealiserBT.Name = "groupBoxTravailRealiserBT";
-            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(283, 76);
+            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(213, 76);
             this.groupBoxTravailRealiserBT.TabIndex = 48;
             this.groupBoxTravailRealiserBT.TabStop = false;
             this.groupBoxTravailRealiserBT.Text = "Travail à réaliser";
@@ -275,7 +282,7 @@
             this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(6, 19);
             this.RichTextBoxTravailRealiserBT.MaxLength = 80;
             this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
-            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(267, 45);
+            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(196, 45);
             this.RichTextBoxTravailRealiserBT.TabIndex = 3;
             this.RichTextBoxTravailRealiserBT.Text = "";
             // 
@@ -292,11 +299,39 @@
             this.kryptonButtonBTCreerValider.UseVisualStyleBackColor = false;
             this.kryptonButtonBTCreerValider.Click += new System.EventHandler(this.kryptonButtonBTCreerValider_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(485, 430);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(85, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.flowLayoutPanelNumeros);
+            this.groupBox1.Location = new System.Drawing.Point(598, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(126, 216);
+            this.groupBox1.TabIndex = 55;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = " Pièces de rechange concerné";
+            // 
+            // flowLayoutPanelNumeros
+            // 
+            this.flowLayoutPanelNumeros.AutoScroll = true;
+            this.flowLayoutPanelNumeros.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanelNumeros.Location = new System.Drawing.Point(10, 16);
+            this.flowLayoutPanelNumeros.Name = "flowLayoutPanelNumeros";
+            this.flowLayoutPanelNumeros.Size = new System.Drawing.Size(113, 197);
+            this.flowLayoutPanelNumeros.TabIndex = 0;
+            // 
             // BTCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 625);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.kryptonButtonBTCreerValider);
             this.Controls.Add(this.labelHeaderBT);
             this.Controls.Add(this.groupBoxPieceRechangeBT);
@@ -327,6 +362,7 @@
             this.groupBoxCreateurBT.PerformLayout();
             this.groupBoxCommentaireInterBT.ResumeLayout(false);
             this.groupBoxTravailRealiserBT.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,5 +393,8 @@
         private System.Windows.Forms.RichTextBox RichTextBoxCommentaireInterBT;
         private System.Windows.Forms.RichTextBox RichTextBoxTravailRealiserBT;
         private System.Windows.Forms.Button kryptonButtonBTCreerValider;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNumeros;
     }
 }

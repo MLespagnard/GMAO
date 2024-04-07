@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -244,13 +245,43 @@ namespace GMAONewVersion
                     // Exécuter la commande d'insertion
                     command.ExecuteNonQuery();
 
+
                     // Afficher un message de succès
                     MessageBox.Show("Données insérées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    // Ferme le formulaire
-                    this.Close();
                 }
+                string pieceRechangeSelected = checkedListBoxPieceRechangeBT.SelectedItem.ToString();
+
+                TextBox textBoxPieceRechange = flowLayoutPanelNumeros.Controls.Find("textBoxNumero_" + pieceRechangeSelected, true).FirstOrDefault() as TextBox;
+
+                if (textBoxPieceRechange != null)
+                {
+                    // Convertir le texte du TextBox en nombre
+                    if (int.TryParse(textBoxPieceRechange.Text, out int nombreEntréDansLaBox))
+                    {
+                        // Requête SQL de mise à jour pour soustraire le nombre entré dans la box au montant actuel
+                        string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
+
+                            using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                            {
+
+                                // Ajouter les paramètres à la commande SQL
+                                command.Parameters.Clear();
+                                command.Parameters.AddWithValue("@PieceRechange", pieceRechangeSelected); // Nom de la pièce de rechange
+                                command.Parameters.AddWithValue("@NombreDansLaBox", nombreEntréDansLaBox); // Nombre entré dans la box
+
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    else
+                    {
+                    MessageBox.Show("Vous n'avez pas entré un nombre valide.");
+                    }
+                // Ferme le formulaire
+                this.Close();
+
             }
             catch (Exception ex)
             {
@@ -277,5 +308,44 @@ namespace GMAONewVersion
                 e.Handled = true;
             }
         }
+
+        // Ajoute box quantitée lors du check
+        private void checkedListBoxPieceRechangeBT_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Si l'élément est en cours de coche
+            if (e.NewValue == CheckState.Checked)
+            {
+                // Créer un nouveau contrôle Label
+                string elementNameListPR = checkedListBoxPieceRechangeBT.Items[e.Index].ToString();
+
+                Label label = new Label();
+                label.Name = "LabelBoxNumero_" + elementNameListPR;
+                label.Text = "Quantité(e) " + elementNameListPR; // Texte du Label
+                label.Location = new System.Drawing.Point(10, (e.Index * 50) + 5); // Positionnez le contrôle Label (avec un espace de 5 pixels)
+                flowLayoutPanelNumeros.Controls.Add(label); // Ajoutez le contrôle à votre panel
+
+                // Créer un nouveau contrôle TextBox
+                TextBox textBox = new TextBox();
+                textBox.Name = "textBoxNumero_" + elementNameListPR;
+                textBox.MaxLength = 3;
+                textBox.Location = new System.Drawing.Point(10, (e.Index * 50) + 25); // Positionnez le contrôle TextBox juste en dessous du Label
+                flowLayoutPanelNumeros.Controls.Add(textBox); // Ajoutez le contrôle à votre panel
+
+            }
+            else // Si l'élément est en cours de décoche
+            {
+                string elementNameListPR = checkedListBoxPieceRechangeBT.Items[e.Index].ToString();
+                // Recherchez et supprimez le contrôle TextBox et Label correspondant
+                for (int i = flowLayoutPanelNumeros.Controls.Count - 1; i >= 0; i--)  // Compte tout les contrôls
+                {
+                    Control control = flowLayoutPanelNumeros.Controls[i];
+                    if (control.Name == "textBoxNumero_" + elementNameListPR || control.Name == "LabelBoxNumero_" + elementNameListPR)
+                    {
+                        flowLayoutPanelNumeros.Controls.Remove(control);
+                    }
+                }
+            }
+        }
+
     }
 }

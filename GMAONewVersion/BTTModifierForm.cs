@@ -124,7 +124,7 @@ namespace GMAONewVersion
             string[] items = pieceRechangeBT.Split(';');
 
             // Requête SQL pour récupérer les noms des pièces de rechange
-            string query = "SELECT PR_NOM FROM piece_de_rechange";
+            string query = "SELECT PR_NOM FROM piece_de_rechange WHERE archiver = 0";
 
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {

@@ -51,6 +51,7 @@
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
+            this.panelNumeros = new System.Windows.Forms.Panel();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxEquipementConcerneBT.SuspendLayout();
             this.groupBoxPieceRechangeBT.SuspendLayout();
@@ -126,7 +127,7 @@
             // groupBoxPieceRechangeBT
             // 
             this.groupBoxPieceRechangeBT.Controls.Add(this.checkedListBoxPieceRechangeBT);
-            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(526, 76);
+            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(495, 76);
             this.groupBoxPieceRechangeBT.Name = "groupBoxPieceRechangeBT";
             this.groupBoxPieceRechangeBT.Size = new System.Drawing.Size(172, 200);
             this.groupBoxPieceRechangeBT.TabIndex = 45;
@@ -291,11 +292,19 @@
             this.kryptonButtonBTCreerValider.UseVisualStyleBackColor = false;
             this.kryptonButtonBTCreerValider.Click += new System.EventHandler(this.kryptonButtonBTModifierValider_Click);
             // 
+            // panelNumeros
+            // 
+            this.panelNumeros.Location = new System.Drawing.Point(674, 95);
+            this.panelNumeros.Name = "panelNumeros";
+            this.panelNumeros.Size = new System.Drawing.Size(50, 152);
+            this.panelNumeros.TabIndex = 73;
+            // 
             // BTTModifierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 625);
+            this.Controls.Add(this.panelNumeros);
             this.Controls.Add(this.kryptonButtonBTCreerValider);
             this.Controls.Add(this.labelHeaderBT);
             this.Controls.Add(this.groupBoxIntituleBT);
@@ -356,5 +365,6 @@
         private System.Windows.Forms.RichTextBox RichTextBoxTravailRealiserBT;
         private System.Windows.Forms.RichTextBox RichTextBoxCommentaireInterBT;
         private System.Windows.Forms.Button kryptonButtonBTCreerValider;
+        private System.Windows.Forms.Panel panelNumeros;
     }
 }
