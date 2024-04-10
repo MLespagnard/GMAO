@@ -276,8 +276,8 @@ namespace GMAONewVersion
                     g.DrawString(reader["BT_TEMPS_TRAVAIL"].ToString(), font, Brushes.Black, x + 400, y);
                     y += 30;
 
-                    g.DrawString("Date de prestation du BT: ", font, Brushes.Black, x, y);
-                    g.DrawString(reader["BT_DATE_REALISATION"].ToString(), font, Brushes.Black, x + 400, y);
+                    g.DrawString("Date de creation du BT: ", font, Brushes.Black, x, y);
+                    g.DrawString(reader["DATE_CREATION"].ToString(), font, Brushes.Black, x + 400, y);
                     y += 30;
 
 
