@@ -281,7 +281,7 @@ namespace GMAONewVersion
                     y += 30;
 
 
-                    // Pied de page
+                    // Pied de page 
                     string date = DateTime.Now.ToString("dd/MM/yyyy"); // Récupère la date
 
                     g.DrawString(date, font, Brushes.Black, e.MarginBounds.Right - 100, e.MarginBounds.Bottom); // écrit la date
