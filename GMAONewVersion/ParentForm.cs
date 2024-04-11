@@ -26,9 +26,9 @@ namespace GMAONewVersion
             name = usernameFromLoginForm;
             accesLvl = grade;
 
-            // Affiche la page Home dès le début de l'appli
+            // Affiche la page Home des le début de l'appli
             panelContenu.Controls.Clear();
-            HomeForm homeForm = new HomeForm(name, connection, this);
+            HomeForm homeForm = new HomeForm(name, connection, this, accesLvl);
             homeForm.TopLevel = false;
             homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             homeForm.Size = panelContenu.Size;
@@ -39,6 +39,7 @@ namespace GMAONewVersion
             // Cacher le btn Gestion des User si pas admin
             if (accesLvl != 3)
             {
+                pictureBoxGestionUser.Visible = false;
             }
 
         }
@@ -80,7 +81,7 @@ namespace GMAONewVersion
         private void HomeFormShow(object sender, EventArgs e)
         {
             panelContenu.Controls.Clear();
-            HomeForm homeForm = new HomeForm(name, connection, this);
+            HomeForm homeForm = new HomeForm(name, connection, this, accesLvl);
             homeForm.TopLevel = false;
             homeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             homeForm.Size = panelContenu.Size;

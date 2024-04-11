@@ -30,6 +30,7 @@
         {
             this.labelHeaderBT = new System.Windows.Forms.Label();
             this.groupBoxPieceRechangeBT = new System.Windows.Forms.GroupBox();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.checkedListBoxPieceRechangeBT = new System.Windows.Forms.CheckedListBox();
             this.comboBoxMotifBT = new System.Windows.Forms.ComboBox();
             this.textBoxIntituleBT = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@
             this.groupBoxNbHeuresBT = new System.Windows.Forms.GroupBox();
             this.groupBoxEquipementConcerneBT = new System.Windows.Forms.GroupBox();
             this.groupBoxDatePrestaBT = new System.Windows.Forms.GroupBox();
+            this.checkBoxIsFinish = new System.Windows.Forms.CheckBox();
             this.groupBoxIntituleBT = new System.Windows.Forms.GroupBox();
             this.groupBoxMotifBT = new System.Windows.Forms.GroupBox();
             this.textBoxCreateurBT = new System.Windows.Forms.TextBox();
@@ -51,7 +53,6 @@
             this.groupBoxTravailRealiserBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxTravailRealiserBT = new System.Windows.Forms.RichTextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanelNumeros = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxPieceRechangeBT.SuspendLayout();
@@ -59,6 +60,7 @@
             this.groupBoxTempsPresteBT.SuspendLayout();
             this.groupBoxNbHeuresBT.SuspendLayout();
             this.groupBoxEquipementConcerneBT.SuspendLayout();
+            this.groupBoxDatePrestaBT.SuspendLayout();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxMotifBT.SuspendLayout();
             this.groupBoxCreateurBT.SuspendLayout();
@@ -79,22 +81,31 @@
             // 
             // groupBoxPieceRechangeBT
             // 
+            this.groupBoxPieceRechangeBT.Controls.Add(this.textBoxFilter);
             this.groupBoxPieceRechangeBT.Controls.Add(this.checkedListBoxPieceRechangeBT);
             this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(449, 76);
             this.groupBoxPieceRechangeBT.Name = "groupBoxPieceRechangeBT";
-            this.groupBoxPieceRechangeBT.Size = new System.Drawing.Size(143, 216);
+            this.groupBoxPieceRechangeBT.Size = new System.Drawing.Size(143, 412);
             this.groupBoxPieceRechangeBT.TabIndex = 54;
             this.groupBoxPieceRechangeBT.TabStop = false;
             this.groupBoxPieceRechangeBT.Text = " Pièces de rechange concerné";
+            // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Location = new System.Drawing.Point(6, 35);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(131, 20);
+            this.textBoxFilter.TabIndex = 1;
+            this.textBoxFilter.TextChanged += new System.EventHandler(this.textBoxFilter_TextChanged);
             // 
             // checkedListBoxPieceRechangeBT
             // 
             this.checkedListBoxPieceRechangeBT.FormattingEnabled = true;
             this.checkedListBoxPieceRechangeBT.IntegralHeight = false;
-            this.checkedListBoxPieceRechangeBT.Location = new System.Drawing.Point(6, 30);
+            this.checkedListBoxPieceRechangeBT.Location = new System.Drawing.Point(6, 62);
             this.checkedListBoxPieceRechangeBT.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBoxPieceRechangeBT.Name = "checkedListBoxPieceRechangeBT";
-            this.checkedListBoxPieceRechangeBT.Size = new System.Drawing.Size(131, 179);
+            this.checkedListBoxPieceRechangeBT.Size = new System.Drawing.Size(131, 343);
             this.checkedListBoxPieceRechangeBT.TabIndex = 0;
             this.checkedListBoxPieceRechangeBT.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxPieceRechangeBT_ItemCheck);
             // 
@@ -143,15 +154,15 @@
             this.comboBoxNomInterBT.FormattingEnabled = true;
             this.comboBoxNomInterBT.Location = new System.Drawing.Point(9, 32);
             this.comboBoxNomInterBT.Name = "comboBoxNomInterBT";
-            this.comboBoxNomInterBT.Size = new System.Drawing.Size(213, 21);
+            this.comboBoxNomInterBT.Size = new System.Drawing.Size(123, 21);
             this.comboBoxNomInterBT.TabIndex = 2;
             // 
             // groupBoxNomInterBT
             // 
             this.groupBoxNomInterBT.Controls.Add(this.comboBoxNomInterBT);
-            this.groupBoxNomInterBT.Location = new System.Drawing.Point(250, 298);
+            this.groupBoxNomInterBT.Location = new System.Drawing.Point(311, 271);
             this.groupBoxNomInterBT.Name = "groupBoxNomInterBT";
-            this.groupBoxNomInterBT.Size = new System.Drawing.Size(233, 85);
+            this.groupBoxNomInterBT.Size = new System.Drawing.Size(132, 85);
             this.groupBoxNomInterBT.TabIndex = 50;
             this.groupBoxNomInterBT.TabStop = false;
             this.groupBoxNomInterBT.Text = "Nom de l’intervenant";
@@ -178,7 +189,7 @@
             // groupBoxNbHeuresBT
             // 
             this.groupBoxNbHeuresBT.Controls.Add(this.textBoxNbHeuresBT);
-            this.groupBoxNbHeuresBT.Location = new System.Drawing.Point(250, 171);
+            this.groupBoxNbHeuresBT.Location = new System.Drawing.Point(311, 171);
             this.groupBoxNbHeuresBT.Name = "groupBoxNbHeuresBT";
             this.groupBoxNbHeuresBT.Size = new System.Drawing.Size(132, 76);
             this.groupBoxNbHeuresBT.TabIndex = 47;
@@ -197,12 +208,24 @@
             // 
             // groupBoxDatePrestaBT
             // 
+            this.groupBoxDatePrestaBT.Controls.Add(this.checkBoxIsFinish);
             this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(189, 409);
             this.groupBoxDatePrestaBT.Name = "groupBoxDatePrestaBT";
-            this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(193, 79);
+            this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(92, 79);
             this.groupBoxDatePrestaBT.TabIndex = 52;
             this.groupBoxDatePrestaBT.TabStop = false;
-            this.groupBoxDatePrestaBT.Text = "Date de prestation";
+            this.groupBoxDatePrestaBT.Text = "Terminé?";
+            // 
+            // checkBoxIsFinish
+            // 
+            this.checkBoxIsFinish.AutoSize = true;
+            this.checkBoxIsFinish.Enabled = false;
+            this.checkBoxIsFinish.Location = new System.Drawing.Point(24, 34);
+            this.checkBoxIsFinish.Name = "checkBoxIsFinish";
+            this.checkBoxIsFinish.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxIsFinish.TabIndex = 0;
+            this.checkBoxIsFinish.Text = "Fini";
+            this.checkBoxIsFinish.UseVisualStyleBackColor = true;
             // 
             // groupBoxIntituleBT
             // 
@@ -248,9 +271,9 @@
             // 
             this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
             this.groupBoxCommentaireInterBT.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(21, 298);
+            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(32, 271);
             this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
-            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(213, 85);
+            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(258, 85);
             this.groupBoxCommentaireInterBT.TabIndex = 49;
             this.groupBoxCommentaireInterBT.TabStop = false;
             this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
@@ -261,7 +284,7 @@
             this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(8, 19);
             this.RichTextBoxCommentaireInterBT.MaxLength = 80;
             this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
-            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(194, 51);
+            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(241, 51);
             this.RichTextBoxCommentaireInterBT.TabIndex = 4;
             this.RichTextBoxCommentaireInterBT.Text = "";
             // 
@@ -271,7 +294,7 @@
             this.groupBoxTravailRealiserBT.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBoxTravailRealiserBT.Location = new System.Drawing.Point(21, 171);
             this.groupBoxTravailRealiserBT.Name = "groupBoxTravailRealiserBT";
-            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(213, 76);
+            this.groupBoxTravailRealiserBT.Size = new System.Drawing.Size(269, 76);
             this.groupBoxTravailRealiserBT.TabIndex = 48;
             this.groupBoxTravailRealiserBT.TabStop = false;
             this.groupBoxTravailRealiserBT.Text = "Travail à réaliser";
@@ -282,7 +305,7 @@
             this.RichTextBoxTravailRealiserBT.Location = new System.Drawing.Point(6, 19);
             this.RichTextBoxTravailRealiserBT.MaxLength = 80;
             this.RichTextBoxTravailRealiserBT.Name = "RichTextBoxTravailRealiserBT";
-            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(196, 45);
+            this.RichTextBoxTravailRealiserBT.Size = new System.Drawing.Size(254, 45);
             this.RichTextBoxTravailRealiserBT.TabIndex = 3;
             this.RichTextBoxTravailRealiserBT.Text = "";
             // 
@@ -299,19 +322,12 @@
             this.kryptonButtonBTCreerValider.UseVisualStyleBackColor = false;
             this.kryptonButtonBTCreerValider.Click += new System.EventHandler(this.kryptonButtonBTCreerValider_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(485, 430);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(85, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanelNumeros);
             this.groupBox1.Location = new System.Drawing.Point(598, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(126, 216);
+            this.groupBox1.Size = new System.Drawing.Size(126, 412);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Pièces de rechange concerné";
@@ -320,9 +336,9 @@
             // 
             this.flowLayoutPanelNumeros.AutoScroll = true;
             this.flowLayoutPanelNumeros.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanelNumeros.Location = new System.Drawing.Point(10, 16);
+            this.flowLayoutPanelNumeros.Location = new System.Drawing.Point(6, 16);
             this.flowLayoutPanelNumeros.Name = "flowLayoutPanelNumeros";
-            this.flowLayoutPanelNumeros.Size = new System.Drawing.Size(113, 197);
+            this.flowLayoutPanelNumeros.Size = new System.Drawing.Size(117, 393);
             this.flowLayoutPanelNumeros.TabIndex = 0;
             // 
             // BTCreationForm
@@ -331,7 +347,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 625);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.kryptonButtonBTCreerValider);
             this.Controls.Add(this.labelHeaderBT);
             this.Controls.Add(this.groupBoxPieceRechangeBT);
@@ -349,12 +364,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Création d\'un bon de travail";
             this.groupBoxPieceRechangeBT.ResumeLayout(false);
+            this.groupBoxPieceRechangeBT.PerformLayout();
             this.groupBoxNomInterBT.ResumeLayout(false);
             this.groupBoxTempsPresteBT.ResumeLayout(false);
             this.groupBoxTempsPresteBT.PerformLayout();
             this.groupBoxNbHeuresBT.ResumeLayout(false);
             this.groupBoxNbHeuresBT.PerformLayout();
             this.groupBoxEquipementConcerneBT.ResumeLayout(false);
+            this.groupBoxDatePrestaBT.ResumeLayout(false);
+            this.groupBoxDatePrestaBT.PerformLayout();
             this.groupBoxIntituleBT.ResumeLayout(false);
             this.groupBoxIntituleBT.PerformLayout();
             this.groupBoxMotifBT.ResumeLayout(false);
@@ -393,8 +411,9 @@
         private System.Windows.Forms.RichTextBox RichTextBoxCommentaireInterBT;
         private System.Windows.Forms.RichTextBox RichTextBoxTravailRealiserBT;
         private System.Windows.Forms.Button kryptonButtonBTCreerValider;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNumeros;
+        private System.Windows.Forms.CheckBox checkBoxIsFinish;
+        private System.Windows.Forms.TextBox textBoxFilter;
     }
 }

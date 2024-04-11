@@ -45,13 +45,14 @@
             this.comboBoxNomInterBT = new System.Windows.Forms.ComboBox();
             this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
             this.textBoxTempsPresteBT = new System.Windows.Forms.TextBox();
-            this.groupBoxDatePrestaBT = new System.Windows.Forms.GroupBox();
             this.groupBoxCreateurBT = new System.Windows.Forms.GroupBox();
             this.textBoxCreateurBT = new System.Windows.Forms.TextBox();
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
             this.panelNumeros = new System.Windows.Forms.Panel();
+            this.groupBoxDatePrestaBT = new System.Windows.Forms.GroupBox();
+            this.checkBoxIsFinish = new System.Windows.Forms.CheckBox();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxEquipementConcerneBT.SuspendLayout();
             this.groupBoxPieceRechangeBT.SuspendLayout();
@@ -62,6 +63,7 @@
             this.groupBoxTempsPresteBT.SuspendLayout();
             this.groupBoxCreateurBT.SuspendLayout();
             this.groupBoxCommentaireInterBT.SuspendLayout();
+            this.groupBoxDatePrestaBT.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelHeaderBT
@@ -231,15 +233,6 @@
             this.textBoxTempsPresteBT.TabIndex = 2;
             this.textBoxTempsPresteBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTempsPresteBT_KeyPress);
             // 
-            // groupBoxDatePrestaBT
-            // 
-            this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(189, 409);
-            this.groupBoxDatePrestaBT.Name = "groupBoxDatePrestaBT";
-            this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(193, 79);
-            this.groupBoxDatePrestaBT.TabIndex = 51;
-            this.groupBoxDatePrestaBT.TabStop = false;
-            this.groupBoxDatePrestaBT.Text = "Date de prestation";
-            // 
             // groupBoxCreateurBT
             // 
             this.groupBoxCreateurBT.Controls.Add(this.textBoxCreateurBT);
@@ -299,11 +292,32 @@
             this.panelNumeros.Size = new System.Drawing.Size(50, 152);
             this.panelNumeros.TabIndex = 73;
             // 
+            // groupBoxDatePrestaBT
+            // 
+            this.groupBoxDatePrestaBT.Controls.Add(this.checkBoxIsFinish);
+            this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(197, 409);
+            this.groupBoxDatePrestaBT.Name = "groupBoxDatePrestaBT";
+            this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(92, 79);
+            this.groupBoxDatePrestaBT.TabIndex = 53;
+            this.groupBoxDatePrestaBT.TabStop = false;
+            this.groupBoxDatePrestaBT.Text = "Terminé?";
+            // 
+            // checkBoxIsFinish
+            // 
+            this.checkBoxIsFinish.AutoSize = true;
+            this.checkBoxIsFinish.Location = new System.Drawing.Point(24, 34);
+            this.checkBoxIsFinish.Name = "checkBoxIsFinish";
+            this.checkBoxIsFinish.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxIsFinish.TabIndex = 0;
+            this.checkBoxIsFinish.Text = "Fini";
+            this.checkBoxIsFinish.UseVisualStyleBackColor = true;
+            // 
             // BTTModifierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 625);
+            this.Controls.Add(this.groupBoxDatePrestaBT);
             this.Controls.Add(this.panelNumeros);
             this.Controls.Add(this.kryptonButtonBTCreerValider);
             this.Controls.Add(this.labelHeaderBT);
@@ -315,7 +329,6 @@
             this.Controls.Add(this.groupBoxTravailRealiserBT);
             this.Controls.Add(this.groupBoxNomInterBT);
             this.Controls.Add(this.groupBoxTempsPresteBT);
-            this.Controls.Add(this.groupBoxDatePrestaBT);
             this.Controls.Add(this.groupBoxCreateurBT);
             this.Controls.Add(this.groupBoxCommentaireInterBT);
             this.Name = "BTTModifierForm";
@@ -335,6 +348,8 @@
             this.groupBoxCreateurBT.ResumeLayout(false);
             this.groupBoxCreateurBT.PerformLayout();
             this.groupBoxCommentaireInterBT.ResumeLayout(false);
+            this.groupBoxDatePrestaBT.ResumeLayout(false);
+            this.groupBoxDatePrestaBT.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,7 +373,6 @@
         private System.Windows.Forms.ComboBox comboBoxNomInterBT;
         private System.Windows.Forms.GroupBox groupBoxTempsPresteBT;
         private System.Windows.Forms.TextBox textBoxTempsPresteBT;
-        private System.Windows.Forms.GroupBox groupBoxDatePrestaBT;
         private System.Windows.Forms.GroupBox groupBoxCreateurBT;
         private System.Windows.Forms.TextBox textBoxCreateurBT;
         private System.Windows.Forms.GroupBox groupBoxCommentaireInterBT;
@@ -366,5 +380,7 @@
         private System.Windows.Forms.RichTextBox RichTextBoxCommentaireInterBT;
         private System.Windows.Forms.Button kryptonButtonBTCreerValider;
         private System.Windows.Forms.Panel panelNumeros;
+        private System.Windows.Forms.GroupBox groupBoxDatePrestaBT;
+        private System.Windows.Forms.CheckBox checkBoxIsFinish;
     }
 }

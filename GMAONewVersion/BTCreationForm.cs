@@ -16,6 +16,7 @@ namespace GMAONewVersion
     {
         private MySqlConnection connection;
         private String username;
+        public List<string> OGItems = new List<string>();
 
         public BTCreationForm(MySqlConnection conn, String username)
         {
@@ -71,6 +72,7 @@ namespace GMAONewVersion
                         while (reader.Read())
                         {
                             checkedListBoxPieceRechangeBT.Items.Add(reader["PR_NOM"].ToString());
+                            OGItems.Add(reader["PR_NOM"].ToString());
                         }
                     }
                 }
@@ -347,5 +349,19 @@ namespace GMAONewVersion
             }
         }
 
+        private void textBoxFilter_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxFilter.Text;
+
+            checkedListBoxPieceRechangeBT.Items.Clear(); // Efface les éléments précédents
+
+            foreach (string item in OGItems) // Remplacez "yourOriginalListOfItems" par votre liste d'éléments d'origine
+            {
+                if (item.Contains(searchText))
+                {
+                    checkedListBoxPieceRechangeBT.Items.Add(item); // Ajoute l'élément filtré à la liste
+                }
+            }
+        }
     }
 }

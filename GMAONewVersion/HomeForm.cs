@@ -16,16 +16,24 @@ namespace GMAONewVersion
         string name;
         private readonly MySqlConnection connection;
         private ParentForm parentForm;
+        private readonly int accesLvl;
 
-        public HomeForm(string name, MySqlConnection connection, ParentForm parentForm)
+        public HomeForm(string name, MySqlConnection connection, ParentForm parentForm, int accesLvl)
         {
             InitializeComponent();
             this.name = name;
             this.connection = connection;
             this.parentForm = parentForm;
+            this.accesLvl = accesLvl;
 
 
             labelName.Text = labelName.Text + " " + name;
+
+            // Cacher le btn Gestion des User si pas admin
+            if (accesLvl != 3)
+            {
+                buttonUser.Visible = false;
+            }
         }
 
         private void buttonEquip_Click(object sender, EventArgs e)

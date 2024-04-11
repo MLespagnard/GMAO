@@ -17,6 +17,7 @@ namespace GMAONewVersion
         private readonly string numeroBT;
         string nomInter;
         int indexIntervenant;
+        int isChecked;
 
 
         // Constructeur de la classe FormModifierBT
@@ -62,6 +63,20 @@ namespace GMAONewVersion
                             textBoxNbHeuresBT.Text = reader["BT_HEURE_EQUIPEMENT"].ToString().Trim();
                             RichTextBoxTravailRealiserBT.Text = reader["BT_TRAVAIL_REALISER"].ToString().Trim();
                             RichTextBoxCommentaireInterBT.Text = reader["BT_COMMENTAIRE_INTERVENANT"].ToString().Trim();
+
+                            String isChecked = reader["BT_ISFINISH"].ToString().Trim();
+
+                            if (Convert.ToInt32(isChecked) == 0)
+                            { 
+                                checkBoxIsFinish.Checked = false;
+                                checkBoxIsFinish.Enabled = true;
+                            }
+                            else if (Convert.ToInt32(isChecked) == 1)
+                            {
+                                checkBoxIsFinish.Checked = true;
+                                DisableAllControls(this);
+                            }
+
 
                             nomInter = reader["BT_NOM_INTERVENANT"].ToString().Trim();
                             comboBoxNomInterBT.Items.Add(nomInter);
@@ -171,8 +186,47 @@ namespace GMAONewVersion
                 {
                     richTextBox.Clear();
                 }
+                else if (control is CheckBox checkBox)
+                {
+                    checkBox.Checked = false;
+                }
             }
         }
+
+        private void DisableAllControls(Control container)
+        {
+            foreach (Control control in container.Controls) // toutes les box qui sont dans la fenetre
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Enabled = false;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.Enabled = false;
+                }
+                else if (control is CheckedListBox checkedListBox)
+                {
+                    checkedListBox.Enabled = false;
+                }
+                else if (control is RichTextBox richTextBox)
+                {
+                    richTextBox.Enabled = false;
+                }
+                else if (control is CheckBox checkBox)
+                {
+                    checkBox.Enabled = false;
+                }
+                else if (control is Control)
+                {
+                    // Si le contrôle est un autre conteneur, récursivement désactiver ses contrôles
+                    DisableAllControls((Control)control);
+                }
+            }
+        }
+
+        // Pour désactiver tous les contrôles du formulaire principal
+
         private String checkPieceRechange()
         {
             string s = "";
@@ -193,20 +247,28 @@ namespace GMAONewVersion
             }
             return s;
         }
-
         private void UpdateBTInBDD()
         {
             // Définir la requête d'insertion
             string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_EQUIPEMENT_CONCERNE = @EquipementConcerne, BT_PIECE_RECHANGE = @PieceRechange, " +
                            "BT_HEURE_EQUIPEMENT = @NbHeures, BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
-                           "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste " +
-                           "WHERE BT_NUMERO = @numeroBT";
+                           "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, BT_ISFINISH = @isFinish, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
 
+            if (checkBoxIsFinish.Checked)
+            {
+                isChecked = 1;
+            }
+            else
+            {
+                isChecked = 0;
+            }
 
             try
             {
+
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
+
                     // Ajouter les paramètres à la commande
                     command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
                     command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
@@ -216,6 +278,8 @@ namespace GMAONewVersion
                     command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
                     command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
                     command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
+                    command.Parameters.AddWithValue("@isFinish", isChecked) ;
+                    command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
                     command.Parameters.AddWithValue("@numeroBT", numeroBT);
 
 
