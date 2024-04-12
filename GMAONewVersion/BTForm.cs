@@ -19,110 +19,213 @@ namespace GMAONewVersion
         private readonly MySqlConnection connection;
         private readonly string name;
         private string btNumeroForPrint;
+        private int accesLvl; 
 
-        public BTForm(MySqlConnection connection, string name)
+        public BTForm(MySqlConnection connection, string name, int accesLvl)
         {
             InitializeComponent();
 
             this.connection = connection;
             this.name = name;
+            this.accesLvl = accesLvl;
 
             InsertDataInDataGridViewBTFunction(0);
+
+            if (accesLvl != 3) {
+                ButtonOpenFormCreerBT.Enabled = false;
+            }
         }
 
 
         private void InsertDataInDataGridViewBTFunction(int archiveStatus)
         {
-            string query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE , BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
-
-            try
+            if (accesLvl == 1)
             {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE , BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
+
+                try
                 {
-                    command.Parameters.Clear();
-                    command.Parameters.AddWithValue("@archiveStatus", archiveStatus);
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        // Efface les colones existantes dans le DataGridView
-                        DataGridBT.Columns.Clear();
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@name", name); 
+                        command.Parameters.AddWithValue("@archiveStatus", archiveStatus);
 
-                        // Vérifie s'il y a des résultat
-                        if (reader.HasRows)
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            // Crée les différentes colonnes
-                            DataGridBT.Columns.Add("NumeroBTDataGridView", "Numéro");
-                            DataGridBT.Columns.Add("MotiBTDataGridView", "Motif");
-                            DataGridBT.Columns.Add("EquipementBTDataGridView", "Equipement");
-                            DataGridBT.Columns.Add("IntituleBTDataGridView", "Intitulé");
-                            DataGridBT.Columns.Add("CreateurBTDataGridView", "Créateur");
+                            // Efface les colones existantes dans le DataGridView
+                            DataGridBT.Columns.Clear();
 
-                            // Crée une colonne image pour visualiser 
-                            DataGridViewImageColumn dataGridViewImageVisualiserColumn = new DataGridViewImageColumn();
-                            Image imageVisualiser = Image.FromFile("img/bouton-visualiser.png");
-                            dataGridViewImageVisualiserColumn.Image = imageVisualiser;
-                            dataGridViewImageVisualiserColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                            DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
-
-                            // Crée une colonne image pour modifier
-                            DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
-                            Image imageModifier = Image.FromFile("img/bouton-modifier.png");
-                            dataGridViewImageModifierColumn.Image = imageModifier;
-                            dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                            DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
-
-                            // Crée une colonne image pour imprimer
-                            DataGridViewImageColumn dataGridViewImageImprimerColumn = new DataGridViewImageColumn();
-                            Image imageImprimer = Image.FromFile("img/bouton-imprimer.png");
-                            dataGridViewImageImprimerColumn.Image = imageImprimer;
-                            dataGridViewImageImprimerColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                            DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
-
-                            // Crée une colonne image pour archiver
-                            DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
-                            Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
-                            dataGridViewImageArchiverColumn.Image = imageArchiver;
-                            dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                            DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
-
-
-                            // Ajustez la largeur des colonnes d'images
-                            foreach (DataGridViewColumn column in DataGridBT.Columns)
+                            // Vérifie s'il y a des résultat
+                            if (reader.HasRows)
                             {
-                                if (column is DataGridViewImageColumn)
+                                // Crée les différentes colonnes
+                                DataGridBT.Columns.Add("NumeroBTDataGridView", "Numéro");
+                                DataGridBT.Columns.Add("MotiBTDataGridView", "Motif");
+                                DataGridBT.Columns.Add("EquipementBTDataGridView", "Equipement");
+                                DataGridBT.Columns.Add("IntituleBTDataGridView", "Intitulé");
+                                DataGridBT.Columns.Add("CreateurBTDataGridView", "Créateur");
+
+                                // Crée une colonne image pour visualiser 
+                                DataGridViewImageColumn dataGridViewImageVisualiserColumn = new DataGridViewImageColumn();
+                                Image imageVisualiser = Image.FromFile("img/bouton-visualiser.png");
+                                dataGridViewImageVisualiserColumn.Image = imageVisualiser;
+                                dataGridViewImageVisualiserColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
+
+                                // Crée une colonne image pour modifier
+                                DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
+                                Image imageModifier = Image.FromFile("img/bouton-modifier.png");
+                                dataGridViewImageModifierColumn.Image = imageModifier;
+                                dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
+
+                                // Crée une colonne image pour imprimer
+                                DataGridViewImageColumn dataGridViewImageImprimerColumn = new DataGridViewImageColumn();
+                                Image imageImprimer = Image.FromFile("img/bouton-imprimer.png");
+                                dataGridViewImageImprimerColumn.Image = imageImprimer;
+                                dataGridViewImageImprimerColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
+
+                                // Crée une colonne image pour archiver
+                                DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
+                                Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
+                                dataGridViewImageArchiverColumn.Image = imageArchiver;
+                                dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
+
+
+                                // Ajustez la largeur des colonnes d'images
+                                foreach (DataGridViewColumn column in DataGridBT.Columns)
                                 {
-                                    // Resize the column width
-                                    column.Width = 30;
+                                    if (column is DataGridViewImageColumn)
+                                    {
+                                        // Resize the column width
+                                        column.Width = 30;
+                                    }
+                                }
+
+
+                                // Ajustez la propriété AutoSizeColumnsMode
+
+                                // Ajoute les résultats au DataGridView
+                                while (reader.Read())
+                                {
+                                    // Récupère les valeurs des colonnes spécifiées
+                                    string numero = reader["BT_NUMERO"].ToString();
+                                    string motif = reader["BT_MOTIF"].ToString();
+                                    string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
+                                    string intitule = reader["BT_INTITULE"].ToString();
+                                    string createur = reader["BT_CREATEUR"].ToString();
+
+                                    // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
+                                    DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
                                 }
                             }
-
-
-                            // Ajustez la propriété AutoSizeColumnsMode
-
-                            // Ajoute les résultats au DataGridView
-                            while (reader.Read())
+                            else
                             {
-                                // Récupère les valeurs des colonnes spécifiées
-                                string numero = reader["BT_NUMERO"].ToString();
-                                string motif = reader["BT_MOTIF"].ToString();
-                                string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
-                                string intitule = reader["BT_INTITULE"].ToString();
-                                string createur = reader["BT_CREATEUR"].ToString();
-
-                                // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
-                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
+                                MessageBox.Show("Aucun résultat trouvé.");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Aucun résultat trouvé.");
                         }
                     }
                 }
-            }
-            catch (Exception ex)
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'exécution de la requête : " + ex.Message);
+                }
+            }else
             {
-                MessageBox.Show("Erreur lors de l'exécution de la requête : " + ex.Message);
+                string query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE , BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
+
+                try
+                {
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@archiveStatus", archiveStatus);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Efface les colones existantes dans le DataGridView
+                            DataGridBT.Columns.Clear();
+
+                            // Vérifie s'il y a des résultat
+                            if (reader.HasRows)
+                            {
+                                // Crée les différentes colonnes
+                                DataGridBT.Columns.Add("NumeroBTDataGridView", "Numéro");
+                                DataGridBT.Columns.Add("MotiBTDataGridView", "Motif");
+                                DataGridBT.Columns.Add("EquipementBTDataGridView", "Equipement");
+                                DataGridBT.Columns.Add("IntituleBTDataGridView", "Intitulé");
+                                DataGridBT.Columns.Add("CreateurBTDataGridView", "Créateur");
+
+                                // Crée une colonne image pour visualiser 
+                                DataGridViewImageColumn dataGridViewImageVisualiserColumn = new DataGridViewImageColumn();
+                                Image imageVisualiser = Image.FromFile("img/bouton-visualiser.png");
+                                dataGridViewImageVisualiserColumn.Image = imageVisualiser;
+                                dataGridViewImageVisualiserColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
+
+                                // Crée une colonne image pour modifier
+                                DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
+                                Image imageModifier = Image.FromFile("img/bouton-modifier.png");
+                                dataGridViewImageModifierColumn.Image = imageModifier;
+                                dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
+
+                                // Crée une colonne image pour imprimer
+                                DataGridViewImageColumn dataGridViewImageImprimerColumn = new DataGridViewImageColumn();
+                                Image imageImprimer = Image.FromFile("img/bouton-imprimer.png");
+                                dataGridViewImageImprimerColumn.Image = imageImprimer;
+                                dataGridViewImageImprimerColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
+
+                                // Crée une colonne image pour archiver
+                                DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
+                                Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
+                                dataGridViewImageArchiverColumn.Image = imageArchiver;
+                                dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
+
+
+                                // Ajustez la largeur des colonnes d'images
+                                foreach (DataGridViewColumn column in DataGridBT.Columns)
+                                {
+                                    if (column is DataGridViewImageColumn)
+                                    {
+                                        // Resize the column width
+                                        column.Width = 30;
+                                    }
+                                }
+
+
+                                // Ajustez la propriété AutoSizeColumnsMode
+
+                                // Ajoute les résultats au DataGridView
+                                while (reader.Read())
+                                {
+                                    // Récupère les valeurs des colonnes spécifiées
+                                    string numero = reader["BT_NUMERO"].ToString();
+                                    string motif = reader["BT_MOTIF"].ToString();
+                                    string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
+                                    string intitule = reader["BT_INTITULE"].ToString();
+                                    string createur = reader["BT_CREATEUR"].ToString();
+
+                                    // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
+                                    DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Aucun résultat trouvé.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'exécution de la requête : " + ex.Message);
+                }
             }
         }
 

@@ -118,7 +118,7 @@ namespace GMAONewVersion
         private void BTFormShow()
         {
             panelContenu.Controls.Clear();
-            BTForm btForm = new BTForm(connection, name);
+            BTForm btForm = new BTForm(connection, name, accesLvl);
             btForm.TopLevel = false;
             btForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             btForm.Size = panelContenu.Size;

@@ -28,6 +28,11 @@ namespace GMAONewVersion
             fillcheckedListBoxPieceRechangeBT();
             fillGroupBoxNomInterBT();
 
+
+            foreach(string item in OGItems)
+            {
+                checkedListBoxPieceRechangeBT.Items.Add(item);
+            }
         }
 
         private void fillGroupBoxEquipementConcerneBT()
@@ -71,7 +76,6 @@ namespace GMAONewVersion
                     {
                         while (reader.Read())
                         {
-                            checkedListBoxPieceRechangeBT.Items.Add(reader["PR_NOM"].ToString());
                             OGItems.Add(reader["PR_NOM"].ToString());
                         }
                     }
@@ -349,9 +353,18 @@ namespace GMAONewVersion
             }
         }
 
+        private List<string> checkedItems = new List<string>(); // Liste pour stocker les éléments cochés
+
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
         {
             string searchText = textBoxFilter.Text;
+
+            // Sauvegarder les éléments cochés actuels
+            checkedItems.Clear();
+            foreach (string item in checkedListBoxPieceRechangeBT.CheckedItems)
+            {
+                checkedItems.Add(item.ToString());
+            }
 
             checkedListBoxPieceRechangeBT.Items.Clear(); // Efface les éléments précédents
 
@@ -360,6 +373,16 @@ namespace GMAONewVersion
                 if (item.Contains(searchText))
                 {
                     checkedListBoxPieceRechangeBT.Items.Add(item); // Ajoute l'élément filtré à la liste
+                }
+            }
+
+            // Rétablir les états cochés
+            foreach (string item in checkedItems)
+            {
+                int index = checkedListBoxPieceRechangeBT.Items.IndexOf(item);
+                if (index != -1)
+                {
+                    checkedListBoxPieceRechangeBT.SetItemChecked(index, true);
                 }
             }
         }
