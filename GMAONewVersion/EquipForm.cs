@@ -13,7 +13,7 @@ namespace GMAONewVersion
 {
     public partial class EquipForm : Form
     {
-        private int accesLvl;
+        private readonly int accesLvl;
         private readonly MySqlConnection connection;
         public EquipForm(MySqlConnection connection, int accesLvl)
         {

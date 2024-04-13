@@ -13,12 +13,18 @@ using System.Windows.Forms;
 namespace GMAONewVersion
 {
     public partial class PRForm : Form
-    {
+    {   
+        int accesLvl;
         private readonly MySqlConnection connection;
-        public PRForm(MySqlConnection connection)
+        public PRForm(MySqlConnection connection,  int accesLvl)
         {
             InitializeComponent();
             this.connection = connection;
+            this.accesLvl = accesLvl;
+            if(accesLvl == 1)
+           {
+                ButtonOpenFormCreerPR.Enabled = false;
+           }
             InsertDataInDataGridViewPRFunction(0);
         }
 
