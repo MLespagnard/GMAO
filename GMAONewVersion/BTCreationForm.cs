@@ -14,6 +14,7 @@ namespace GMAONewVersion
 {
     public partial class BTCreationForm : Form
     {
+       
         private MySqlConnection connection;
         private String username;
         public List<string> OGItems = new List<string>();
@@ -23,6 +24,7 @@ namespace GMAONewVersion
             InitializeComponent();
             connection = conn;
             this.username = username;
+           
             fillCreatorNameBT();
             fillGroupBoxEquipementConcerneBT();
             fillcheckedListBoxPieceRechangeBT();

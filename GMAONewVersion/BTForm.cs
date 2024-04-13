@@ -16,6 +16,7 @@ namespace GMAONewVersion
 {
     public partial class BTForm : Form
     {
+        
         private readonly MySqlConnection connection;
         private readonly string name;
         private string btNumeroForPrint;
@@ -283,7 +284,9 @@ namespace GMAONewVersion
 
         //////////// Lors d'un clic sur le bouton créé du BT, ouvre le formulaire de création
         private void ButtonOpenFormCreerBT_Click(object sender, EventArgs e)
+
         {
+            
             BTCreationForm fomCreerBT = new BTCreationForm(connection, name);
 
             // Crée un évenement à la fermeture du BTCréer à l'événement FormClosed

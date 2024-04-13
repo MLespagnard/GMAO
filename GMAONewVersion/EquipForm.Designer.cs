@@ -38,7 +38,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelUser = new System.Windows.Forms.Label();
-            this.ButtonOpenFormCreerBT = new System.Windows.Forms.Button();
+            this.ButtonOpenFormCreerEquip = new System.Windows.Forms.Button();
             this.checkBoxShowArchivageEquip = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridEquip)).BeginInit();
             this.SuspendLayout();
@@ -122,15 +122,15 @@
             this.labelUser.TabIndex = 33;
             this.labelUser.Text = "Equipements";
             // 
-            // ButtonOpenFormCreerBT
+            // ButtonOpenFormCreerEquip
             // 
-            this.ButtonOpenFormCreerBT.Location = new System.Drawing.Point(17, 56);
-            this.ButtonOpenFormCreerBT.Name = "ButtonOpenFormCreerBT";
-            this.ButtonOpenFormCreerBT.Size = new System.Drawing.Size(125, 34);
-            this.ButtonOpenFormCreerBT.TabIndex = 32;
-            this.ButtonOpenFormCreerBT.Text = "Créer un équipement";
-            this.ButtonOpenFormCreerBT.UseVisualStyleBackColor = true;
-            this.ButtonOpenFormCreerBT.Click += new System.EventHandler(this.kryptonCreerEquip_Click);
+            this.ButtonOpenFormCreerEquip.Location = new System.Drawing.Point(17, 56);
+            this.ButtonOpenFormCreerEquip.Name = "ButtonOpenFormCreerEquip";
+            this.ButtonOpenFormCreerEquip.Size = new System.Drawing.Size(125, 34);
+            this.ButtonOpenFormCreerEquip.TabIndex = 32;
+            this.ButtonOpenFormCreerEquip.Text = "Créer un équipement";
+            this.ButtonOpenFormCreerEquip.UseVisualStyleBackColor = true;
+            this.ButtonOpenFormCreerEquip.Click += new System.EventHandler(this.kryptonCreerEquip_Click);
             // 
             // checkBoxShowArchivageEquip
             // 
@@ -150,7 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 611);
             this.Controls.Add(this.labelUser);
-            this.Controls.Add(this.ButtonOpenFormCreerBT);
+            this.Controls.Add(this.ButtonOpenFormCreerEquip);
             this.Controls.Add(this.checkBoxShowArchivageEquip);
             this.Controls.Add(this.DataGridEquip);
             this.Name = "EquipForm";
@@ -172,7 +172,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label labelUser;
-        private System.Windows.Forms.Button ButtonOpenFormCreerBT;
+        private System.Windows.Forms.Button ButtonOpenFormCreerEquip;
         private System.Windows.Forms.CheckBox checkBoxShowArchivageEquip;
     }
 }

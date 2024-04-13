@@ -13,15 +13,25 @@ namespace GMAONewVersion
 {
     public partial class EquipForm : Form
     {
+        private int accesLvl;
         private readonly MySqlConnection connection;
-        public EquipForm(MySqlConnection connection)
+        public EquipForm(MySqlConnection connection, int accesLvl)
         {
             InitializeComponent();
+            
             this.connection = connection;
-            InsertDataInDataGridViewEquipFunction(0);
-        }
+            this.accesLvl = accesLvl;
+            if (accesLvl == 1)
+            {
+                ButtonOpenFormCreerEquip.Enabled = false;
+            }
 
-        private void InsertDataInDataGridViewEquipFunction(int archiveStatus)
+            InsertDataInDataGridViewEquipFunction(0);
+
+        }
+         
+
+    private void InsertDataInDataGridViewEquipFunction(int archiveStatus)
         {
             string query = "SELECT *  FROM equipements WHERE archiver = @archiveStatus";
 
@@ -135,6 +145,7 @@ namespace GMAONewVersion
 
         private void FormCreerEquip_FormClosed(object sender, FormClosedEventArgs e)
         {
+
             InsertDataInDataGridViewEquipFunction(0);
             checkBoxShowArchivageEquip.Checked = false;
         }
