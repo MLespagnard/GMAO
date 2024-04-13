@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace GMAONewVersion
 {
-    public partial class BTForm : Form
+    public partial class BTForm : Form 
     {
         
         private readonly MySqlConnection connection;
