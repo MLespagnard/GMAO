@@ -78,7 +78,7 @@ namespace GMAONewVersion
                                 dataGridViewImageVisualiserColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                 DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
 
-                                // Crée une colonne image pour modifier
+                                // Crée une colonne image pour modifier 
                                 if (accesLvl != 1)
                                 {
                                     DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
