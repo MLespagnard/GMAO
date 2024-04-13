@@ -93,7 +93,7 @@ namespace GMAONewVersion
         private void EquipFormShow()
         {
             panelContenu.Controls.Clear();
-            EquipForm equipForm = new EquipForm(connection);
+            EquipForm equipForm = new EquipForm(connection, accesLvl);
             equipForm.TopLevel = false;
             equipForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             equipForm.Size = panelContenu.Size;
@@ -105,7 +105,7 @@ namespace GMAONewVersion
         private void PRFormShow()
         {
             panelContenu.Controls.Clear();
-            PRForm prForm = new PRForm(connection);
+            PRForm prForm = new PRForm(connection, accesLvl);
             prForm.TopLevel = false;
             prForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             prForm.Size = panelContenu.Size;
