@@ -35,10 +35,6 @@ namespace GMAONewVersion
             if (accesLvl != 3) {
                 ButtonOpenFormCreerBT.Enabled = false;
             }
-            if (accesLvl != 1)
-            {
-
-            }
         }
 
 
@@ -79,14 +75,14 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
 
                                 // Crée une colonne image pour modifier 
-                                if (accesLvl != 1)
+                                if (accesLvl   == 3)
                                 {
                                     DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
                                     Image imageModifier = Image.FromFile("img/bouton-modifier.png");
                                     dataGridViewImageModifierColumn.Image = imageModifier;
                                     dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
-                                    Visible = false;
+                                    Visible = true;
                                 }
 
                                 // Crée une colonne image pour imprimer
@@ -97,14 +93,14 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
 
                                 // Crée une colonne image pour archiver
-                                if (accesLvl != 1)
+                                if (accesLvl == 3)
                                 {
                                     DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
                                     Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
                                     dataGridViewImageArchiverColumn.Image = imageArchiver;
                                     dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
-                                    Visible = false;
+                                    Visible = true;
                                 }
 
 
@@ -180,14 +176,14 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
 
                                 // Crée une colonne image pour modifier
-                                if (accesLvl != 1)
+                                if (accesLvl == 3)
                                 {
                                     DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
                                     Image imageModifier = Image.FromFile("img/bouton-modifier.png");
                                     dataGridViewImageModifierColumn.Image = imageModifier;
                                     dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
-                                    Visible = false;
+                                    Visible = true;
                                 }
 
                                 // Crée une colonne image pour imprimer
@@ -198,14 +194,14 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
 
                                 // Crée une colonne image pour archiver
-                                if (accesLvl != 1)
+                                if (accesLvl == 3)
                                 {
                                     DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
                                     Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
                                     dataGridViewImageArchiverColumn.Image = imageArchiver;
                                     dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
-                                    Visible= false;
+                                    Visible= true;
                                 }
 
 
