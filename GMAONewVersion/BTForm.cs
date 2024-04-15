@@ -30,7 +30,6 @@ namespace GMAONewVersion
             this.name = name;
             this.accesLvl = accesLvl;
 
-            InsertDataInDataGridViewBTFunction(0);
 
             if (accesLvl != 3) {
                 ButtonOpenFormCreerBT.Enabled = false;
@@ -75,15 +74,14 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
 
                                 // Crée une colonne image pour modifier 
-                                if (accesLvl   == 3)
-                                {
-                                    DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
-                                    Image imageModifier = Image.FromFile("img/bouton-modifier.png");
-                                    dataGridViewImageModifierColumn.Image = imageModifier;
-                                    dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                                    DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
-                                    Visible = true;
-                                }
+
+                                DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
+                                Image imageModifier = Image.FromFile("img/bouton-modifier.png");
+                                dataGridViewImageModifierColumn.Image = imageModifier;
+                                dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                                DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
+                                Visible = true;
+                              
 
                                 // Crée une colonne image pour imprimer
                                 DataGridViewImageColumn dataGridViewImageImprimerColumn = new DataGridViewImageColumn();
@@ -91,18 +89,6 @@ namespace GMAONewVersion
                                 dataGridViewImageImprimerColumn.Image = imageImprimer;
                                 dataGridViewImageImprimerColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                 DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
-
-                                // Crée une colonne image pour archiver
-                                if (accesLvl == 3)
-                                {
-                                    DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
-                                    Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
-                                    dataGridViewImageArchiverColumn.Image = imageArchiver;
-                                    dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                                    DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
-                                    Visible = true;
-                                }
-
 
                                 // Ajustez la largeur des colonnes d'images
                                 foreach (DataGridViewColumn column in DataGridBT.Columns)
@@ -176,15 +162,12 @@ namespace GMAONewVersion
                                 DataGridBT.Columns.Add(dataGridViewImageVisualiserColumn);
 
                                 // Crée une colonne image pour modifier
-                                if (accesLvl == 3)
-                                {
                                     DataGridViewImageColumn dataGridViewImageModifierColumn = new DataGridViewImageColumn();
                                     Image imageModifier = Image.FromFile("img/bouton-modifier.png");
                                     dataGridViewImageModifierColumn.Image = imageModifier;
                                     dataGridViewImageModifierColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageModifierColumn);
                                     Visible = true;
-                                }
 
                                 // Crée une colonne image pour imprimer
                                 DataGridViewImageColumn dataGridViewImageImprimerColumn = new DataGridViewImageColumn();
@@ -193,18 +176,12 @@ namespace GMAONewVersion
                                 dataGridViewImageImprimerColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                 DataGridBT.Columns.Add(dataGridViewImageImprimerColumn);
 
-                                // Crée une colonne image pour archiver
-                                if (accesLvl == 3)
-                                {
                                     DataGridViewImageColumn dataGridViewImageArchiverColumn = new DataGridViewImageColumn();
                                     Image imageArchiver = Image.FromFile("img/bouton-archiver.png");
                                     dataGridViewImageArchiverColumn.Image = imageArchiver;
                                     dataGridViewImageArchiverColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                                     DataGridBT.Columns.Add(dataGridViewImageArchiverColumn);
                                     Visible= true;
-                                }
-
-
 
                                 // Ajustez la largeur des colonnes d'images
                                 foreach (DataGridViewColumn column in DataGridBT.Columns)
@@ -308,7 +285,6 @@ namespace GMAONewVersion
         private void ButtonOpenFormCreerBT_Click(object sender, EventArgs e)
 
         {
-            
             BTCreationForm fomCreerBT = new BTCreationForm(connection, name);
 
             // Crée un évenement à la fermeture du BTCréer à l'événement FormClosed
@@ -419,6 +395,11 @@ namespace GMAONewVersion
                     g.Dispose();
                 }
             }
+        }
+
+        private void BTForm_Load(object sender, EventArgs e)
+        {
+            InsertDataInDataGridViewBTFunction(0);
         }
     }
 }
