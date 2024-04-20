@@ -169,7 +169,7 @@ namespace GMAONewVersion
                 string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
 
                 // Ouvre la page modofier BT avec les infos nécéssaires
-                BTTModifierForm formModifierBT = new BTTModifierForm(connection, numeroBT);
+                BTTModifierForm formModifierBT = new BTTModifierForm(connection, numeroBT, accesLvl);
 
                 formModifierBT.FormClosed += BTTModifierForm_FormClosed;
 

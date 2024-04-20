@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace GMAONewVersion
 {
     public partial class BTTModifierForm : Form
     {
+        private  int accesLvl;
         private readonly MySqlConnection connection;
         private readonly string numeroBT;
         string nomInter;
@@ -21,14 +24,29 @@ namespace GMAONewVersion
 
 
         // Constructeur de la classe FormModifierBT
-        public BTTModifierForm(MySqlConnection conn, string numero)
+        public BTTModifierForm(MySqlConnection conn, string numero, int accesLvl)
         {
             InitializeComponent();
             connection = conn;
             numeroBT = numero;
-            // Remplir toutes les cases avec les infos SQL au chargement
+            this.accesLvl = accesLvl;
+            // Remplir toutes les cases avec les infos SQL au chargement 
             FillAllBoxModifierBT();
             labelHeaderBT.Text = labelHeaderBT.Text + numeroBT;
+            if(accesLvl ==1)
+            {
+                groupBoxIntituleBT.Enabled = false;
+                comboBoxEquipementConcerneBT.Enabled = false;
+                checkedListBoxPieceRechangeBT.Enabled = false;
+                RichTextBoxTravailRealiserBT.Enabled = false;
+                groupBoxNbHeuresBT.Enabled = false;
+                comboBoxNomInterBT.Enabled = false;
+                textBoxCreateurBT.Enabled  = false;
+            }
+            
+
+
+
         }
 
         // Remplir toutes les cases avec les infos SQL au chargement
@@ -249,56 +267,61 @@ namespace GMAONewVersion
         }
         private void UpdateBTInBDD()
         {
-            // Définir la requête d'insertion
-            string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_EQUIPEMENT_CONCERNE = @EquipementConcerne, BT_PIECE_RECHANGE = @PieceRechange, " +
-                           "BT_HEURE_EQUIPEMENT = @NbHeures, BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
-                           "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, BT_ISFINISH = @isFinish, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
+           
+            
+                // Définir la requête d'insertion
+                string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_EQUIPEMENT_CONCERNE = @EquipementConcerne, BT_PIECE_RECHANGE = @PieceRechange, " +
+                               "BT_HEURE_EQUIPEMENT = @NbHeures, BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
+                               "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, BT_ISFINISH = @isFinish, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
 
-            if (checkBoxIsFinish.Checked)
-            {
-                isChecked = 1;
-            }
-            else
-            {
-                isChecked = 0;
-            }
+                if (checkBoxIsFinish.Checked)
+                {
+                    isChecked = 1;
+                }
+                else
+                {
+                    isChecked = 0;
+                }
 
-            try
-            {
-
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                try
                 {
 
-                    // Ajouter les paramètres à la commande
-                    command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
-                    command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
-                    command.Parameters.AddWithValue("@PieceRechange", checkPieceRechange());
-                    command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
-                    command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
-                    command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
-                    command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
-                    command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
-                    command.Parameters.AddWithValue("@isFinish", isChecked) ;
-                    command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
-                    command.Parameters.AddWithValue("@numeroBT", numeroBT);
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                   
+                        // Ajouter les paramètres à la commande
+                        command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
+                        command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
+                        command.Parameters.AddWithValue("@PieceRechange", checkPieceRechange());
+                        command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
+                        command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
+                        command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
+                        command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
+                        command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
+                        command.Parameters.AddWithValue("@isFinish", isChecked);
+                        command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
+                        command.Parameters.AddWithValue("@numeroBT", numeroBT);
+                        Enabled = false;
+                    
+
+                        // Exécuter la commande d'insertion
+                        command.ExecuteNonQuery();
+
+                        // Afficher un message de succès
+                        MessageBox.Show("Données modifiées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    // Exécuter la commande d'insertion
-                    command.ExecuteNonQuery();
+                        // Ferme le formulaire
+                        this.Close();
 
-                    // Afficher un message de succès
-                    MessageBox.Show("Données modifiées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                    // Ferme le formulaire
-                    this.Close();
-
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur lors de la modification des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la modification des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            
         }
 
         private void kryptonButtonBTModifierValider_Click(object sender, EventArgs e)
