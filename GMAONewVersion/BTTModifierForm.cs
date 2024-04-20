@@ -30,7 +30,7 @@ namespace GMAONewVersion
             connection = conn;
             numeroBT = numero;
             this.accesLvl = accesLvl;
-            // Remplir toutes les cases avec les infos SQL au chargement
+            // Remplir toutes les cases avec les infos SQL au chargement 
             FillAllBoxModifierBT();
             labelHeaderBT.Text = labelHeaderBT.Text + numeroBT;
             if(accesLvl ==1)
