@@ -200,7 +200,7 @@
             this.groupBoxNomInterBT.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBoxNomInterBT.Location = new System.Drawing.Point(357, 298);
             this.groupBoxNomInterBT.Name = "groupBoxNomInterBT";
-            this.groupBoxNomInterBT.Size = new System.Drawing.Size(215, 85);
+            this.groupBoxNomInterBT.Size = new System.Drawing.Size(215, 55);
             this.groupBoxNomInterBT.TabIndex = 49;
             this.groupBoxNomInterBT.TabStop = false;
             this.groupBoxNomInterBT.Text = "Nom de l’intervenant";
@@ -209,7 +209,7 @@
             // 
             this.comboBoxNomInterBT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNomInterBT.FormattingEnabled = true;
-            this.comboBoxNomInterBT.Location = new System.Drawing.Point(9, 31);
+            this.comboBoxNomInterBT.Location = new System.Drawing.Point(10, 23);
             this.comboBoxNomInterBT.Name = "comboBoxNomInterBT";
             this.comboBoxNomInterBT.Size = new System.Drawing.Size(190, 21);
             this.comboBoxNomInterBT.TabIndex = 2;
@@ -217,7 +217,7 @@
             // groupBoxTempsPresteBT
             // 
             this.groupBoxTempsPresteBT.Controls.Add(this.textBoxTempsPresteBT);
-            this.groupBoxTempsPresteBT.Location = new System.Drawing.Point(43, 409);
+            this.groupBoxTempsPresteBT.Location = new System.Drawing.Point(43, 514);
             this.groupBoxTempsPresteBT.Name = "groupBoxTempsPresteBT";
             this.groupBoxTempsPresteBT.Size = new System.Drawing.Size(113, 79);
             this.groupBoxTempsPresteBT.TabIndex = 50;
@@ -237,7 +237,7 @@
             // 
             this.groupBoxCreateurBT.Controls.Add(this.textBoxCreateurBT);
             this.groupBoxCreateurBT.Enabled = false;
-            this.groupBoxCreateurBT.Location = new System.Drawing.Point(43, 545);
+            this.groupBoxCreateurBT.Location = new System.Drawing.Point(590, 298);
             this.groupBoxCreateurBT.Name = "groupBoxCreateurBT";
             this.groupBoxCreateurBT.Size = new System.Drawing.Size(134, 55);
             this.groupBoxCreateurBT.TabIndex = 52;
@@ -256,7 +256,7 @@
             // groupBoxCommentaireInterBT
             // 
             this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
-            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(43, 298);
+            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(43, 403);
             this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
             this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(283, 105);
             this.groupBoxCommentaireInterBT.TabIndex = 48;
@@ -295,7 +295,7 @@
             // groupBoxDatePrestaBT
             // 
             this.groupBoxDatePrestaBT.Controls.Add(this.checkBoxIsFinish);
-            this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(197, 409);
+            this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(447, 514);
             this.groupBoxDatePrestaBT.Name = "groupBoxDatePrestaBT";
             this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(92, 79);
             this.groupBoxDatePrestaBT.TabIndex = 53;

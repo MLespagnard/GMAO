@@ -163,9 +163,8 @@
             this.Controls.Add(this.checkBoxShowArchivageBT);
             this.Controls.Add(this.DataGridBT);
             this.Name = "BTForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BTForm";
-            this.Load += new System.EventHandler(this.BTForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
