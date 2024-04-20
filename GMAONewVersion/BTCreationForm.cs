@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -222,10 +223,9 @@ namespace GMAONewVersion
             }
         }
 
-        private void InsererDonneesDansDB(String PieceRechange, String numeroBT)
+
+        private void InsererDonneesDansDB(string PieceRechange, string numeroBT)
         {
-
-
             // Définir la requête d'insertion
             string query = "INSERT INTO bt (BT_NUMERO, BT_MOTIF, BT_INTITULE, BT_CREATEUR, BT_EQUIPEMENT_CONCERNE, BT_PIECE_RECHANGE, " +
                            "BT_HEURE_EQUIPEMENT, BT_TRAVAIL_REALISER, BT_COMMENTAIRE_INTERVENANT, BT_NOM_INTERVENANT, BT_TEMPS_TRAVAIL) " +
@@ -249,73 +249,81 @@ namespace GMAONewVersion
                     command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
                     command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
 
-
                     // Exécuter la commande d'insertion
                     command.ExecuteNonQuery();
 
-
                     // Afficher un message de succès
                     MessageBox.Show("Données insérées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                 }
-                string pieceRechangeSelected = checkedListBoxPieceRechangeBT.SelectedItem.ToString();
-
-                TextBox textBoxPieceRechange = flowLayoutPanelNumeros.Controls.Find("textBoxNumero_" + pieceRechangeSelected, true).FirstOrDefault() as TextBox;
-
-                if (textBoxPieceRechange != null)
-                {
-                    // Convertir le texte du TextBox en nombre
-                    if (int.TryParse(textBoxPieceRechange.Text, out int nombreEntréDansLaBox))
-                    {
-                        // Requête SQL de mise à jour pour soustraire le nombre entré dans la box au montant actuel
-                        string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
-
-                            using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
-                            {
-
-                                // Ajouter les paramètres à la commande SQL
-                                command.Parameters.Clear();
-                                command.Parameters.AddWithValue("@PieceRechange", pieceRechangeSelected); // Nom de la pièce de rechange
-                                command.Parameters.AddWithValue("@NombreDansLaBox", nombreEntréDansLaBox); // Nombre entré dans la box
-
-                                command.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                    else
-                    {
-                    MessageBox.Show("Vous n'avez pas entré un nombre valide.");
-                    }
-                // Ferme le formulaire
-                this.Close();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            try
+            {
+                // Traitement des éléments cochés après l'insertion réussie
+                List<string> checkedItem = new List<string>();
+                Dictionary<string, Int32> QuantitePRDeduit = new Dictionary<string, Int32>();
+
+                // Parcourir tous les éléments cochés dans checkedListBoxPieceRechangeBT
+                foreach (var item in checkedListBoxPieceRechangeBT.CheckedItems)
+                {
+                    checkedItem.Add(item.ToString()); // Ajouter l'élément cochée à la liste
+                }
+
+                // Parcourir tous les contrôles dans flowLayoutPanelNumeros
+                foreach (Control control in flowLayoutPanelNumeros.Controls)
+                {
+                    // Vérifier si le contrôle est un Label
+                    if (control is Label label)
+                    {
+                        // Parcourir tous les éléments cochés
+                        foreach (string listName in checkedItem)
+                        {
+                            // Vérifier si le texte du contrôle Label correspond à un élément cochée
+                            if ("LabelBoxNumero_" + listName == control.Name)
+                            {
+                                // Recherche du contrôle TextBox correspondant
+                                string textBoxName = "textBoxNumero_" + listName;
+                                Control textBoxControl = flowLayoutPanelNumeros.Controls.Find(textBoxName, true).FirstOrDefault();
+                                QuantitePRDeduit.Add(listName.ToString(), Convert.ToInt32(textBoxControl.Text));
+                            }
+                        }
+                    }
+                }
+
+                // Mise à jour de la base de données en utilisant les données du dictionnaire
+                foreach (KeyValuePair<string, Int32> entry in QuantitePRDeduit)
+                {
+                    string pieceRechangeName = entry.Key;
+                    Int32 nombreEntréDansLaBox = entry.Value;
+
+                    // Maintenant, vous pouvez exécuter votre requête SQL en utilisant les valeurs du dictionnaire
+                    string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
+
+                    using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
+                    {
+                        // Ajouter les paramètres à la commande SQL
+                        command2.Parameters.Clear();
+                        command2.Parameters.AddWithValue("@PieceRechange", pieceRechangeName); // Nom de la pièce de rechange
+                        command2.Parameters.AddWithValue("@NombreDansLaBox", nombreEntréDansLaBox); // Nombre entré dans la box
+
+                        command2.ExecuteNonQuery();
+                    }
+                }
+                // Ferme le formulaire
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
-        private void textBoxNbHeuresBT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
-                e.Handled = true;
-            }
-        }
-
-        private void textBoxTempsPresteBT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
-                e.Handled = true;
-            }
-        }
 
         private void checkedListBoxPieceRechangeBT_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -389,5 +397,25 @@ namespace GMAONewVersion
             }
         }
 
+
+        private void textBoxNbHeuresBT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxTempsPresteBT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Vérifie si le caractère entré n'est pas un chiffre ou la touche de contrôle (comme Backspace) // Chat GPT
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
+                e.Handled = true;
+            }
+        }
     }
 }

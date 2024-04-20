@@ -73,12 +73,12 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.DataGridBT.Location = new System.Drawing.Point(1, 112);
+            this.DataGridBT.Location = new System.Drawing.Point(5, 112);
             this.DataGridBT.Name = "DataGridBT";
             this.DataGridBT.RowHeadersVisible = false;
             this.DataGridBT.RowTemplate.ReadOnly = true;
             this.DataGridBT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DataGridBT.Size = new System.Drawing.Size(747, 503);
+            this.DataGridBT.Size = new System.Drawing.Size(741, 503);
             this.DataGridBT.TabIndex = 0;
             this.DataGridBT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBT_CellContentClick);
             // 
