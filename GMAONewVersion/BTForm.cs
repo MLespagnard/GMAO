@@ -29,6 +29,10 @@ namespace GMAONewVersion
             this.connection = connection;
             this.name = name;
             this.accesLvl = accesLvl;
+            if(accesLvl < 3 ) 
+            {
+                ButtonOpenFormCreerBT.Enabled = false;
+            }
 
             InsertDataInDataGridViewBTFunction(0);
 
@@ -209,13 +213,16 @@ namespace GMAONewVersion
         private void ButtonOpenFormCreerBT_Click(object sender, EventArgs e)
 
         {
-            BTCreationForm fomCreerBT = new BTCreationForm(connection, name);
+            
+                BTCreationForm fomCreerBT = new BTCreationForm(connection, name);
 
-            // Crée un évenement à la fermeture du BTCréer à l'événement FormClosed
-            fomCreerBT.FormClosed += FomCreerBT_FormClosed;
+                // Crée un évenement à la fermeture du BTCréer à l'événement FormClosed
+                fomCreerBT.FormClosed += FomCreerBT_FormClosed;
 
-            // Affichez fomCreerBT
-            fomCreerBT.ShowDialog();
+                // Affichez fomCreerBT
+                fomCreerBT.ShowDialog();
+                
+            
         }
 
         ///////////  Gère le click pour gérer la visualisation de l'Archivage BT
