@@ -262,7 +262,7 @@ namespace GMAONewVersion
             }
 
             try
-            {
+            { // MOI + CHAT GPT
                 // Traitement des éléments cochés après l'insertion réussie
                 List<string> checkedItem = new List<string>();
                 Dictionary<string, Int32> QuantitePRDeduit = new Dictionary<string, Int32>();
@@ -294,13 +294,11 @@ namespace GMAONewVersion
                     }
                 }
 
-                // Mise à jour de la base de données en utilisant les données du dictionnaire
                 foreach (KeyValuePair<string, Int32> entry in QuantitePRDeduit)
                 {
                     string pieceRechangeName = entry.Key;
                     Int32 nombreEntréDansLaBox = entry.Value;
 
-                    // Maintenant, vous pouvez exécuter votre requête SQL en utilisant les valeurs du dictionnaire
                     string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
 
                     using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
@@ -313,8 +311,6 @@ namespace GMAONewVersion
                         command2.ExecuteNonQuery();
                     }
                 }
-                // Ferme le formulaire
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -367,6 +363,7 @@ namespace GMAONewVersion
 
         private List<string> checkedTest = new List<string>(); // Liste pour stocker les éléments cochés
 
+        // Label pour filter PR
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
         {
             string searchText = textBoxFilter.Text.ToLower(); // Convertir le texte en minuscules pour une comparaison insensible à la casse

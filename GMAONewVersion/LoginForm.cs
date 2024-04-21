@@ -41,7 +41,7 @@ namespace GMAONewVersion
 
         private void buttonConnectionLoginForm_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM user WHERE USER_ID_CONNECTION = @IDConnection";
+            string query = "SELECT * FROM user WHERE USER_ID_CONNECTION = @IDConnection AND archiver = 0";
 
             try
             {

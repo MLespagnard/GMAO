@@ -64,10 +64,8 @@ namespace GMAONewVersion
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         // Efface les colonnes existantes dans le DataGridView si elles existent
-                        if (DataGridBT.Columns.Count > 0)
-                        {
                             DataGridBT.Columns.Clear();
-                        }
+                        
 
                         // Vérifie s'il y a des résultats
                         if (reader.HasRows)
