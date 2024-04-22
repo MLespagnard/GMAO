@@ -27,7 +27,6 @@ namespace GMAONewVersion
             }
 
             InsertDataInDataGridViewEquipFunction(0);
-
         }
          
 

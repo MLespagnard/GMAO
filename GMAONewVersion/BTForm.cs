@@ -34,12 +34,9 @@ namespace GMAONewVersion
                 ButtonOpenFormCreerBT.Enabled = false;
             }
 
-            InsertDataInDataGridViewBTFunction(0);
+            TestStart(0);
+            Console.WriteLine("Execution initial");
 
-        }
-
-        private void BTForm_Load(object sender, EventArgs e)
-        {
         }
 
         private void InsertDataInDataGridViewBTFunction(int archiveStatus)
@@ -64,8 +61,55 @@ namespace GMAONewVersion
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         // Efface les colonnes existantes dans le DataGridView si elles existent
+                        DataGridBT.Rows.Clear();
+                        // Vérifie s'il y a des résultats
+
+                            // Ajoute les résultats au DataGridView
+                            while (reader.Read())
+                            {
+                                // Récupère les valeurs des colonnes spécifiées
+                                string numero = reader["BT_NUMERO"].ToString();
+                                string motif = reader["BT_MOTIF"].ToString();
+                                string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
+                                string intitule = reader["BT_INTITULE"].ToString();
+                                string createur = reader["BT_CREATEUR"].ToString();
+
+                                // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
+                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
+                            }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'exécution de la requête : " + ex.Message);
+            }
+        }
+
+
+        private void TestStart(int archiveStatus)
+        {
+            string query;
+            if (accesLvl == 1)
+            {
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
+            }
+            else
+            {
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
+            }
+
+            try
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@archiveStatus", archiveStatus);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Efface les colonnes existantes dans le DataGridView si elles existent
                             DataGridBT.Columns.Clear();
-                        
 
                         // Vérifie s'il y a des résultats
                         if (reader.HasRows)
