@@ -37,13 +37,16 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelConnectionId = new System.Windows.Forms.Label();
             this.pictureBoxLoginForm = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAlternPassword = new System.Windows.Forms.PictureBox();
             this.panelLoginForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlternPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLoginForm
             // 
             this.panelLoginForm.BackColor = System.Drawing.Color.White;
+            this.panelLoginForm.Controls.Add(this.pictureBoxAlternPassword);
             this.panelLoginForm.Controls.Add(this.buttonConnectionLoginForm);
             this.panelLoginForm.Controls.Add(this.labelLoginForm);
             this.panelLoginForm.Controls.Add(this.textBoxPassword);
@@ -80,9 +83,11 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(59, 172);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(141, 20);
             this.textBoxPassword.TabIndex = 3;
             this.textBoxPassword.Text = "m";
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // textBoxConnectionId
             // 
@@ -121,6 +126,17 @@
             this.pictureBoxLoginForm.TabIndex = 0;
             this.pictureBoxLoginForm.TabStop = false;
             // 
+            // pictureBoxAlternPassword
+            // 
+            this.pictureBoxAlternPassword.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAlternPassword.Image")));
+            this.pictureBoxAlternPassword.Location = new System.Drawing.Point(206, 165);
+            this.pictureBoxAlternPassword.Name = "pictureBoxAlternPassword";
+            this.pictureBoxAlternPassword.Size = new System.Drawing.Size(30, 27);
+            this.pictureBoxAlternPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAlternPassword.TabIndex = 5;
+            this.pictureBoxAlternPassword.TabStop = false;
+            this.pictureBoxAlternPassword.Click += new System.EventHandler(this.pictureBoxAlternPassword_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,6 +151,7 @@
             this.panelLoginForm.ResumeLayout(false);
             this.panelLoginForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlternPassword)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,5 +165,6 @@
         private System.Windows.Forms.Label labelConnectionId;
         private System.Windows.Forms.Button buttonConnectionLoginForm;
         private System.Windows.Forms.PictureBox pictureBoxLoginForm;
+        private System.Windows.Forms.PictureBox pictureBoxAlternPassword;
     }
 }

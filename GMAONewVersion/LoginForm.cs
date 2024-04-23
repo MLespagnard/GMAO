@@ -17,11 +17,14 @@ namespace GMAONewVersion
         // Déclaration variable 
         private readonly string connectionString = "server=mysql-kokoldex.alwaysdata.net;database=kokoldex_gmao;uid=kokoldex_public;pwd=Public123!;";
         private MySqlConnection connection;
+        private bool isPasswordVisible = false; 
 
 
         public LoginForm()
         {
             InitializeComponent();
+            pictureBoxAlternPassword.Dock = DockStyle.Top;
+            pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-hide.png");
         }
 
         // Initialise la connexion lors du chargement du formulaire
@@ -84,6 +87,21 @@ namespace GMAONewVersion
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors de l'authentification : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBoxAlternPassword_Click(object sender, EventArgs e)
+        {
+            // Basculez entre l'affichage du mot de passe et le masquage
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible)
+            {
+                pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-show.png"); 
+            }
+            else
+            {
+                pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-hide.png");
             }
         }
     }
