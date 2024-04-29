@@ -19,6 +19,7 @@ namespace GMAONewVersion
         private MySqlConnection connection;
         private String username;
         public List<string> OGItems = new List<string>();
+        public List<string> PRValeur = new List<string>();
 
         public BTCreationForm(MySqlConnection conn, String username)
         {
@@ -34,7 +35,7 @@ namespace GMAONewVersion
 
             foreach(string item in OGItems)
             {
-                checkedListBoxPieceR echangeBT.Items.Add(item);
+                checkedListBoxPieceRechangeBT.Items.Add(item);
             }
         }
 
@@ -174,19 +175,25 @@ namespace GMAONewVersion
             // Si minimum 1 pièce de rechange
             if (checkedListBoxPieceRechangeBT.CheckedItems.Count != 0)
             {
-                // Boucler sur les éléments sélectionnés et les mettre dans la variable S
-                string s = "";
-                for (int x = 0; x < checkedListBoxPieceRechangeBT.CheckedItems.Count; x++)
+                // Parcourir tous les éléments cochés dans checkedListBoxPieceRechangeBT
+                foreach (var item in checkedListBoxPieceRechangeBT.CheckedItems)
                 {
-                    //Mettre les éléments checké dans S
-                    s += checkedListBoxPieceRechangeBT.CheckedItems[x].ToString();
+                    string pieceDeRechange = item.ToString(); // Nom de la pièce de rechange
 
-                    // Ajouter le point-virgule uniquement si ce n'est pas le dernier élément
-                    if (x < checkedListBoxPieceRechangeBT.CheckedItems.Count - 1)
+                    // Recherche du label correspondant dans le panel
+                    string TexBoxName = "textBoxNumero_" + pieceDeRechange;
+                    TextBox texbox = flowLayoutPanelNumeros.Controls.Find(TexBoxName, true).FirstOrDefault() as TextBox;
+                    // Vérifier si le label correspondant a été trouvé
+                    if (texbox != null)
                     {
-                        s += ";";
+                        PRValeur.Add(pieceDeRechange + "=" + texbox.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Aucune valeur n'est assigné à la pièce: " + pieceDeRechange);
                     }
                 }
+
 
                 // Récupère la date d'aujourd'hui
                 DateTime currentDate = DateTime.Now;
@@ -195,7 +202,7 @@ namespace GMAONewVersion
                 if (comboBoxMotifBT.SelectedItem as string == "Préventif")
                 {
                     numeroBT = "PR" + currentDate.Year + "-" + CountNumberOfBT("Préventif").ToString("D4");
-                    InsererDonneesDansDB(s, numeroBT);
+                    InsererDonneesDansDB(numeroBT);
 
                 }
                 else if (comboBoxMotifBT.SelectedItem as string == "Correctif")
@@ -203,12 +210,12 @@ namespace GMAONewVersion
                     numeroBT = "CO" + currentDate.Year;
                     numeroBT += "-";
                     numeroBT += CountNumberOfBT("Correctif").ToString("D4");
-                    InsererDonneesDansDB(s, numeroBT);
+                    InsererDonneesDansDB(numeroBT);
                 }
                 else if (comboBoxMotifBT.SelectedItem as string == "Curatif")
                 {
                     numeroBT = "CU" + currentDate.Year + "-" + CountNumberOfBT("Curatif").ToString("D4");
-                    InsererDonneesDansDB(s, numeroBT);
+                    InsererDonneesDansDB(numeroBT);
                 }
 
                 // Appel a l'insertion une fois les valeurs réccuperées
@@ -222,56 +229,33 @@ namespace GMAONewVersion
         }
 
 
-        private void InsererDonneesDansDB(string PieceRechange, string numeroBT)
+        private void InsererDonneesDansDB(string numeroBT)
         {
+
             try
-            { // MOI + CHAT GPT
-                // Traitement des éléments cochés après l'insertion réussie
-                List<string> checkedItem = new List<string>();
-                Dictionary<string, Int32> QuantitePRDeduit = new Dictionary<string, Int32>();
+            { // 
+                string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
 
-                // Parcourir tous les éléments cochés dans checkedListBoxPieceRechangeBT
-                foreach (var item in checkedListBoxPieceRechangeBT.CheckedItems)
+                foreach (var item in PRValeur)
                 {
-                    checkedItem.Add(item.ToString()); // Ajouter l'élément cochée à la liste
-                }
-
-                // Parcourir tous les contrôles dans flowLayoutPanelNumeros
-                foreach (Control control in flowLayoutPanelNumeros.Controls)
-                {
-                    // Vérifier si le contrôle est un Label
-                    if (control is Label label)
+                    if (!string.IsNullOrEmpty(item) && item.Contains("="))
                     {
-                        // Parcourir tous les éléments cochés
-                        foreach (string listName in checkedItem)
+                        string[] elements = item.Split('=');
+                        if (elements.Length == 2)
                         {
-                            // Vérifier si le texte du contrôle Label correspond à un élément cochée
-                            if ("LabelBoxNumero_" + listName == control.Name)
+                            string piecederechange = elements[0];
+                            string valeur = elements[1];
+
+                            using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
                             {
-                                // Recherche du contrôle TextBox correspondant
-                                string textBoxName = "textBoxNumero_" + listName;
-                                Control textBoxControl = flowLayoutPanelNumeros.Controls.Find(textBoxName, true).FirstOrDefault();
-                                QuantitePRDeduit.Add(listName.ToString(), Convert.ToInt32(textBoxControl.Text));
+                                // Ajouter les paramètres à la commande SQL
+                                command2.Parameters.Clear();
+                                command2.Parameters.AddWithValue("@PieceRechange", piecederechange); 
+                                command2.Parameters.AddWithValue("@NombreDansLaBox", valeur);
+
+                                command2.ExecuteNonQuery();
                             }
                         }
-                    }
-                }
-
-                foreach (KeyValuePair<string, Int32> entry in QuantitePRDeduit)
-                {
-                    string pieceRechangeName = entry.Key;
-                    Int32 nombreEntréDansLaBox = entry.Value;
-
-                    string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
-
-                    using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
-                    {
-                        // Ajouter les paramètres à la commande SQL
-                        command2.Parameters.Clear();
-                        command2.Parameters.AddWithValue("@PieceRechange", pieceRechangeName); // Nom de la pièce de rechange
-                        command2.Parameters.AddWithValue("@NombreDansLaBox", nombreEntréDansLaBox); // Nombre entré dans la box
-
-                        command2.ExecuteNonQuery();
                     }
                 }
             }
@@ -297,7 +281,7 @@ namespace GMAONewVersion
                     command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
                     command.Parameters.AddWithValue("@Createur", textBoxCreateurBT.Text);
                     command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
-                    command.Parameters.AddWithValue("@PieceRechange", PieceRechange);
+                    command.Parameters.AddWithValue("@PieceRechange", string.Join(";", PRValeur));
                     command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
                     command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
                     command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
