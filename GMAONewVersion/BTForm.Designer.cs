@@ -73,52 +73,61 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.DataGridBT.Location = new System.Drawing.Point(5, 112);
+            this.DataGridBT.Location = new System.Drawing.Point(7, 138);
+            this.DataGridBT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGridBT.Name = "DataGridBT";
             this.DataGridBT.RowHeadersVisible = false;
+            this.DataGridBT.RowHeadersWidth = 51;
             this.DataGridBT.RowTemplate.ReadOnly = true;
             this.DataGridBT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DataGridBT.Size = new System.Drawing.Size(741, 503);
+            this.DataGridBT.Size = new System.Drawing.Size(988, 619);
             this.DataGridBT.TabIndex = 0;
             this.DataGridBT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBT_CellContentClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Column2";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Column3";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Column4";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Column5";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Column6";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             // 
             // checkBoxShowArchivageBT
             // 
             this.checkBoxShowArchivageBT.AutoSize = true;
             this.checkBoxShowArchivageBT.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxShowArchivageBT.Location = new System.Drawing.Point(595, 66);
+            this.checkBoxShowArchivageBT.Location = new System.Drawing.Point(793, 81);
+            this.checkBoxShowArchivageBT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxShowArchivageBT.Name = "checkBoxShowArchivageBT";
-            this.checkBoxShowArchivageBT.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxShowArchivageBT.Size = new System.Drawing.Size(163, 20);
             this.checkBoxShowArchivageBT.TabIndex = 7;
             this.checkBoxShowArchivageBT.Text = "Visualiser les archives";
             this.checkBoxShowArchivageBT.UseVisualStyleBackColor = true;
@@ -126,9 +135,10 @@
             // 
             // ButtonOpenFormCreerBT
             // 
-            this.ButtonOpenFormCreerBT.Location = new System.Drawing.Point(17, 56);
+            this.ButtonOpenFormCreerBT.Location = new System.Drawing.Point(23, 69);
+            this.ButtonOpenFormCreerBT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonOpenFormCreerBT.Name = "ButtonOpenFormCreerBT";
-            this.ButtonOpenFormCreerBT.Size = new System.Drawing.Size(125, 34);
+            this.ButtonOpenFormCreerBT.Size = new System.Drawing.Size(167, 42);
             this.ButtonOpenFormCreerBT.TabIndex = 8;
             this.ButtonOpenFormCreerBT.Text = "Créer un bon de travail";
             this.ButtonOpenFormCreerBT.UseVisualStyleBackColor = true;
@@ -147,21 +157,23 @@
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelUser.Location = new System.Drawing.Point(301, 9);
+            this.labelUser.Location = new System.Drawing.Point(401, 11);
+            this.labelUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(135, 25);
+            this.labelUser.Size = new System.Drawing.Size(159, 30);
             this.labelUser.TabIndex = 30;
             this.labelUser.Text = "Bons de travail";
             // 
             // BTForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 611);
+            this.ClientSize = new System.Drawing.Size(999, 752);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.ButtonOpenFormCreerBT);
             this.Controls.Add(this.checkBoxShowArchivageBT);
             this.Controls.Add(this.DataGridBT);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BTForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BTForm";

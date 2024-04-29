@@ -32,7 +32,6 @@ namespace GMAONewVersion
                 ("RefFournisseur",textBoxRefFournisseurPR.Text),
                 ("StockMini",textBoxStockMiniPR.Text),
                 ("StockMax",textBoxStockMaxPR.Text),
-                ("StockActuel",textBoxStockActuelPR.Text),
             };
 
             // Envoie la liste des champs a la classe error pour vérifier la nullitée des champs

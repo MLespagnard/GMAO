@@ -34,7 +34,7 @@ namespace GMAONewVersion
 
             foreach(string item in OGItems)
             {
-                checkedListBoxPieceRechangeBT.Items.Add(item);
+                checkedListBoxPieceR echangeBT.Items.Add(item);
             }
         }
 
@@ -160,11 +160,9 @@ namespace GMAONewVersion
                 ("Intitulé", textBoxIntituleBT.Text),
                 ("Créateur", textBoxCreateurBT.Text),
                 ("Équipement concerné", comboBoxEquipementConcerneBT.SelectedItem as string ?? ""),
-                ("Nombre d'heures", textBoxNbHeuresBT.Text),
+                ("Nombre d'heures", textBoxNbHeuresBT.Text),  
                 ("Travail réalisé", RichTextBoxTravailRealiserBT.Text),
-                ("Commentaire interne", RichTextBoxCommentaireInterBT.Text),
                 ("Nom intervenant", comboBoxNomInterBT.SelectedItem?.ToString() ?? ""),
-                ("Temps presté", textBoxTempsPresteBT.Text)
 };
 
             // Envoie la liste des champs a la classe error pour vérifier la nullitée des champs
@@ -226,41 +224,6 @@ namespace GMAONewVersion
 
         private void InsererDonneesDansDB(string PieceRechange, string numeroBT)
         {
-            // Définir la requête d'insertion
-            string query = "INSERT INTO bt (BT_NUMERO, BT_MOTIF, BT_INTITULE, BT_CREATEUR, BT_EQUIPEMENT_CONCERNE, BT_PIECE_RECHANGE, " +
-                           "BT_HEURE_EQUIPEMENT, BT_TRAVAIL_REALISER, BT_COMMENTAIRE_INTERVENANT, BT_NOM_INTERVENANT, BT_TEMPS_TRAVAIL) " +
-                           "VALUES (@BtNumero, @Motif, @Intitule, @Createur, @EquipementConcerne, @PieceRechange, @NbHeures, @TravailRealise, " +
-                           "@CommentaireInterne, @NomIntervenant, @TempsPreste)";
-
-            try
-            {
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    // Ajouter les paramètres à la commande
-                    command.Parameters.AddWithValue("@BtNumero", numeroBT);
-                    command.Parameters.AddWithValue("@Motif", comboBoxMotifBT.SelectedItem as string);
-                    command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
-                    command.Parameters.AddWithValue("@Createur", textBoxCreateurBT.Text);
-                    command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
-                    command.Parameters.AddWithValue("@PieceRechange", PieceRechange);
-                    command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
-                    command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
-                    command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
-                    command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
-                    command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
-
-                    // Exécuter la commande d'insertion
-                    command.ExecuteNonQuery();
-
-                    // Afficher un message de succès
-                    MessageBox.Show("Données insérées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
             try
             { // MOI + CHAT GPT
                 // Traitement des éléments cochés après l'insertion réussie
@@ -315,9 +278,44 @@ namespace GMAONewVersion
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
+            // Définir la requête d'insertion
+            string query = "INSERT INTO bt (BT_NUMERO, BT_MOTIF, BT_INTITULE, BT_CREATEUR, BT_EQUIPEMENT_CONCERNE, BT_PIECE_RECHANGE, " +
+                           "BT_HEURE_EQUIPEMENT, BT_TRAVAIL_REALISER, BT_COMMENTAIRE_INTERVENANT, BT_NOM_INTERVENANT, BT_TEMPS_TRAVAIL) " +
+                           "VALUES (@BtNumero, @Motif, @Intitule, @Createur, @EquipementConcerne, @PieceRechange, @NbHeures, @TravailRealise, " +
+                           "@CommentaireInterne, @NomIntervenant, @TempsPreste)";
 
+            try
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    // Ajouter les paramètres à la commande
+                    command.Parameters.AddWithValue("@BtNumero", numeroBT);
+                    command.Parameters.AddWithValue("@Motif", comboBoxMotifBT.SelectedItem as string);
+                    command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
+                    command.Parameters.AddWithValue("@Createur", textBoxCreateurBT.Text);
+                    command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
+                    command.Parameters.AddWithValue("@PieceRechange", PieceRechange);
+                    command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
+                    command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
+                    command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
+                    command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
+                    command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
+
+                    // Exécuter la commande d'insertion
+                    command.ExecuteNonQuery();
+
+                    // Afficher un message de succès
+                    MessageBox.Show("Données insérées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'insertion des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.Close();
         }
 
 

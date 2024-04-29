@@ -92,17 +92,19 @@ namespace GMAONewVersion
 
         private void pictureBoxAlternPassword_Click(object sender, EventArgs e)
         {
-            // Basculez entre l'affichage du mot de passe et le masquage
             isPasswordVisible = !isPasswordVisible;
 
             if (isPasswordVisible)
             {
-                pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-show.png"); 
+                pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-show.png");
+                textBoxPassword.UseSystemPasswordChar = false; // Afficher le texte
             }
             else
             {
                 pictureBoxAlternPassword.Image = Image.FromFile("img/mdp-hide.png");
+                textBoxPassword.UseSystemPasswordChar = true; 
             }
         }
+
     }
 }

@@ -21,6 +21,7 @@ namespace GMAONewVersion
         string nomInter;
         int indexIntervenant;
         int isChecked;
+        public List<string> OGItems = new List<string>();
 
 
         // Constructeur de la classe FormModifierBT
@@ -36,16 +37,16 @@ namespace GMAONewVersion
             if(accesLvl ==1)
             {
                 groupBoxIntituleBT.Enabled = false;
-                comboBoxEquipementConcerneBT.Enabled = false;
                 checkedListBoxPieceRechangeBT.Enabled = false;
                 RichTextBoxTravailRealiserBT.Enabled = false;
-                groupBoxNbHeuresBT.Enabled = false;
                 comboBoxNomInterBT.Enabled = false;
                 textBoxCreateurBT.Enabled  = false;
             }
-            
 
-
+            foreach (string item in OGItems)
+            {
+                checkedListBoxPieceRechangeBT.Items.Add(item);
+            }
 
         }
 
@@ -73,12 +74,9 @@ namespace GMAONewVersion
                             // Remplir les contrôles avec les données de la base de données
                             textBoxIntituleBT.Text = reader["BT_INTITULE"].ToString();
                             textBoxCreateurBT.Text = reader["BT_CREATEUR"].ToString();
-                            comboBoxEquipementConcerneBT.Items.Add(reader["BT_EQUIPEMENT_CONCERNE"].ToString());
-                            comboBoxEquipementConcerneBT.SelectedIndex = 0;
                             ;
                             PieceRechangeBT = reader["BT_PIECE_RECHANGE"].ToString();
 
-                            textBoxNbHeuresBT.Text = reader["BT_HEURE_EQUIPEMENT"].ToString().Trim();
                             RichTextBoxTravailRealiserBT.Text = reader["BT_TRAVAIL_REALISER"].ToString().Trim();
                             RichTextBoxCommentaireInterBT.Text = reader["BT_COMMENTAIRE_INTERVENANT"].ToString().Trim();
 
@@ -291,9 +289,7 @@ namespace GMAONewVersion
                    
                         // Ajouter les paramètres à la commande
                         command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
-                        command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
                         command.Parameters.AddWithValue("@PieceRechange", checkPieceRechange());
-                        command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
                         command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
                         command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
                         command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
@@ -346,6 +342,79 @@ namespace GMAONewVersion
             {
                 // Annule la saisie du caractère en empêchant l'événement KeyPress de se propager
                 e.Handled = true;
+            }
+        }
+
+        private void checkedListBoxPieceRechangeBT_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Si l'élément est en cours de coche
+            if (e.NewValue == CheckState.Checked)
+            {
+                string elementNameListPR = checkedListBoxPieceRechangeBT.Items[e.Index].ToString();
+
+                // Vérifier si le contrôle correspondant à cet élément est déjà présent dans le flowLayoutPanel
+                if (flowLayoutPanelNumeros.Controls.Find("LabelBoxNumero_" + elementNameListPR, true).Length == 0)
+                {
+                    // Créer un nouveau contrôle Label
+                    Label label = new Label();
+                    label.Name = "LabelBoxNumero_" + elementNameListPR;
+                    label.Text = "Quantité(e) " + elementNameListPR; // Texte du Label
+                    label.Location = new System.Drawing.Point(10, (e.Index * 50) + 5); // Positionnez le contrôle Label (avec un espace de 5 pixels)
+                    flowLayoutPanelNumeros.Controls.Add(label); // Ajoutez le contrôle à votre panel
+
+                    // Créer un nouveau contrôle TextBox
+                    TextBox textBox = new TextBox();
+                    textBox.Name = "textBoxNumero_" + elementNameListPR;
+                    textBox.MaxLength = 3;
+                    textBox.Location = new System.Drawing.Point(10, (e.Index * 50) + 25); // Positionnez le contrôle TextBox juste en dessous du Label
+                    flowLayoutPanelNumeros.Controls.Add(textBox); // Ajoutez le contrôle à votre panel
+                }
+            }
+            else // Si l'élément est en cours de décoche
+            {
+                string elementNameListPR = checkedListBoxPieceRechangeBT.Items[e.Index].ToString();
+                // Recherchez et supprimez le contrôle TextBox et Label correspondant
+                for (int i = flowLayoutPanelNumeros.Controls.Count - 1; i >= 0; i--)  // Compte tout les contrôls
+                {
+                    Control control = flowLayoutPanelNumeros.Controls[i];
+                    if (control.Name == "textBoxNumero_" + elementNameListPR || control.Name == "LabelBoxNumero_" + elementNameListPR)
+                    {
+                        flowLayoutPanelNumeros.Controls.Remove(control);
+                    }
+                }
+            }
+        }
+
+        private List<string> checkedTest = new List<string>(); // Liste pour stocker les éléments cochés
+
+        // Label pour filter PR
+        private void textBoxFilter_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxFilter.Text.ToLower(); // Convertir le texte en minuscules pour une comparaison insensible à la casse
+
+            foreach (var item in checkedListBoxPieceRechangeBT.CheckedItems) // Parcourir tous les éléments cochés
+            {
+                checkedTest.Add(item.ToString()); // Ajouter l'élément cochée à la liste
+            }
+
+            checkedListBoxPieceRechangeBT.Items.Clear(); // Effacer les éléments précédents
+
+            foreach (string item in OGItems) // Parcourir tous les éléments d'origine
+            {
+                if (item.ToLower().Contains(searchText)) // Vérifier si l'élément correspond au critère de filtrage
+                {
+                    checkedListBoxPieceRechangeBT.Items.Add(item); // Ajouter l'élément filtré à la liste
+                }
+            }
+
+            // Rétablir les états cochés
+            foreach (string item in checkedTest)
+            {
+                int index = checkedListBoxPieceRechangeBT.Items.IndexOf(item);
+                if (index != -1)
+                {
+                    checkedListBoxPieceRechangeBT.SetItemChecked(index, true);
+                }
             }
         }
     }
