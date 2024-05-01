@@ -260,7 +260,7 @@ namespace GMAONewVersion
 
                 // Crée un évenement à la fermeture du BTCréer à l'événement FormClosed
                 fomCreerBT.FormClosed += FomCreerBT_FormClosed;
-
+             
                 // Affichez fomCreerBT
                 fomCreerBT.ShowDialog();
                 
