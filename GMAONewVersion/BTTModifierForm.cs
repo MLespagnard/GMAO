@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,9 @@ namespace GMAONewVersion
         int indexIntervenant;
         int isChecked;
         public List<string> OGItems = new List<string>();
+        public List<(string, string)> OldPRValue = new List<(string, string)>();
+        public List<string> PRNewValeur = new List<string>();
+
 
 
         // Constructeur de la classe FormModifierBT
@@ -154,6 +158,9 @@ namespace GMAONewVersion
             // Diviser la chaîne en plusieurs éléments basés sur le délimiteur ';'
             string[] items = pieceRechangeBT.Split(';');
 
+            // Liste pour stocker les noms des pièces de rechange
+            List<string> nomsPieceRechange = new List<string>();
+
             // Requête SQL pour récupérer les noms des pièces de rechange
             string query = "SELECT PR_NOM FROM piece_de_rechange WHERE archiver = 0";
 
@@ -164,22 +171,44 @@ namespace GMAONewVersion
                     while (reader.Read())
                     {
                         string nomPiece = reader["PR_NOM"].ToString();
-
-                        // Vérifier si la pièce de rechange est égale à l'un des éléments de items
-                        if (Array.Exists(items, item => item == nomPiece))
-                        {
-                            // Ajouter la pièce de rechange à checkedListBoxPieceRechange
-                            checkedListBoxPieceRechangeBT.Items.Add(nomPiece, true);
-                        }
-                        else
-                        {
-                            // Ajouter les autres pièces sans les cocher
-                            checkedListBoxPieceRechangeBT.Items.Add(nomPiece, false);
-                        }
+                        nomsPieceRechange.Add(nomPiece);
                     }
                 }
             }
+
+            // Parcourir les noms des pièces de rechange récupérés de la base de données
+            foreach (string nomPiece in nomsPieceRechange)
+            {
+                // Vérifie si la pièce de rechange est égale à l'un des éléments de items
+                foreach (var itemAllPR in items)
+                {
+                    string[] ItemAllSplit = itemAllPR.Split('=');
+                        if (ItemAllSplit[0] == nomPiece)
+                        {
+                        OldPRValue.Add((ItemAllSplit[0].Trim().ToString(), ItemAllSplit[1].ToString()));
+                        // Ajouter la pièce de rechange à checkedListBoxPieceRechange en la cochant
+                        checkedListBoxPieceRechangeBT.Items.Add(nomPiece, true);
+                            // Recherche du contrôle avec le nom spécifié dans le FlowLayoutPanel
+                            Control[] foundControls = flowLayoutPanelNumeros.Controls.Find("textBoxNumero_" + ItemAllSplit[0], true);
+
+                            // Vérification si le contrôle est trouvé
+                            if (foundControls.Length > 0 && foundControls[0] is TextBox)
+                            {
+                                // Cast du contrôle trouvé en tant que Label et affectation de la propriété Text
+                                ((TextBox)foundControls[0]).Text = (ItemAllSplit[1]).ToString();
+                            }
+                            break; // Sortir de la boucle foreach si la pièce est trouvée
+                        }
+                }
+
+                // Si la pièce de rechange n'a pas été trouvée dans items, l'ajouter sans la cocher
+                if (!checkedListBoxPieceRechangeBT.Items.Contains(nomPiece))
+                {
+                    checkedListBoxPieceRechangeBT.Items.Add(nomPiece, false);
+                }
+            }
         }
+
 
         // Nettoye tous les contrôles dans le formulaire
         private void ClearAllControls()
@@ -241,35 +270,62 @@ namespace GMAONewVersion
             }
         }
 
-        // Pour désactiver tous les contrôles du formulaire principal
-
-        private String checkPieceRechange()
-        {
-            string s = "";
-            if (checkedListBoxPieceRechangeBT.CheckedItems.Count != 0)
-            {
-                // Boucler sur les éléments sélectionnés et les mettre dans la variable S
-                for (int x = 0; x < checkedListBoxPieceRechangeBT.CheckedItems.Count; x++)
-                {
-                    //Mettre les éléments checké dans S
-                    s += checkedListBoxPieceRechangeBT.CheckedItems[x].ToString();
-
-                    // Ajouter le point-virgule uniquement si ce n'est pas le dernier élément
-                    if (x < checkedListBoxPieceRechangeBT.CheckedItems.Count - 1)
-                    {
-                        s += ";";
-                    }
-                }
-            }
-            return s;
-        }
         private void UpdateBTInBDD()
         {
-           
-            
+
+                // Parcourir tous les éléments cochés dans checkedListBoxPieceRechangeBT
+                foreach (var item in checkedListBoxPieceRechangeBT.CheckedItems)
+                {
+                    string pieceDeRechange = item.ToString(); // Nom de la pièce de rechange
+
+                    // Recherche du label correspondant dans le panel
+                    string TexBoxName = "textBoxNumero_" + pieceDeRechange;
+                    TextBox texbox = flowLayoutPanelNumeros.Controls.Find(TexBoxName, true).FirstOrDefault() as TextBox;
+
+                    // Vérifier si le label correspondant a été trouvé
+                    if (texbox != null)
+                    {
+                        PRNewValeur.Add(pieceDeRechange + "=" + texbox.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Aucune valeur n'est assignée à la pièce: " + pieceDeRechange);
+                    }
+                }
+
+                string updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
+
+                // Vérifier si la liste OldPRValue contient des éléments
+                if (OldPRValue.Count > 0)
+                {
+                    foreach (var item in OldPRValue)
+                    {
+                        string pieceDeRechange = item.Item1;
+                        int oldValue = Convert.ToInt32(item.Item2);
+
+                        // Vérifier si PRNewValeur contient la pièce de rechange
+                        var newValueItem = PRNewValeur.FirstOrDefault(x => x.StartsWith(pieceDeRechange + "="));
+                        if (newValueItem != null)
+                        {
+                            int newValue = Convert.ToInt32(newValueItem.Split('=')[1]);
+                            int ModifValue = oldValue - newValue;
+
+                            using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
+                            {
+                                // Ajouter les paramètres à la commande SQL
+                                command2.Parameters.Clear();
+                                command2.Parameters.AddWithValue("@PieceRechange", pieceDeRechange);
+                                command2.Parameters.AddWithValue("@NombreDansLaBox", ModifValue);
+
+                                command2.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
                 // Définir la requête d'insertion
-                string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_EQUIPEMENT_CONCERNE = @EquipementConcerne, BT_PIECE_RECHANGE = @PieceRechange, " +
-                               "BT_HEURE_EQUIPEMENT = @NbHeures, BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
+                string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_PIECE_RECHANGE = @PieceRechange, " +
+                               " BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
                                "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, BT_ISFINISH = @isFinish, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
 
                 if (checkBoxIsFinish.Checked)
@@ -281,44 +337,32 @@ namespace GMAONewVersion
                     isChecked = 0;
                 }
 
-                try
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
+                    // Ajouter les paramètres à la commande
+                    command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
+                    // Concaténer les noms des pièces de rechange uniquement
+                    command.Parameters.AddWithValue("@PieceRechange", string.Join(";", PRNewValeur.Select(x => x.Split('=')[0])));
+                    command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
+                    command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
+                    command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
+                    command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
+                    command.Parameters.AddWithValue("@isFinish", isChecked);
+                    command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
+                    command.Parameters.AddWithValue("@numeroBT", numeroBT);
+                    Enabled = false;
 
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                   
-                        // Ajouter les paramètres à la commande
-                        command.Parameters.AddWithValue("@Intitule", textBoxIntituleBT.Text);
-                        command.Parameters.AddWithValue("@PieceRechange", checkPieceRechange());
-                        command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
-                        command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
-                        command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
-                        command.Parameters.AddWithValue("@isFinish", isChecked);
-                        command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
-                        command.Parameters.AddWithValue("@numeroBT", numeroBT);
-                        Enabled = false;
-                    
+                    // Exécuter la commande d'insertion
+                    command.ExecuteNonQuery();
 
-                        // Exécuter la commande d'insertion
-                        command.ExecuteNonQuery();
+                    // Afficher un message de succès
+                    MessageBox.Show("Données modifiées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Afficher un message de succès
-                        MessageBox.Show("Données modifiées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                        // Ferme le formulaire
-                        this.Close();
-
-                    }
+                    // Fermer le formulaire
+                    this.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erreur lors de la modification des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            
         }
+
 
         private void kryptonButtonBTModifierValider_Click(object sender, EventArgs e)
         {
