@@ -217,7 +217,7 @@ namespace GMAONewVersion
 
                 formModifierBT.ShowDialog();
             }// Si index 7 choisi Archivage
-            else if (e.ColumnIndex == 7 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
+            else if (e.ColumnIndex == 7 && e.RowIndex >= 0)
             {
                 
 
