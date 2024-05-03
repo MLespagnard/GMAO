@@ -40,16 +40,16 @@
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
             this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
             this.textBoxTempsPresteBT = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanelNumeros = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxPieceRechangeBT = new System.Windows.Forms.GroupBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.checkedListBoxPieceRechangeBT = new System.Windows.Forms.CheckedListBox();
-            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanelNumeros = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxTravailRealiserBT.SuspendLayout();
             this.groupBoxNomInterBT.SuspendLayout();
@@ -203,6 +203,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
             // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
+            "En attente",
+            "En cours",
+            "Cloturé"});
+            this.comboBoxStatus.Location = new System.Drawing.Point(8, 23);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(139, 24);
+            this.comboBoxStatus.TabIndex = 0;
+            // 
             // groupBoxCommentaireInterBT
             // 
             this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
@@ -249,30 +261,20 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.flowLayoutPanelNumeros);
-            this.groupBox2.Location = new System.Drawing.Point(767, 43);
+            this.groupBox2.Location = new System.Drawing.Point(775, 43);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(168, 395);
+            this.groupBox2.Size = new System.Drawing.Size(159, 395);
             this.groupBox2.TabIndex = 73;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " Pièces de rechange concerné";
-            // 
-            // flowLayoutPanelNumeros
-            // 
-            this.flowLayoutPanelNumeros.AutoScroll = true;
-            this.flowLayoutPanelNumeros.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanelNumeros.Location = new System.Drawing.Point(8, 19);
-            this.flowLayoutPanelNumeros.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelNumeros.Name = "flowLayoutPanelNumeros";
-            this.flowLayoutPanelNumeros.Size = new System.Drawing.Size(156, 372);
-            this.flowLayoutPanelNumeros.TabIndex = 0;
             // 
             // groupBoxPieceRechangeBT
             // 
             this.groupBoxPieceRechangeBT.Controls.Add(this.textBoxFilter);
             this.groupBoxPieceRechangeBT.Controls.Add(this.checkedListBoxPieceRechangeBT);
-            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(569, 43);
+            this.groupBoxPieceRechangeBT.Location = new System.Drawing.Point(522, 43);
             this.groupBoxPieceRechangeBT.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxPieceRechangeBT.Name = "groupBoxPieceRechangeBT";
             this.groupBoxPieceRechangeBT.Padding = new System.Windows.Forms.Padding(4);
@@ -301,17 +303,15 @@
             this.checkedListBoxPieceRechangeBT.TabIndex = 0;
             this.checkedListBoxPieceRechangeBT.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxPieceRechangeBT_ItemCheck);
             // 
-            // comboBoxStatus
+            // flowLayoutPanelNumeros
             // 
-            this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Items.AddRange(new object[] {
-            "En attente",
-            "En cours",
-            "Cloturé"});
-            this.comboBoxStatus.Location = new System.Drawing.Point(8, 23);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(139, 24);
-            this.comboBoxStatus.TabIndex = 0;
+            this.flowLayoutPanelNumeros.AutoScroll = true;
+            this.flowLayoutPanelNumeros.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanelNumeros.Location = new System.Drawing.Point(4, 19);
+            this.flowLayoutPanelNumeros.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelNumeros.Name = "flowLayoutPanelNumeros";
+            this.flowLayoutPanelNumeros.Size = new System.Drawing.Size(151, 372);
+            this.flowLayoutPanelNumeros.TabIndex = 0;
             // 
             // BTTModifierForm
             // 
@@ -368,11 +368,11 @@
         private System.Windows.Forms.GroupBox groupBoxTempsPresteBT;
         private System.Windows.Forms.TextBox textBoxTempsPresteBT;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNumeros;
         private System.Windows.Forms.GroupBox groupBoxPieceRechangeBT;
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.CheckedListBox checkedListBoxPieceRechangeBT;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBoxStatus;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNumeros;
     }
 }

@@ -25,6 +25,8 @@ namespace GMAONewVersion
         public List<(string, string)> OldPRValue = new List<(string, string)>();
         public List<string> PRNewValeur = new List<string>();
         private string BTStatus;
+        private List<Tuple<string, string>> PRFromBDD = new List<Tuple<string, string>>();
+
 
         public BTTModifierForm(MySqlConnection conn, string numero, int accesLvl)
         {
@@ -33,7 +35,7 @@ namespace GMAONewVersion
             numeroBT = numero;
             this.accesLvl = accesLvl;
 
-            FillAllBoxModifierBT();
+            GetPRFromBDD(connection);
             labelHeaderBT.Text = labelHeaderBT.Text + numeroBT;
 
             if (accesLvl == 1)
@@ -50,7 +52,38 @@ namespace GMAONewVersion
                 checkedListBoxPieceRechangeBT.Items.Add(item);
             }
 
+
+
         }
+        private void GetPRFromBDD(MySqlConnection conn)
+        {
+            string query = "SELECT PR_NOM, PR_STOCK_ACTUEL FROM piece_de_rechange;";
+
+            try
+            {
+                PRFromBDD.Clear();
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read()) // Lire chaque ligne du résultat
+                        {
+                            // Créer un tuple avec les valeurs lues et l'ajouter à la liste
+                            string value1 = reader["PR_NOM"].ToString();
+                            string value2 = reader["PR_STOCK_ACTUEL"].ToString();
+                            Tuple<string, string> tuple = new Tuple<string, string>(value1, value2);
+                            PRFromBDD.Add(tuple);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'exécution de la requête: " + ex.Message);
+            }
+            FillAllBoxModifierBT();
+        }  
 
         private void FillAllBoxModifierBT()
         {
@@ -387,10 +420,26 @@ namespace GMAONewVersion
                     TextBox textBox = new TextBox();
                     textBox.Name = "textBoxNumero_" + elementNameListPR;
                     textBox.MaxLength = 3;
-                    textBox.Location = new Point(10, (e.Index * 50) + 25);
+                    textBox.Size = new Size(30, 22);
+                    textBox.Location = new Point(1000, (e.Index * 50) + 50);
                     flowLayoutPanelNumeros.Controls.Add(textBox);
+
+                    Label labelSoldePR = new Label();
+                    labelSoldePR.Name = "labelSoldePRNumero_" + elementNameListPR;
+                    labelSoldePR.Location = new Point(100, (e.Index * 50) );
+                    foreach (Tuple<string, string> item in PRFromBDD)
+                    {
+                        if (item.Item1 == elementNameListPR)
+                        {
+                            labelSoldePR.Text =  "Solde: " + item.Item2;
+                        }
+                    }
+
+                    flowLayoutPanelNumeros.Controls.Add(labelSoldePR);
+
                 }
             }
+
             else
             {
                 string elementNameListPR = checkedListBoxPieceRechangeBT.Items[e.Index].ToString();
