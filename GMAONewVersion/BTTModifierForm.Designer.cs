@@ -39,25 +39,25 @@
             this.textBoxCreateurBT = new System.Windows.Forms.TextBox();
             this.kryptonButtonBTCreerValider = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
-            this.textBoxTempsPresteBT = new System.Windows.Forms.TextBox();
-            this.groupBoxDatePrestaBT = new System.Windows.Forms.GroupBox();
-            this.checkBoxIsFinish = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBoxCommentaireInterBT = new System.Windows.Forms.GroupBox();
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
+            this.groupBoxTempsPresteBT = new System.Windows.Forms.GroupBox();
+            this.textBoxTempsPresteBT = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanelNumeros = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxPieceRechangeBT = new System.Windows.Forms.GroupBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.checkedListBoxPieceRechangeBT = new System.Windows.Forms.CheckedListBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxTravailRealiserBT.SuspendLayout();
             this.groupBoxNomInterBT.SuspendLayout();
             this.groupBoxCreateurBT.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBoxTempsPresteBT.SuspendLayout();
-            this.groupBoxDatePrestaBT.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBoxCommentaireInterBT.SuspendLayout();
+            this.groupBoxTempsPresteBT.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBoxPieceRechangeBT.SuspendLayout();
             this.SuspendLayout();
@@ -143,7 +143,7 @@
             // 
             this.groupBoxCreateurBT.Controls.Add(this.textBoxCreateurBT);
             this.groupBoxCreateurBT.Enabled = false;
-            this.groupBoxCreateurBT.Location = new System.Drawing.Point(13, 662);
+            this.groupBoxCreateurBT.Location = new System.Drawing.Point(13, 678);
             this.groupBoxCreateurBT.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxCreateurBT.Name = "groupBoxCreateurBT";
             this.groupBoxCreateurBT.Padding = new System.Windows.Forms.Padding(4);
@@ -178,17 +178,52 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.groupBoxCommentaireInterBT);
             this.groupBox1.Controls.Add(this.groupBoxTempsPresteBT);
-            this.groupBox1.Controls.Add(this.groupBoxDatePrestaBT);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(13, 395);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(548, 255);
+            this.groupBox1.Size = new System.Drawing.Size(389, 275);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "A remplir par l\'intervenant";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.comboBoxStatus);
+            this.groupBox3.Location = new System.Drawing.Point(183, 38);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(154, 58);
+            this.groupBox3.TabIndex = 77;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Status";
+            // 
+            // groupBoxCommentaireInterBT
+            // 
+            this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
+            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(0, 134);
+            this.groupBoxCommentaireInterBT.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
+            this.groupBoxCommentaireInterBT.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(377, 129);
+            this.groupBoxCommentaireInterBT.TabIndex = 74;
+            this.groupBoxCommentaireInterBT.TabStop = false;
+            this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
+            // 
+            // RichTextBoxCommentaireInterBT
+            // 
+            this.RichTextBoxCommentaireInterBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(9, 32);
+            this.RichTextBoxCommentaireInterBT.Margin = new System.Windows.Forms.Padding(4);
+            this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
+            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(356, 90);
+            this.RichTextBoxCommentaireInterBT.TabIndex = 71;
+            this.RichTextBoxCommentaireInterBT.Text = "";
             // 
             // groupBoxTempsPresteBT
             // 
@@ -210,51 +245,6 @@
             this.textBoxTempsPresteBT.Name = "textBoxTempsPresteBT";
             this.textBoxTempsPresteBT.Size = new System.Drawing.Size(125, 22);
             this.textBoxTempsPresteBT.TabIndex = 2;
-            // 
-            // groupBoxDatePrestaBT
-            // 
-            this.groupBoxDatePrestaBT.Controls.Add(this.checkBoxIsFinish);
-            this.groupBoxDatePrestaBT.Location = new System.Drawing.Point(195, 38);
-            this.groupBoxDatePrestaBT.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBoxDatePrestaBT.Name = "groupBoxDatePrestaBT";
-            this.groupBoxDatePrestaBT.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxDatePrestaBT.Size = new System.Drawing.Size(111, 58);
-            this.groupBoxDatePrestaBT.TabIndex = 76;
-            this.groupBoxDatePrestaBT.TabStop = false;
-            this.groupBoxDatePrestaBT.Text = "Terminé?";
-            // 
-            // checkBoxIsFinish
-            // 
-            this.checkBoxIsFinish.AutoSize = true;
-            this.checkBoxIsFinish.Location = new System.Drawing.Point(17, 23);
-            this.checkBoxIsFinish.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxIsFinish.Name = "checkBoxIsFinish";
-            this.checkBoxIsFinish.Size = new System.Drawing.Size(75, 20);
-            this.checkBoxIsFinish.TabIndex = 0;
-            this.checkBoxIsFinish.Text = "Clôturer";
-            this.checkBoxIsFinish.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxCommentaireInterBT
-            // 
-            this.groupBoxCommentaireInterBT.Controls.Add(this.RichTextBoxCommentaireInterBT);
-            this.groupBoxCommentaireInterBT.Location = new System.Drawing.Point(13, 513);
-            this.groupBoxCommentaireInterBT.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBoxCommentaireInterBT.Name = "groupBoxCommentaireInterBT";
-            this.groupBoxCommentaireInterBT.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxCommentaireInterBT.Size = new System.Drawing.Size(377, 129);
-            this.groupBoxCommentaireInterBT.TabIndex = 74;
-            this.groupBoxCommentaireInterBT.TabStop = false;
-            this.groupBoxCommentaireInterBT.Text = "Commentaire de l’intervenant";
-            // 
-            // RichTextBoxCommentaireInterBT
-            // 
-            this.RichTextBoxCommentaireInterBT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RichTextBoxCommentaireInterBT.Location = new System.Drawing.Point(9, 32);
-            this.RichTextBoxCommentaireInterBT.Margin = new System.Windows.Forms.Padding(4);
-            this.RichTextBoxCommentaireInterBT.Name = "RichTextBoxCommentaireInterBT";
-            this.RichTextBoxCommentaireInterBT.Size = new System.Drawing.Size(356, 90);
-            this.RichTextBoxCommentaireInterBT.TabIndex = 71;
-            this.RichTextBoxCommentaireInterBT.Text = "";
             // 
             // groupBox2
             // 
@@ -301,6 +291,7 @@
             // 
             // checkedListBoxPieceRechangeBT
             // 
+            this.checkedListBoxPieceRechangeBT.CheckOnClick = true;
             this.checkedListBoxPieceRechangeBT.FormattingEnabled = true;
             this.checkedListBoxPieceRechangeBT.IntegralHeight = false;
             this.checkedListBoxPieceRechangeBT.Location = new System.Drawing.Point(8, 76);
@@ -310,13 +301,24 @@
             this.checkedListBoxPieceRechangeBT.TabIndex = 0;
             this.checkedListBoxPieceRechangeBT.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxPieceRechangeBT_ItemCheck);
             // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
+            "En attente",
+            "En cours",
+            "Cloturé"});
+            this.comboBoxStatus.Location = new System.Drawing.Point(8, 23);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(139, 24);
+            this.comboBoxStatus.TabIndex = 0;
+            // 
             // BTTModifierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 769);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBoxCommentaireInterBT);
             this.Controls.Add(this.groupBoxPieceRechangeBT);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.kryptonButtonBTCreerValider);
@@ -336,11 +338,10 @@
             this.groupBoxCreateurBT.ResumeLayout(false);
             this.groupBoxCreateurBT.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBoxCommentaireInterBT.ResumeLayout(false);
             this.groupBoxTempsPresteBT.ResumeLayout(false);
             this.groupBoxTempsPresteBT.PerformLayout();
-            this.groupBoxDatePrestaBT.ResumeLayout(false);
-            this.groupBoxDatePrestaBT.PerformLayout();
-            this.groupBoxCommentaireInterBT.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBoxPieceRechangeBT.ResumeLayout(false);
             this.groupBoxPieceRechangeBT.PerformLayout();
@@ -364,8 +365,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxCommentaireInterBT;
         private System.Windows.Forms.RichTextBox RichTextBoxCommentaireInterBT;
-        private System.Windows.Forms.GroupBox groupBoxDatePrestaBT;
-        private System.Windows.Forms.CheckBox checkBoxIsFinish;
         private System.Windows.Forms.GroupBox groupBoxTempsPresteBT;
         private System.Windows.Forms.TextBox textBoxTempsPresteBT;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -373,5 +372,7 @@
         private System.Windows.Forms.GroupBox groupBoxPieceRechangeBT;
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.CheckedListBox checkedListBoxPieceRechangeBT;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
     }
 }

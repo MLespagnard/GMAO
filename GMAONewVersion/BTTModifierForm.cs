@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace GMAONewVersion
 {
@@ -23,6 +24,7 @@ namespace GMAONewVersion
         public List<string> OGItems = new List<string>();
         public List<(string, string)> OldPRValue = new List<(string, string)>();
         public List<string> PRNewValeur = new List<string>();
+        private string BTStatus;
 
         public BTTModifierForm(MySqlConnection conn, string numero, int accesLvl)
         {
@@ -47,6 +49,7 @@ namespace GMAONewVersion
             {
                 checkedListBoxPieceRechangeBT.Items.Add(item);
             }
+
         }
 
         private void FillAllBoxModifierBT()
@@ -70,23 +73,37 @@ namespace GMAONewVersion
                             PieceRechangeBT = reader["BT_PIECE_RECHANGE"].ToString();
                             RichTextBoxTravailRealiserBT.Text = reader["BT_TRAVAIL_REALISER"].ToString().Trim();
                             RichTextBoxCommentaireInterBT.Text = reader["BT_COMMENTAIRE_INTERVENANT"].ToString().Trim();
-
-                            isChecked = Convert.ToInt32(reader["BT_ISFINISH"].ToString().Trim());
-
-                            if (isChecked == 0)
-                            {
-                                checkBoxIsFinish.Checked = false;
-                                checkBoxIsFinish.Enabled = true;
-                            }
-                            else if (isChecked == 1)
-                            {
-                                checkBoxIsFinish.Checked = true;
-                                DisableAllControls(this);
-                            }
-
                             nomInter = reader["BT_NOM_INTERVENANT"].ToString().Trim();
                             comboBoxNomInterBT.Items.Add(nomInter);
                             indexIntervenant = comboBoxNomInterBT.Items.Count - 1;
+
+
+                            string status = reader["STATUS"].ToString().Trim();
+                            if (status.Length > 0)
+                            {
+                                if (status == "En attente")
+                                {
+                                    BTStatus = "En attente";
+                                }else if (status == "En cours")
+                                {
+                                    BTStatus = "En cours";
+                                }
+                                else if (status == "Cloturé")
+                                {
+                                    BTStatus = "Cloturé";
+                                    DisableAllControls(this);
+                                }
+                            }
+                            int index = comboBoxStatus.Items.IndexOf(status);
+                            if (index != -1)
+                            {
+                                comboBoxStatus.SelectedIndex = index;
+                            }
+                            else
+                            {
+                                comboBoxStatus.Text = "Erreur";
+                                comboBoxStatus.Enabled = false;
+                            }
                         }
 
                         reader.Close();
@@ -299,11 +316,17 @@ namespace GMAONewVersion
                 return;
             }
 
+            string BTstatus = comboBoxStatus.Text;
+            if (BTstatus != "En attente" && BTstatus != "En cours" && BTstatus != "Cloturé")
+            {
+                MessageBox.Show("Le statut du bon de travail est mal renseigné");
+                return;
+            }
+
             string query = "UPDATE bt SET BT_INTITULE = @Intitule, BT_PIECE_RECHANGE = @PieceRechange, " +
                            " BT_TRAVAIL_REALISER = @TravailRealise, BT_COMMENTAIRE_INTERVENANT = @CommentaireInterne, " +
-                           "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, BT_ISFINISH = @isFinish, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
+                           "BT_NOM_INTERVENANT = @NomIntervenant, BT_TEMPS_TRAVAIL = @TempsPreste, STATUS = @status, BT_DATE_REALISATION = @BtDateRealisation  WHERE BT_NUMERO = @numeroBT";
 
-            isChecked = checkBoxIsFinish.Checked ? 1 : 0;
 
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
@@ -313,8 +336,8 @@ namespace GMAONewVersion
                 command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
                 command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
                 command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
-                command.Parameters.AddWithValue("@isFinish", isChecked);
                 command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
+                command.Parameters.AddWithValue("@status", BTStatus);
                 command.Parameters.AddWithValue("@numeroBT", numeroBT);
 
                 Enabled = false;
@@ -412,5 +435,9 @@ namespace GMAONewVersion
                 }
             }
         }
+
+
+
+        
     }
 }
