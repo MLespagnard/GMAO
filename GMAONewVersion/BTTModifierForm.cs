@@ -26,6 +26,7 @@ namespace GMAONewVersion
         public List<string> PRNewValeur = new List<string>();
         private string BTStatus;
         private List<Tuple<string, string>> PRFromBDD = new List<Tuple<string, string>>();
+        public string BTstatus;
 
 
         public BTTModifierForm(MySqlConnection conn, string numero, int accesLvl)
@@ -83,7 +84,7 @@ namespace GMAONewVersion
                 MessageBox.Show("Erreur lors de l'exécution de la requête: " + ex.Message);
             }
             FillAllBoxModifierBT();
-        }  
+        }
 
         private void FillAllBoxModifierBT()
         {
@@ -117,7 +118,7 @@ namespace GMAONewVersion
                                 if (status == "En attente")
                                 {
                                     BTStatus = "En attente";
-                                }else if (status == "En cours")
+                                } else if (status == "En cours")
                                 {
                                     BTStatus = "En cours";
                                 }
@@ -300,19 +301,19 @@ namespace GMAONewVersion
             }
 
             string updateQuery;
-        try { 
-            if (OldPRValue.Count > 0)
-            {
-                foreach (var item in OldPRValue)
+            try {
+                if (OldPRValue.Count > 0)
                 {
-                    string pieceDeRechange = item.Item1;
-                    int oldValue = Convert.ToInt32(item.Item2);
-
-                    var newValueItem = PRNewValeur.FirstOrDefault(x => x.StartsWith(pieceDeRechange + "="));
-
-                    if (newValueItem != null)
+                    foreach (var item in OldPRValue)
                     {
-                        int newValue = Convert.ToInt32(newValueItem.Split('=')[1]);
+                        string pieceDeRechange = item.Item1;
+                        int oldValue = Convert.ToInt32(item.Item2);
+
+                        var newValueItem = PRNewValeur.FirstOrDefault(x => x.StartsWith(pieceDeRechange + "="));
+
+                        if (newValueItem != null)
+                        {
+                            int newValue = Convert.ToInt32(newValueItem.Split('=')[1]);
                             if (newValue > oldValue)
                             {
                                 updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL - @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
@@ -326,21 +327,21 @@ namespace GMAONewVersion
                                     command2.ExecuteNonQuery();
                                 }
                             }
-                    else if (newValue < oldValue)
-                        {
-                            updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL + @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
+                            else if (newValue < oldValue)
+                            {
+                                updateQuery = "UPDATE piece_de_rechange SET PR_STOCK_ACTUEL = PR_STOCK_ACTUEL + @NombreDansLaBox WHERE PR_NOM = @PieceRechange";
                                 int ModifValue = oldValue - newValue;
 
                                 using (MySqlCommand command2 = new MySqlCommand(updateQuery, connection))
-                            {
-                                command2.Parameters.Clear();
-                                command2.Parameters.AddWithValue("@PieceRechange", pieceDeRechange);
-                                command2.Parameters.AddWithValue("@NombreDansLaBox", ModifValue);
-                                command2.ExecuteNonQuery();
+                                {
+                                    command2.Parameters.Clear();
+                                    command2.Parameters.AddWithValue("@PieceRechange", pieceDeRechange);
+                                    command2.Parameters.AddWithValue("@NombreDansLaBox", ModifValue);
+                                    command2.ExecuteNonQuery();
+                                }
                             }
                         }
                     }
-                }
                 }
             }
             catch (Exception ex)
@@ -349,7 +350,7 @@ namespace GMAONewVersion
                 return;
             }
 
-            string BTstatus = comboBoxStatus.Text;
+            BTstatus = comboBoxStatus.Text.Trim();
             if (BTstatus != "En attente" && BTstatus != "En cours" && BTstatus != "Cloturé")
             {
                 MessageBox.Show("Le statut du bon de travail est mal renseigné");
@@ -369,8 +370,8 @@ namespace GMAONewVersion
                 command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
                 command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());
                 command.Parameters.AddWithValue("@TempsPreste", textBoxTempsPresteBT.Text);
+                command.Parameters.AddWithValue("@status", comboBoxStatus.Text.Trim());
                 command.Parameters.AddWithValue("@BtDateRealisation", DateTime.Now);
-                command.Parameters.AddWithValue("@status", BTStatus);
                 command.Parameters.AddWithValue("@numeroBT", numeroBT);
 
                 Enabled = false;

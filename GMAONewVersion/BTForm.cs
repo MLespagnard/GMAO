@@ -44,11 +44,11 @@ namespace GMAONewVersion
             string query;
             if (accesLvl == 1)
             {
-                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, STATUS, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
             }
             else
             {
-                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, STATUS, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
             }
 
             try
@@ -72,10 +72,11 @@ namespace GMAONewVersion
                                 string motif = reader["BT_MOTIF"].ToString();
                                 string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
                                 string intitule = reader["BT_INTITULE"].ToString();
+                                string status = reader["STATUS"].ToString();
                                 string createur = reader["BT_CREATEUR"].ToString();
 
                                 // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
-                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
+                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, status, createur);
                             }
                     }
                 }
@@ -92,11 +93,11 @@ namespace GMAONewVersion
             string query;
             if (accesLvl == 1)
             {
-                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, STATUS, BT_CREATEUR FROM bt WHERE BT_NOM_INTERVENANT = @name AND archiver = @archiveStatus";
             }
             else
             {
-                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
+                query = "SELECT BT_NUMERO, BT_EQUIPEMENT_CONCERNE, BT_MOTIF, BT_INTITULE, STATUS, BT_CREATEUR FROM bt WHERE archiver = @archiveStatus";
             }
 
             try
@@ -119,6 +120,7 @@ namespace GMAONewVersion
                             DataGridBT.Columns.Add("MotiBTDataGridView", "Motif");
                             DataGridBT.Columns.Add("EquipementBTDataGridView", "Equipement");
                             DataGridBT.Columns.Add("IntituleBTDataGridView", "Intitulé");
+                            DataGridBT.Columns.Add("StatusBTDataGridView", "Status");
                             DataGridBT.Columns.Add("CreateurBTDataGridView", "Créateur");
 
                             // Crée une colonne image pour visualiser 
@@ -174,10 +176,11 @@ namespace GMAONewVersion
                                 string motif = reader["BT_MOTIF"].ToString();
                                 string equipement = reader["BT_EQUIPEMENT_CONCERNE"].ToString();
                                 string intitule = reader["BT_INTITULE"].ToString();
+                                string status = reader["STATUS"].ToString();
                                 string createur = reader["BT_CREATEUR"].ToString();
 
                                 // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
-                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, createur);
+                                DataGridBT.Rows.Add(numero, motif, equipement, intitule, status, createur) ;
                             }
                         }
                         else
@@ -198,14 +201,14 @@ namespace GMAONewVersion
         private void DataGridBT_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Si index 5 choisi
-            if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            if (e.ColumnIndex == 6 && e.RowIndex >= 0)
             {
                 string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
                 // Ouvre visualisetBT
                 BTVisualiserForm formVisualiserBT = new BTVisualiserForm(connection, numeroBT);
                 formVisualiserBT.ShowDialog();
             }// Si index 6 choisi
-            else if (e.ColumnIndex == 6 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
+            else if (e.ColumnIndex == 7 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
             {
                 // Récupère le numéro du BT
                 string numeroBT = DataGridBT.Rows[e.RowIndex].Cells["NumeroBTDataGridView"].Value.ToString();
@@ -217,7 +220,7 @@ namespace GMAONewVersion
 
                 formModifierBT.ShowDialog();
             }// Si index 7 choisi Archivage
-            else if (e.ColumnIndex == 7 && e.RowIndex >= 0)
+            else if (e.ColumnIndex == 8 && e.RowIndex >= 0)
             {
                 
 
@@ -236,7 +239,7 @@ namespace GMAONewVersion
                 
             }
             // Si index 8 choisi Archivage
-            else if (e.ColumnIndex == 8 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
+            else if (e.ColumnIndex == 9 && e.RowIndex >= 0 && checkBoxShowArchivageBT.Checked == false)
             {
                
                     // Récupère le numéro du BT
