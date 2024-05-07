@@ -125,7 +125,10 @@ namespace GMAONewVersion
                                 else if (status == "Cloturé")
                                 {
                                     BTStatus = "Cloturé";
-                                    DisableAllControls(this);
+                                    if (accesLvl == 1 ||  accesLvl == 2)
+                                    {
+                                        DisableAllControls(this);
+                                    }
                                 }
                             }
                             int index = comboBoxStatus.Items.IndexOf(status);
@@ -274,6 +277,10 @@ namespace GMAONewVersion
                 else if (control is CheckBox checkBox)
                 {
                     checkBox.Enabled = false;
+                }
+                else if (control is Button button)
+                {
+                    button.Enabled = false;
                 }
                 else if (control is Control)
                 {
