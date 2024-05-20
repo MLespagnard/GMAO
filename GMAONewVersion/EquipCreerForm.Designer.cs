@@ -125,12 +125,14 @@
             // 
             // ButtonEquipCreer
             // 
-            this.ButtonEquipCreer.Location = new System.Drawing.Point(600, 158);
+            this.ButtonEquipCreer.BackColor = System.Drawing.Color.DarkGray;
+            this.ButtonEquipCreer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEquipCreer.Location = new System.Drawing.Point(615, 157);
             this.ButtonEquipCreer.Name = "ButtonEquipCreer";
-            this.ButtonEquipCreer.Size = new System.Drawing.Size(82, 28);
+            this.ButtonEquipCreer.Size = new System.Drawing.Size(122, 42);
             this.ButtonEquipCreer.TabIndex = 54;
             this.ButtonEquipCreer.Text = "Créer";
-            this.ButtonEquipCreer.UseVisualStyleBackColor = true;
+            this.ButtonEquipCreer.UseVisualStyleBackColor = false;
             this.ButtonEquipCreer.Click += new System.EventHandler(this.ButtonEquipCreerValider_Click);
             // 
             // EquipCreerForm

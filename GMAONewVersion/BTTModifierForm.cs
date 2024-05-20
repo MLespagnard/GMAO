@@ -48,12 +48,6 @@ namespace GMAONewVersion
                 textBoxCreateurBT.Enabled = false;
             }
 
-            foreach (string item in OGItems)
-            {
-                checkedListBoxPieceRechangeBT.Items.Add(item);
-            }
-
-
 
         }
         private void GetPRFromBDD(MySqlConnection conn)
@@ -75,6 +69,8 @@ namespace GMAONewVersion
                             string value2 = reader["PR_STOCK_ACTUEL"].ToString();
                             Tuple<string, string> tuple = new Tuple<string, string>(value1, value2);
                             PRFromBDD.Add(tuple);
+                            OGItems.Add(value1);
+                            
                         }
                     }
                 }
@@ -207,13 +203,15 @@ namespace GMAONewVersion
 
             foreach (string nomPiece in nomsPieceRechange)
             {
+                bool pieceTrouvee = false; // Variable pour indiquer si la pièce a été trouvée dans items
+
                 foreach (var itemAllPR in items)
                 {
                     string[] ItemAllSplit = itemAllPR.Split('=');
                     if (ItemAllSplit.Length == 2 && ItemAllSplit[0] == nomPiece)
                     {
                         OldPRValue.Add((ItemAllSplit[0].Trim(), ItemAllSplit[1].Trim()));
-                        checkedListBoxPieceRechangeBT.Items.Add(nomPiece, true);
+                        checkedListBoxPieceRechangeBT.Items.Add(nomPiece, true); // Ajouter et cocher la pièce
 
                         Control[] foundControls = flowLayoutPanelNumeros.Controls.Find("textBoxNumero_" + ItemAllSplit[0], true);
 
@@ -221,10 +219,19 @@ namespace GMAONewVersion
                         {
                             ((TextBox)foundControls[0]).Text = ItemAllSplit[1].Trim();
                         }
+
+                        pieceTrouvee = true; // La pièce a été trouvée dans items
                         break;
                     }
                 }
+
+                // Si la pièce n'a pas été trouvée dans items, l'ajouter sans la cocher
+                if (!pieceTrouvee)
+                {
+                    checkedListBoxPieceRechangeBT.Items.Add(nomPiece, false);
+                }
             }
+
         }
 
         private void ClearAllControls()
@@ -434,12 +441,12 @@ namespace GMAONewVersion
 
                     Label labelSoldePR = new Label();
                     labelSoldePR.Name = "labelSoldePRNumero_" + elementNameListPR;
-                    labelSoldePR.Location = new Point(100, (e.Index * 50) );
+                    labelSoldePR.Location = new Point(100, (e.Index * 50));
                     foreach (Tuple<string, string> item in PRFromBDD)
                     {
                         if (item.Item1 == elementNameListPR)
                         {
-                            labelSoldePR.Text =  "Solde: " + item.Item2;
+                            labelSoldePR.Text = "Solde: " + item.Item2;
                         }
                     }
 
@@ -454,13 +461,14 @@ namespace GMAONewVersion
                 for (int i = flowLayoutPanelNumeros.Controls.Count - 1; i >= 0; i--)
                 {
                     Control control = flowLayoutPanelNumeros.Controls[i];
-                    if (control.Name == "textBoxNumero_" + elementNameListPR || control.Name == "LabelBoxNumero_" + elementNameListPR)
+                    if (control.Name == "textBoxNumero_" + elementNameListPR || control.Name == "LabelBoxNumero_" + elementNameListPR || control.Name == "labelSoldePRNumero_" + elementNameListPR)
                     {
                         flowLayoutPanelNumeros.Controls.Remove(control);
                     }
                 }
             }
         }
+
 
         private List<string> checkedTest = new List<string>();
 
