@@ -125,12 +125,14 @@
             // 
             // ButtonEquipModifier
             // 
-            this.ButtonEquipModifier.Location = new System.Drawing.Point(602, 160);
+            this.ButtonEquipModifier.BackColor = System.Drawing.Color.DarkGray;
+            this.ButtonEquipModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEquipModifier.Location = new System.Drawing.Point(609, 157);
             this.ButtonEquipModifier.Name = "ButtonEquipModifier";
-            this.ButtonEquipModifier.Size = new System.Drawing.Size(82, 28);
+            this.ButtonEquipModifier.Size = new System.Drawing.Size(122, 42);
             this.ButtonEquipModifier.TabIndex = 60;
             this.ButtonEquipModifier.Text = "Modifier";
-            this.ButtonEquipModifier.UseVisualStyleBackColor = true;
+            this.ButtonEquipModifier.UseVisualStyleBackColor = false;
             this.ButtonEquipModifier.Click += new System.EventHandler(this.ButtonEquipModifier_Click);
             // 
             // EquipModifierForm

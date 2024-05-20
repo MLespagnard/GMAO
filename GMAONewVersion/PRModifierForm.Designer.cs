@@ -161,12 +161,14 @@
             // 
             // buttonCreerPR
             // 
-            this.buttonCreerPR.Location = new System.Drawing.Point(601, 241);
+            this.buttonCreerPR.BackColor = System.Drawing.Color.DarkGray;
+            this.buttonCreerPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreerPR.Location = new System.Drawing.Point(605, 237);
             this.buttonCreerPR.Name = "buttonCreerPR";
-            this.buttonCreerPR.Size = new System.Drawing.Size(96, 30);
+            this.buttonCreerPR.Size = new System.Drawing.Size(122, 42);
             this.buttonCreerPR.TabIndex = 74;
             this.buttonCreerPR.Text = "Modifier";
-            this.buttonCreerPR.UseVisualStyleBackColor = true;
+            this.buttonCreerPR.UseVisualStyleBackColor = false;
             this.buttonCreerPR.Click += new System.EventHandler(this.ButtonPRModifierValider_Click);
             // 
             // groupBoxReferenceConstructeurPR

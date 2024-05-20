@@ -218,7 +218,7 @@ namespace GMAONewVersion
                         if (foundControls.Length > 0 && foundControls[0] is TextBox)
                         {
                             ((TextBox)foundControls[0]).Text = ItemAllSplit[1].Trim();
-                        }
+                        } 
 
                         pieceTrouvee = true; // La pièce a été trouvée dans items
                         break;
@@ -302,15 +302,15 @@ namespace GMAONewVersion
             {
                 string pieceDeRechange = item.ToString();
                 string TexBoxName = "textBoxNumero_" + pieceDeRechange;
-                TextBox texbox = flowLayoutPanelNumeros.Controls.Find(TexBoxName, true).FirstOrDefault() as TextBox;
-
-                if (texbox != null)
+                TextBox textbox = flowLayoutPanelNumeros.Controls.Find(TexBoxName, true).FirstOrDefault() as TextBox;
+                if (!string.IsNullOrEmpty(textbox.Text))
                 {
-                    PRNewValeur.Add(pieceDeRechange + "=" + texbox.Text);
+                    PRNewValeur.Add(pieceDeRechange + "=" + textbox.Text);
                 }
                 else
                 {
                     MessageBox.Show("Aucune valeur n'est assignée à la pièce: " + pieceDeRechange);
+                    return;
                 }
             }
 

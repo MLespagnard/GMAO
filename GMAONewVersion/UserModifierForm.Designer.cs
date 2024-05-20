@@ -157,12 +157,14 @@
             // 
             // ButtonModifierUser
             // 
-            this.ButtonModifierUser.Location = new System.Drawing.Point(623, 171);
+            this.ButtonModifierUser.BackColor = System.Drawing.Color.DarkGray;
+            this.ButtonModifierUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonModifierUser.Location = new System.Drawing.Point(615, 157);
             this.ButtonModifierUser.Name = "ButtonModifierUser";
-            this.ButtonModifierUser.Size = new System.Drawing.Size(82, 28);
+            this.ButtonModifierUser.Size = new System.Drawing.Size(122, 42);
             this.ButtonModifierUser.TabIndex = 61;
             this.ButtonModifierUser.Text = "Modifier";
-            this.ButtonModifierUser.UseVisualStyleBackColor = true;
+            this.ButtonModifierUser.UseVisualStyleBackColor = false;
             this.ButtonModifierUser.Click += new System.EventHandler(this.ButtonModifierUser_Click);
             // 
             // UserModifierForm

@@ -50,10 +50,10 @@ namespace GMAONewVersion
                         if (reader.HasRows)
                         {
                             // Crée les différentes colonnes
-                            DataGridEquip.Columns.Add("NomEquipDataGridView", "nom");
-                            DataGridEquip.Columns.Add("ConstructeurEquipDataGridView", "constructeur");
-                            DataGridEquip.Columns.Add("ModelEquipDataGridView", "model");
-                            DataGridEquip.Columns.Add("UsureEquipDataGridView", "usure");
+                            DataGridEquip.Columns.Add("NomEquipDataGridView", "Nom");
+                            DataGridEquip.Columns.Add("ConstructeurEquipDataGridView", "Constructeur");
+                            DataGridEquip.Columns.Add("ModelEquipDataGridView", "Model");
+                            DataGridEquip.Columns.Add("UsureEquipDataGridView", "Usure (En heure)");
 
 
 
@@ -94,7 +94,11 @@ namespace GMAONewVersion
                                 string nom = reader["EQUIP_NOM"].ToString();
                                 string constructeur = reader["EQUIP_CONSTRUCTEUR"].ToString();
                                 string model = reader["EQUIP_MODEL"].ToString();
-                                string usure = reader["EQUIP_TEMPS_USURE"].ToString();
+                                DateTime dateCrea = Convert.ToDateTime(reader["DATE_AJOUT"]);
+
+                                // Calculer le nombre d'heures d'utilisation
+                                TimeSpan duration = DateTime.Now - dateCrea;
+                                double usure = duration.TotalHours;
 
                                 // Ajoute une nouvelle ligne au DataGridView avec les valeurs récupérées
                                 DataGridEquip.Rows.Add(nom, constructeur, model, usure);

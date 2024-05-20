@@ -208,12 +208,14 @@
             // 
             // buttonCreerPR
             // 
-            this.buttonCreerPR.Location = new System.Drawing.Point(596, 244);
+            this.buttonCreerPR.BackColor = System.Drawing.Color.DarkGray;
+            this.buttonCreerPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreerPR.Location = new System.Drawing.Point(600, 237);
             this.buttonCreerPR.Name = "buttonCreerPR";
-            this.buttonCreerPR.Size = new System.Drawing.Size(96, 30);
+            this.buttonCreerPR.Size = new System.Drawing.Size(122, 42);
             this.buttonCreerPR.TabIndex = 64;
             this.buttonCreerPR.Text = "Créer";
-            this.buttonCreerPR.UseVisualStyleBackColor = true;
+            this.buttonCreerPR.UseVisualStyleBackColor = false;
             this.buttonCreerPR.Click += new System.EventHandler(this.ButtonPRCreerValider_Click);
             // 
             // PRCreerForm

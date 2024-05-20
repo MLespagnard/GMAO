@@ -35,10 +35,8 @@
             this.comboBoxMotifBT = new System.Windows.Forms.ComboBox();
             this.textBoxIntituleBT = new System.Windows.Forms.TextBox();
             this.comboBoxEquipementConcerneBT = new System.Windows.Forms.ComboBox();
-            this.textBoxNbHeuresBT = new System.Windows.Forms.TextBox();
             this.comboBoxNomInterBT = new System.Windows.Forms.ComboBox();
             this.groupBoxNomInterBT = new System.Windows.Forms.GroupBox();
-            this.groupBoxNbHeuresBT = new System.Windows.Forms.GroupBox();
             this.groupBoxEquipementConcerneBT = new System.Windows.Forms.GroupBox();
             this.groupBoxIntituleBT = new System.Windows.Forms.GroupBox();
             this.groupBoxMotifBT = new System.Windows.Forms.GroupBox();
@@ -58,7 +56,6 @@
             this.RichTextBoxCommentaireInterBT = new System.Windows.Forms.RichTextBox();
             this.groupBoxPieceRechangeBT.SuspendLayout();
             this.groupBoxNomInterBT.SuspendLayout();
-            this.groupBoxNbHeuresBT.SuspendLayout();
             this.groupBoxEquipementConcerneBT.SuspendLayout();
             this.groupBoxIntituleBT.SuspendLayout();
             this.groupBoxMotifBT.SuspendLayout();
@@ -141,43 +138,24 @@
             this.comboBoxEquipementConcerneBT.Size = new System.Drawing.Size(115, 21);
             this.comboBoxEquipementConcerneBT.TabIndex = 1;
             // 
-            // textBoxNbHeuresBT
-            // 
-            this.textBoxNbHeuresBT.Location = new System.Drawing.Point(10, 31);
-            this.textBoxNbHeuresBT.MaxLength = 6;
-            this.textBoxNbHeuresBT.Name = "textBoxNbHeuresBT";
-            this.textBoxNbHeuresBT.Size = new System.Drawing.Size(91, 20);
-            this.textBoxNbHeuresBT.TabIndex = 1;
-            this.textBoxNbHeuresBT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNbHeuresBT_KeyPress);
-            // 
             // comboBoxNomInterBT
             // 
             this.comboBoxNomInterBT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNomInterBT.FormattingEnabled = true;
             this.comboBoxNomInterBT.Location = new System.Drawing.Point(8, 23);
             this.comboBoxNomInterBT.Name = "comboBoxNomInterBT";
-            this.comboBoxNomInterBT.Size = new System.Drawing.Size(117, 21);
+            this.comboBoxNomInterBT.Size = new System.Drawing.Size(164, 21);
             this.comboBoxNomInterBT.TabIndex = 2;
             // 
             // groupBoxNomInterBT
             // 
             this.groupBoxNomInterBT.Controls.Add(this.comboBoxNomInterBT);
-            this.groupBoxNomInterBT.Location = new System.Drawing.Point(153, 159);
+            this.groupBoxNomInterBT.Location = new System.Drawing.Point(21, 160);
             this.groupBoxNomInterBT.Name = "groupBoxNomInterBT";
-            this.groupBoxNomInterBT.Size = new System.Drawing.Size(137, 60);
+            this.groupBoxNomInterBT.Size = new System.Drawing.Size(178, 60);
             this.groupBoxNomInterBT.TabIndex = 50;
             this.groupBoxNomInterBT.TabStop = false;
             this.groupBoxNomInterBT.Text = "Nom de l’intervenant";
-            // 
-            // groupBoxNbHeuresBT
-            // 
-            this.groupBoxNbHeuresBT.Controls.Add(this.textBoxNbHeuresBT);
-            this.groupBoxNbHeuresBT.Location = new System.Drawing.Point(21, 160);
-            this.groupBoxNbHeuresBT.Name = "groupBoxNbHeuresBT";
-            this.groupBoxNbHeuresBT.Size = new System.Drawing.Size(113, 60);
-            this.groupBoxNbHeuresBT.TabIndex = 47;
-            this.groupBoxNbHeuresBT.TabStop = false;
-            this.groupBoxNbHeuresBT.Text = "Nombre d’heures de l’équipement";
             // 
             // groupBoxEquipementConcerneBT
             // 
@@ -222,7 +200,7 @@
             // groupBoxCreateurBT
             // 
             this.groupBoxCreateurBT.Controls.Add(this.textBoxCreateurBT);
-            this.groupBoxCreateurBT.Location = new System.Drawing.Point(311, 160);
+            this.groupBoxCreateurBT.Location = new System.Drawing.Point(218, 160);
             this.groupBoxCreateurBT.Name = "groupBoxCreateurBT";
             this.groupBoxCreateurBT.Size = new System.Drawing.Size(132, 60);
             this.groupBoxCreateurBT.TabIndex = 53;
@@ -368,7 +346,6 @@
             this.Controls.Add(this.labelHeaderBT);
             this.Controls.Add(this.groupBoxPieceRechangeBT);
             this.Controls.Add(this.groupBoxNomInterBT);
-            this.Controls.Add(this.groupBoxNbHeuresBT);
             this.Controls.Add(this.groupBoxEquipementConcerneBT);
             this.Controls.Add(this.groupBoxIntituleBT);
             this.Controls.Add(this.groupBoxMotifBT);
@@ -381,8 +358,6 @@
             this.groupBoxPieceRechangeBT.ResumeLayout(false);
             this.groupBoxPieceRechangeBT.PerformLayout();
             this.groupBoxNomInterBT.ResumeLayout(false);
-            this.groupBoxNbHeuresBT.ResumeLayout(false);
-            this.groupBoxNbHeuresBT.PerformLayout();
             this.groupBoxEquipementConcerneBT.ResumeLayout(false);
             this.groupBoxIntituleBT.ResumeLayout(false);
             this.groupBoxIntituleBT.PerformLayout();
@@ -410,10 +385,8 @@
         private System.Windows.Forms.ComboBox comboBoxMotifBT;
         private System.Windows.Forms.TextBox textBoxIntituleBT;
         private System.Windows.Forms.ComboBox comboBoxEquipementConcerneBT;
-        private System.Windows.Forms.TextBox textBoxNbHeuresBT;
         private System.Windows.Forms.ComboBox comboBoxNomInterBT;
         private System.Windows.Forms.GroupBox groupBoxNomInterBT;
-        private System.Windows.Forms.GroupBox groupBoxNbHeuresBT;
         private System.Windows.Forms.GroupBox groupBoxEquipementConcerneBT;
         private System.Windows.Forms.GroupBox groupBoxIntituleBT;
         private System.Windows.Forms.GroupBox groupBoxMotifBT;

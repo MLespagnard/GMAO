@@ -161,7 +161,6 @@ namespace GMAONewVersion
                 ("Intitulé", textBoxIntituleBT.Text),
                 ("Créateur", textBoxCreateurBT.Text),
                 ("Équipement concerné", comboBoxEquipementConcerneBT.SelectedItem as string ?? ""),
-                ("Nombre d'heures", textBoxNbHeuresBT.Text),  
                 ("Travail réalisé", RichTextBoxTravailRealiserBT.Text),
                 ("Nom intervenant", comboBoxNomInterBT.SelectedItem?.ToString() ?? ""),
 };
@@ -267,8 +266,8 @@ namespace GMAONewVersion
 
             // Définir la requête d'insertion
             string query = "INSERT INTO bt (BT_NUMERO, BT_MOTIF, BT_INTITULE, BT_CREATEUR, BT_EQUIPEMENT_CONCERNE, BT_PIECE_RECHANGE, " +
-                           "BT_HEURE_EQUIPEMENT, BT_TRAVAIL_REALISER, BT_COMMENTAIRE_INTERVENANT, BT_NOM_INTERVENANT, BT_TEMPS_TRAVAIL) " +
-                           "VALUES (@BtNumero, @Motif, @Intitule, @Createur, @EquipementConcerne, @PieceRechange, @NbHeures, @TravailRealise, " +
+                          "BT_TRAVAIL_REALISER, BT_COMMENTAIRE_INTERVENANT, BT_NOM_INTERVENANT, BT_TEMPS_TRAVAIL) " +
+                           "VALUES (@BtNumero, @Motif, @Intitule, @Createur, @EquipementConcerne, @PieceRechange, @TravailRealise, " +
                            "@CommentaireInterne, @NomIntervenant, @TempsPreste)";
 
             try
@@ -282,7 +281,6 @@ namespace GMAONewVersion
                     command.Parameters.AddWithValue("@Createur", textBoxCreateurBT.Text);
                     command.Parameters.AddWithValue("@EquipementConcerne", comboBoxEquipementConcerneBT.SelectedItem as string);
                     command.Parameters.AddWithValue("@PieceRechange", string.Join(";", PRValeur));
-                    command.Parameters.AddWithValue("@NbHeures", textBoxNbHeuresBT.Text);
                     command.Parameters.AddWithValue("@TravailRealise", RichTextBoxTravailRealiserBT.Text);
                     command.Parameters.AddWithValue("@CommentaireInterne", RichTextBoxCommentaireInterBT.Text);
                     command.Parameters.AddWithValue("@NomIntervenant", comboBoxNomInterBT.SelectedItem.ToString());

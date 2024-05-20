@@ -46,12 +46,14 @@
             // 
             // ButtonCreateUser
             // 
-            this.ButtonCreateUser.Location = new System.Drawing.Point(560, 167);
+            this.ButtonCreateUser.BackColor = System.Drawing.Color.DarkGray;
+            this.ButtonCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCreateUser.Location = new System.Drawing.Point(601, 179);
             this.ButtonCreateUser.Name = "ButtonCreateUser";
-            this.ButtonCreateUser.Size = new System.Drawing.Size(105, 32);
+            this.ButtonCreateUser.Size = new System.Drawing.Size(122, 42);
             this.ButtonCreateUser.TabIndex = 33;
             this.ButtonCreateUser.Text = "Créer";
-            this.ButtonCreateUser.UseVisualStyleBackColor = true;
+            this.ButtonCreateUser.UseVisualStyleBackColor = false;
             this.ButtonCreateUser.Click += new System.EventHandler(this.ButtonCreateUser_Click);
             // 
             // groupBox1
